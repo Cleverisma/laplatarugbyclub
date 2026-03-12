@@ -16,8 +16,10 @@ export interface BoardMember {
 
 export interface Coach {
   id: string;
-  name: string;
-  role: string;
+  category: string;
+  headCoach: string;
+  assistants: string[];
+  manager?: string;
   imageUrl?: string;
 }
 
@@ -51,20 +53,25 @@ export const boardMembers: BoardMember[] = [
 export const coachesStaff: Coach[] = [
   {
     id: 'c1',
-    name: 'Entrenador M14',
-    role: 'Head Coach M14',
+    category: 'M14',
+    headCoach: 'Juan Pérez',
+    assistants: ['Carlos Gómez', 'Miguel Díaz'],
+    manager: 'Roberto García',
     imageUrl: coach1Img
   },
   {
     id: 'c2',
-    name: 'Entrenador M12',
-    role: 'Head Coach M12',
+    category: 'M13',
+    headCoach: 'Diego López',
+    assistants: ['Martín Sánchez', 'Leo Fernández'],
     imageUrl: coach2Img
   },
   {
     id: 'c3',
-    name: 'Entrenador M10',
-    role: 'Head Coach M10',
+    category: 'M12',
+    headCoach: 'Pablo Rodríguez',
+    assistants: ['Andrés Rivas', 'Tomás Aguilar'],
+    manager: 'Emilio Ruiz',
     imageUrl: coach3Img
   }
 ];
