@@ -1,17 +1,14 @@
-import member1Img from '~/media/10.jpeg';
-import member2Img from '~/media/11.jpeg';
-import member3Img from '~/media/12.jpeg';
-import member4Img from '~/media/13.jpeg';
 
-import coach1Img from '~/media/14.jpeg';
-import coach2Img from '~/media/15.jpeg';
-import coach3Img from '~/media/16.jpeg';
+
+import coachImg1 from '~/media/10.jpeg';
+import coachImg2 from '~/media/11.jpeg';
+import coachImg3 from '~/media/12.jpeg';
+import coachImg4 from '~/media/13.jpeg';
 
 export interface BoardMember {
   id: string;
-  name: string;
   role: string;
-  imageUrl?: string;
+  names: string[];
 }
 
 export interface Coach {
@@ -26,52 +23,145 @@ export interface Coach {
 export const boardMembers: BoardMember[] = [
   {
     id: '1',
-    name: 'José Manuel Roán',
     role: 'Presidente',
-    imageUrl: member1Img
+    names: ['José Manuel Roán']
   },
   {
     id: '2',
-    name: 'Sebastián Addiechi',
     role: 'Vicepresidente',
-    imageUrl: member2Img
+    names: ['Sebastián Addiechi']
   },
   {
     id: '3',
-    name: 'Matías Di Rago',
     role: 'Secretario',
-    imageUrl: member3Img
+    names: ['Matías Di Rago']
   },
   {
     id: '4',
-    name: 'Martín Diez',
+    role: 'Prosecretario',
+    names: ['Santiago Uranga']
+  },
+  {
+    id: '5',
     role: 'Tesorero',
-    imageUrl: member4Img
+    names: ['Martín Diez']
+  },
+  {
+    id: '6',
+    role: 'Protesorero',
+    names: ['Agustín Lopez Ruf']
+  },
+  {
+    id: '7',
+    role: 'Capitán General',
+    names: ['Dimas Suffern Quirno']
+  },
+  {
+    id: '8',
+    role: 'Vocales Titulares',
+    names: ['Esteban Durante', 'Federico Bilbao', 'Fernando Cafasso', 'Mauro Franco', 'Maximiliano Suarez Folch']
+  },
+  {
+    id: '9',
+    role: 'Vocales Suplentes',
+    names: ['Gastón Mendy', 'Gonzalo Perez Albizu', 'Guillermo Raggio', 'Ignacio Sarasqueta']
+  },
+  {
+    id: '10',
+    role: 'Miembros Titulares de la Comisión Revisora de Cuentas',
+    names: ['Martín Festa', 'Damián Di Menna', 'Ramiro Calonje']
+  },
+  {
+    id: '11',
+    role: 'Miembros Suplentes de la Comisión Revisora de Cuentas',
+    names: ['Gonzalo Ferreiro', 'Eduardo Featherston']
   }
 ];
 
 export const coachesStaff: Coach[] = [
   {
     id: 'c1',
-    category: 'M14',
-    headCoach: 'Juan Pérez',
-    assistants: ['Carlos Gómez', 'Miguel Díaz'],
-    manager: 'Roberto García',
-    imageUrl: coach1Img
+    category: 'M19',
+    headCoach: 'Bernardo Maiztegui, Justo Maselli',
+    assistants: [
+      'Juan Ignacio Della Salda',
+      'Federico Granillo Fernández',
+      'Nicolás Addiechi',
+      'Julián Arteche',
+      'Juan Martín Sorarrain',
+      'Bautista Bertone',
+      'Gonzalo Oviedo',
+      'Ricardo Villarreal',
+      'José Garganta',
+      'Lucas de Francesco',
+      'Guillermo Poggio',
+      'Germán Zuloaga',
+      'Nehuen Jauri Rivero',
+      'Martín Fontán'
+    ],
+    manager: 'Adolfo Baridón, Gustavo Bragagnolo, Gustavo Insúa',
+    imageUrl: coachImg1
   },
   {
     id: 'c2',
-    category: 'M13',
-    headCoach: 'Diego López',
-    assistants: ['Martín Sánchez', 'Leo Fernández'],
-    imageUrl: coach2Img
+    category: 'M17',
+    headCoach: 'Eduardo Crespo',
+    assistants: [
+      'Luis Salessi',
+      'Julio Brolese',
+      'Tomas Bernasconi',
+      'Manuel Etcheverry',
+      'Diego Montoni',
+      'Pablo Castro',
+      'Francisco Paz Rizzoli',
+      'Damián Crispino'
+    ],
+    manager: 'Santiago Vattuone',
+    imageUrl: coachImg2
   },
   {
     id: 'c3',
-    category: 'M12',
-    headCoach: 'Pablo Rodríguez',
-    assistants: ['Andrés Rivas', 'Tomás Aguilar'],
-    manager: 'Emilio Ruiz',
-    imageUrl: coach3Img
+    category: 'M16',
+    headCoach: 'Damián Biancuzzo, Diego Festa',
+    assistants: [
+      'Carlos Rojas',
+      'Juan Pedro Chávez',
+      'Martín De la Torre',
+      'Federico Etchegoyen',
+      'Federico Quintana M.',
+      'Aldo Rossi',
+      'Germán Chufi',
+      'Luciano Barreda',
+      'Martín Kneiszl'
+    ],
+    manager: 'Lucas Alba',
+    imageUrl: coachImg3
+  },
+  {
+    id: 'c4',
+    category: 'M15',
+    headCoach: 'Sebastián Kusich',
+    assistants: [
+      'Ivan Kucic',
+      'Orlando Sosa',
+      'Fernando Ferraro',
+      'Jero Ferraro',
+      'Marcelo Picón',
+      'Bautista Picón',
+      'Javier Del Tufo',
+      'Tomás Del Tufo',
+      'Luciano Taiuti',
+      'Laureano Fredes',
+      'Matías Guillén',
+      'Simón Leavi',
+      'Francisco Saulnier',
+      'Matías Alonso',
+      'Francisco Guerrero',
+      'Francisco Del Tufo',
+      'Gonzalo Pizarro',
+      'Nicolás Chapani'
+    ],
+    manager: 'Claudio Carretino',
+    imageUrl: coachImg4
   }
 ];

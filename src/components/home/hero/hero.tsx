@@ -27,17 +27,22 @@ export const Hero = component$(() => {
         <p class="text-2xl md:text-3xl text-gray-200 mb-12 font-medium drop-shadow-md">
           Formar buenas personas que disfruten del rugby.
         </p>
-        <button class="bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-bold py-5 px-12 rounded-full text-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.4)]">
+        <a
+          href="https://api.whatsapp.com/send?phone=5492216796537&text=Hola%20vengo%20desde%20el%20sitio%20web%20de%20www.laplatarugbyclub.com.ar%20y%20estoy%20interesado%20en%20hacerme%20socio."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-bold py-5 px-12 rounded-full text-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.4)] text-center inline-block"
+        >
           Hacete Socio
-        </button>
+        </a>
       </div>
       
       {/* Scroll indicator */}
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce pointer-events-none">
-         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <a href="/#institucional" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce cursor-pointer hover:text-yellow-300 transition-colors">
+         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 hover:text-yellow-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
          </svg>
-      </div>
+      </a>
     </section>
   );
 });

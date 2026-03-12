@@ -14,16 +14,23 @@ const MOCK_EVENTS: EventCardProps[] = [
   {
     id: '1',
     title: 'Sunset en LPRC',
-    datetime: 'Sábado 15:30 hs',
-    description: 'Post partido Primera. Música, barra de tragos, amigos y familia.',
+    datetime: 'Sábado 14 de Marzo, 15:30 hs',
+    description: 'Estimados socios y familias de LPRC,\n\nEste sábado, después del partido de la Primera División (15:30), los invitamos a quedarse en el club para disfrutar juntos de nuestro Sunset en LPRC.\n\nHabrá música, barra de tragos y un lindo espacio para encontrarnos, charlar y seguir viviendo el club entre amigos y en familia.\nLos esperamos para cerrar el día en el club.',
     imageUrl: event1Img
   },
   {
     id: '2',
     title: 'Juegos Recreativos Infantiles',
     datetime: 'Sábado post 3er tiempo',
-    description: 'Organizado por el staff de entrenadores para compartir la tarde.',
+    description: '🏉 Este sábado, después del tercer tiempo! \n\nAl finalizar el tercer tiempo de Infantiles y Preinfantiles, entrenadores y entrenadoras del club van a organizar juegos recreativos para los chicos.\n\nLa idea es compartir un rato más en el club, que los chicos sigan jugando y que las familias se queden a disfrutar la tarde.\n\nA las 15:30 comienza el partido de la Primera, ¡así que los invitamos a quedarse y alentar juntos!\n\nLos esperamos para seguir viviendo el club en familia. 💛',
     imageUrl: event2Img
+  },
+  {
+    id: '3',
+    title: 'Ingreso Sábados',
+    datetime: 'Partidos Plantel Superior',
+    description: 'ESTACIONAMIENTO:\nSocios: $7.000\nNo Socios: $15.000\n\nACCESO:\nNo Socios: $10.000',
+    imageUrl: undefined 
   }
 ];
 
@@ -48,7 +55,7 @@ export const EventCard = component$<EventCardProps>(({ title, datetime, descript
             {datetime}
         </time>
         <h3 class="text-2xl font-black text-blue-950 mb-4 leading-tight group-hover:text-blue-700 transition-colors">{title}</h3>
-        <p class="text-gray-600 flex-grow text-base leading-relaxed">{description}</p>
+        <p class="text-gray-600 flex-grow text-base leading-relaxed whitespace-pre-line">{description}</p>
         <button class="mt-8 text-blue-800 font-bold hover:text-yellow-500 transition-colors flex items-center gap-2 self-start uppercase tracking-wide text-sm">
             Ver Detalles 
             <span class="transform group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
@@ -75,7 +82,7 @@ export const LatestEvents = component$(() => {
             </a>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {MOCK_EVENTS.map((event) => (
             <EventCard key={event.id} {...event} />
           ))}
