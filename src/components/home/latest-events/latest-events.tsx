@@ -1,4 +1,6 @@
 import { component$ } from '@builder.io/qwik';
+import event1Img from '~/media/2.jpeg';
+import event2Img from '~/media/3.jpeg';
 
 export interface EventCardProps {
   id: string;
@@ -14,21 +16,21 @@ const MOCK_EVENTS: EventCardProps[] = [
     title: 'Sunset en LPRC',
     datetime: 'Sábado 15:30 hs',
     description: 'Post partido Primera. Música, barra de tragos, amigos y familia.',
-    imageUrl: '/images/events/sunset.jpg'
+    imageUrl: event1Img
   },
   {
     id: '2',
     title: 'Juegos Recreativos Infantiles',
     datetime: 'Sábado post 3er tiempo',
     description: 'Organizado por el staff de entrenadores para compartir la tarde.',
-    imageUrl: '/images/events/infantiles.jpg'
+    imageUrl: event2Img
   }
 ];
 
 export const EventCard = component$<EventCardProps>(({ title, datetime, description, imageUrl }) => {
   return (
     <article class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col h-full border border-gray-100 group overflow-hidden">
-      <div class="h-56 bg-blue-50 relative overflow-hidden">
+      <div class="aspect-video bg-blue-50 relative overflow-hidden">
         {imageUrl ? (
             <img src={imageUrl} alt={title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
         ) : (
