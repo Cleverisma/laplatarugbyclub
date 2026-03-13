@@ -33,7 +33,7 @@ export const Hero = component$(() => {
           class="text-yellow-400 text-sm tracking-[0.35em] uppercase mb-6 font-semibold"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
-          Desde 1934 · La Plata, Argentina
+          Primer club de rugby de La Plata · Desde 1934
         </span>
 
         <h1
@@ -54,7 +54,7 @@ export const Hero = component$(() => {
 
         <p class="text-lg md:text-xl text-gray-300 mb-12 font-light tracking-wide max-w-xl"
            style={{ fontFamily: "'Inter', sans-serif" }}>
-          Formar buenas personas que disfruten del rugby.
+          Formamos jugadores. Construimos personas.
         </p>
 
         <a

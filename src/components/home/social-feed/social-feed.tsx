@@ -32,9 +32,21 @@ export const SocialFeed = component$(() => {
         <div class="text-center mb-16">
             <span class="text-yellow-500 font-bold uppercase tracking-widest text-sm mb-4 block">Comunidad</span>
             <h2 class="text-4xl md:text-6xl font-black text-blue-950 mb-6 tracking-tight">Seguinos en Instagram</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto text-lg">
-                Mantenete al día con las últimas novedades, resultados y la vida de nuestro club en 
-                <a href="https://instagram.com/laplatarugbyclub" target="_blank" class="text-blue-600 font-bold hover:text-blue-800 ml-1">@laplatarugbyclub</a>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Mantenete al día con las últimas novedades, resultados, actividades y la vida diaria de nuestra
+                comunidad en el Instagram oficial de La Plata Rugby Club.
+            </p>
+            <ul class="mt-6 space-y-2 text-gray-500 text-base max-w-lg mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <li>🏉 Resultados y actualidad deportiva</li>
+              <li>📸 Momentos del club y de nuestros equipos</li>
+              <li>👨‍👩‍👧‍👦 Actividades de la comunidad</li>
+              <li>🎉 Eventos y encuentros</li>
+              <li>📢 Noticias y anuncios importantes</li>
+            </ul>
+            <p class="mt-4 text-gray-500 text-base" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Seguinos en Instagram{' '}
+              <a href="https://instagram.com/laplatarugbyclub" target="_blank" class="text-blue-600 font-bold hover:text-blue-800">@laplatarugbyclub</a>
+              {' '}y formá parte del día a día del club.
             </p>
         </div>
         
