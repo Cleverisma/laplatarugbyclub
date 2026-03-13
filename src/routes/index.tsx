@@ -5,7 +5,9 @@ import { Institutional } from '~/components/home/institutional/institutional';
 import { LatestEvents } from '~/components/home/latest-events/latest-events';
 import { SocialFeed } from '~/components/home/social-feed/social-feed';
 import { History } from '~/components/home/history/history';
+import { PromoVideo } from '~/components/home/promo-video/promo-video';
 import { BoardMembers } from '~/components/home/board-members/board-members';
+import { Infantil } from '~/components/home/infantil/infantil';
 import { Contact } from '~/components/home/contact/contact';
 
 export default component$(() => {
@@ -15,8 +17,10 @@ export default component$(() => {
       <Institutional />
       <LatestEvents />
       <History />
+      <PromoVideo />
       <SocialFeed />
       <BoardMembers />
+      <Infantil />
       <Contact />
     </main>
   );
