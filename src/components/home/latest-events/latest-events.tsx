@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik';
-import event1Img from '~/media/2.jpeg';
-import event2Img from '~/media/3.jpeg';
+import event1Img from '~/media/2.jpeg?url';
+import event2Img from '~/media/3.jpeg?url';
 import { Button } from '~/components/ui/button/button';
 
 export interface EventCardProps {

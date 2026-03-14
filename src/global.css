@@ -148,6 +148,11 @@
       height: 0;
     }
   }
+  @keyframes slideDown {
+    0% { transform: translateY(-100%); }
+    50% { transform: translateY(100%); }
+    100% { transform: translateY(100%); }
+  }
 }
 
 @utility press {

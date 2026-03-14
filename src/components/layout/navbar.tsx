@@ -17,45 +17,31 @@ export const Navbar = component$(() => {
     <nav
       class={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled.value
-          ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-3'
-          : 'bg-gradient-to-b from-black/50 to-transparent py-5'
+          ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
+          : 'bg-gradient-to-b from-black/50 to-transparent py-8'
       }`}
     >
-      <div class="container mx-auto px-4 max-w-7xl flex items-center justify-between">
+      <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-7xl flex items-center justify-between">
         {/* Logo */}
-        <a href="/" class="flex items-center gap-3">
+        <a href="/" class="flex items-center">
           <img
             src={lprcLogo}
             alt="La Plata Rugby Club"
-            width="80"
-            height="80"
-            class={`transition-all duration-300 ${isScrolled.value ? 'h-10 w-auto' : 'h-14 md:h-16 w-auto drop-shadow-lg'}`}
+            width="150"
+            height="150"
+            class={`transition-all duration-300 ${isScrolled.value ? 'h-20 md:h-24 w-auto scale-90' : 'h-32 md:h-48 w-auto drop-shadow-2xl scale-100'}`}
           />
-          <div class="flex flex-col hidden sm:flex">
-            <span
-              class={`text-xl md:text-2xl font-black tracking-widest ${isScrolled.value ? 'text-yellow-400' : 'text-white'}`}
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              LPRC
-            </span>
-            <span
-              class={`text-[0.55rem] font-bold uppercase tracking-[0.25em] -mt-0.5 ${isScrolled.value ? 'text-gray-300' : 'text-yellow-400'}`}
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Rugby Club
-            </span>
-          </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div class="hidden md:flex items-center gap-8">
-          {['/#institucional', '/#autoridades', '/#contacto'].map((href, i) => {
-            const labels = ['Institucional', 'Autoridades', 'Contacto'];
+        <div class="hidden md:flex items-center gap-10">
+          {['/el-club', '/autoridades', '/#contacto'].map((href, i) => {
+            const labels = ['El Club', 'Autoridades', 'Contacto'];
             return (
               <a
                 key={href}
                 href={href}
-                class="text-gray-300 hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs font-semibold relative group"
+                class="text-gray-200 hover:text-yellow-400 transition-colors uppercase tracking-widest text-base lg:text-lg font-bold relative group"
                 style={{ fontFamily: "'Oswald', sans-serif" }}
               >
                 {labels[i]}
@@ -68,15 +54,15 @@ export const Navbar = component$(() => {
             href="https://api.whatsapp.com/send?phone=5492216796537&text=Hola%20vengo%20desde%20el%20sitio%20web%20de%20www.laplatarugbyclub.com.ar%20y%20estoy%20interesado%20en%20hacerme%20socio."
             target="_blank"
             rel="noopener noreferrer"
-            class="ml-2 inline-block"
+            class="ml-4 inline-block"
           >
             <Button
               look="primary"
-              size="sm"
-              class="rounded-none bg-yellow-400 text-[#0a1128] border-2 border-yellow-400 hover:bg-transparent hover:text-yellow-400 font-black uppercase tracking-widest text-xs transition-all duration-200 px-6"
+              size="lg"
+              class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-base lg:text-lg transition-all duration-300 px-8 py-4 lg:px-10 lg:py-5"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Hacete Socio
+              HACETE SOCIO
             </Button>
           </a>
         </div>
@@ -106,13 +92,13 @@ export const Navbar = component$(() => {
         }`}
       >
         <div class="flex flex-col p-6 gap-5">
-          {['/#institucional', '/#autoridades', '/#contacto'].map((href, i) => {
-            const labels = ['Institucional', 'Autoridades', 'Contacto'];
+          {['/el-club', '/autoridades', '/#contacto'].map((href, i) => {
+            const labels = ['El Club', 'Autoridades', 'Contacto'];
             return (
               <a
                 key={href}
                 href={href}
-                class="text-lg text-gray-300 hover:text-yellow-400 transition-colors border-b border-gray-800 pb-3 uppercase tracking-widest font-semibold"
+                class="text-2xl text-gray-200 hover:text-[#FFD700] transition-colors border-b border-gray-800 pb-4 uppercase tracking-widest font-bold"
                 style={{ fontFamily: "'Oswald', sans-serif" }}
               >
                 {labels[i]}
@@ -124,15 +110,15 @@ export const Navbar = component$(() => {
             href="https://api.whatsapp.com/send?phone=5492216796537&text=Hola%20vengo%20desde%20el%20sitio%20web%20de%20www.laplatarugbyclub.com.ar%20y%20estoy%20interesado%20en%20hacerme%20socio."
             target="_blank"
             rel="noopener noreferrer"
-            class="block mt-2"
+            class="block mt-4"
           >
             <Button
               look="primary"
-              size="md"
-              class="rounded-none w-full bg-yellow-400 text-[#0a1128] border-2 border-yellow-400 hover:bg-transparent hover:text-yellow-400 font-black uppercase tracking-widest text-sm transition-all duration-200"
+              size="lg"
+              class="rounded-none w-full bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-xl transition-all duration-300 py-6"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Hacete Socio
+              HACETE SOCIO
             </Button>
           </a>
         </div>

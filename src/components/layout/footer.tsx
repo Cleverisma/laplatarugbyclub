@@ -1,5 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import lprcLogo from '~/media/lprc.svg';
+import sponsorGatorade from '~/media/sponsors/Gatorade.png?url';
+import sponsorFlash from '~/media/sponsors/flash.svg?url';
+import sponsorMacro from '~/media/sponsors/macro.svg?url';
+import sponsorPlusmar from '~/media/sponsors/plusmar.png?url';
 
 export const Footer = component$(() => {
   return (
@@ -9,27 +13,20 @@ export const Footer = component$(() => {
       <div class="absolute -top-64 -right-64 w-[500px] h-[500px] bg-blue-900/50 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* Sponsors Section */}
-      <div class="bg-yellow-400 w-full pt-16 pb-20 mt-10 relative z-20">
+      <div class="bg-blue-950 w-full pt-12 pb-14 mt-10 relative z-20 border-y border-white/10 shadow-lg">
         <div class="container mx-auto px-4 max-w-7xl">
-          <h4 class="text-center text-[#0a1128] font-black uppercase tracking-[0.3em] text-sm mb-12 opacity-80" style={{ fontFamily: "'Oswald', sans-serif" }}>Sponsors Oficiales</h4>
-          <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-14">
+          <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 lg:gap-28">
             <a href="#" class="group" aria-label="Sponsor Banco Macro">
-              <img src="https://www.macro.com.ar/tramiteonline/onbWeb/assets/svg/macro-logo-traditional.svg" alt="Banco Macro" width="140" height="40" class="h-8 md:h-10 lg:h-12 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
-            </a>
-            <a href="#" class="group" aria-label="Sponsor Stella Artois">
-              <img src="https://upload.wikimedia.org/wikipedia/en/3/37/Stella_Artois_logo.svg" alt="Stella Artois" width="100" height="40" class="h-8 md:h-10 lg:h-12 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
+              <img src={sponsorMacro} alt="Banco Macro" width="160" height="64" class="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
             </a>
             <a href="#" class="group" aria-label="Sponsor Flash">
-              <img src="http://www.laplatarugbyclub.com.ar/img/sponsors/flash.svg" alt="Flash" width="100" height="32" class="h-6 md:h-8 lg:h-10 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
+              <img src={sponsorFlash} alt="Flash" width="160" height="64" class="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
             </a>
             <a href="#" class="group" aria-label="Sponsor Gatorade">
-              <img src="http://www.laplatarugbyclub.com.ar/img/sponsors/Gatorade_logo.svg.png" alt="Gatorade" width="140" height="56" class="h-10 md:h-12 lg:h-14 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
+              <img src={sponsorGatorade} alt="Gatorade" width="160" height="64" class="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
             </a>
             <a href="#" class="group" aria-label="Sponsor Plusmar">
-              <img src="https://plusmar.statics.ws/plusmar_0f3c64984e.png" alt="Plusmar" width="120" height="40" class="h-8 md:h-10 lg:h-12 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
-            </a>
-            <a href="#" class="group" aria-label="Sponsor Aon">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Aon_Corporation_logo.svg" alt="Aon" width="100" height="40" class="h-8 md:h-10 lg:h-12 w-auto object-contain filter grayscale brightness-0 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300" />
+              <img src={sponsorPlusmar} alt="Plusmar" width="160" height="64" class="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
             </a>
           </div>
         </div>
