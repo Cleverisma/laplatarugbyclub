@@ -26,7 +26,7 @@ export const Hero = component$(() => {
       {/* Giant Foreground Text */}
       <div class="relative z-20 flex flex-col items-center justify-center pointer-events-none w-full px-4">
         <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] xl:text-[9rem] text-[#FFD700] font-black uppercase tracking-tighter leading-none text-center"
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] xl:text-[9rem] text-[#FFD700] font-black uppercase tracking-tighter leading-none text-center"
           style={{
             fontFamily: "'Oswald', sans-serif",
             textShadow: `
