@@ -83,7 +83,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                   {lastMatch.homeTeam}
                 </span>
               </div>
-              
+
               {/* Scoreline */}
               <div class="px-2 md:px-8 text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "'Oswald', sans-serif" }}>
                 {lastMatch.homeScore} - {lastMatch.awayScore}
@@ -129,11 +129,11 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                     {nextMatch.homeTeam}
                   </span>
                 </div>
-                
+
                 <span class="px-2 md:px-8 text-5xl md:text-7xl font-black text-[#0a1128] uppercase tracking-tighter" style={{ fontFamily: "'Oswald', sans-serif" }}>
                   VS
                 </span>
-                
+
                 {/* Away Team */}
                 <div class="flex flex-col items-center justify-center gap-2 flex-1">
                   {ClubLogos[nextMatch.awayTeam] ? (
@@ -166,18 +166,6 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
               Pronto...
             </h2>
           )}
-          <div class="mt-auto">
-            <a href="https://fixture.urba.org.ar/home" target="_blank" rel="noopener noreferrer" class="inline-block">
-              <Button
-                look="primary"
-                size="lg"
-                class="rounded-none bg-[#0a1128] text-[#FFD700] border-none hover:bg-white hover:text-[#0a1128] font-black uppercase tracking-widest text-xl transition-all duration-300 px-8 py-6 md:px-16 md:py-8"
-                style={{ fontFamily: "'Oswald', sans-serif" }}
-              >
-                VER FIXTURE
-              </Button>
-            </a>
-          </div>
         </div>
       </div>
     </section>
