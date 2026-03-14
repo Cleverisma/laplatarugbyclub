@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import promoVideo from '~/media/1.mp4';
+import promoVideo from '~/media/hero-video.mp4';
 
 export const PromoVideo = component$(() => {
   return (

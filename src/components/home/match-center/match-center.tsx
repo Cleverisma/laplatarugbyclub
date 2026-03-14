@@ -1,6 +1,38 @@
 import { component$ } from '@builder.io/qwik';
 import { Button } from '~/components/ui/button/button';
 
+import AlumniLogo from '~/media/clubes/Alumni.png?jsx';
+import AtleticoDelRosarioLogo from '~/media/clubes/Atletico Del Rosario.png?jsx';
+import BelgranoAthleticLogo from '~/media/clubes/Belgrano Athletic.png?jsx';
+import BuenosAiresCRCLogo from '~/media/clubes/Buenos Aires C&RC.png?jsx';
+import CASILogo from '~/media/clubes/CASI.png?jsx';
+import CUBALogo from '~/media/clubes/CUBA.png?jsx';
+import ChampagnatLogo from '~/media/clubes/Champagnat.png?jsx';
+import HinduLogo from '~/media/clubes/Hindu.png?jsx';
+import LPRCLogo from '~/media/clubes/LPRC.png?jsx';
+import LosMatrerosLogo from '~/media/clubes/Los Matreros.png?jsx';
+import LosTilosLogo from '~/media/clubes/Los Tilos.png?jsx';
+import NewmanLogo from '~/media/clubes/Newman.png?jsx';
+import RegatasBellaVistaLogo from '~/media/clubes/Regatas Bella Vista.png?jsx';
+import SICLogo from '~/media/clubes/SIC.png?jsx';
+
+const ClubLogos: Record<string, any> = {
+  'Alumni': AlumniLogo,
+  'Atletico Del Rosario': AtleticoDelRosarioLogo,
+  'Belgrano Athletic': BelgranoAthleticLogo,
+  'Buenos Aires C&RC': BuenosAiresCRCLogo,
+  'CASI': CASILogo,
+  'CUBA': CUBALogo,
+  'Champagnat': ChampagnatLogo,
+  'Hindu': HinduLogo,
+  'LPRC': LPRCLogo,
+  'Los Matreros': LosMatrerosLogo,
+  'Los Tilos': LosTilosLogo,
+  'Newman': NewmanLogo,
+  'Regatas Bella Vista': RegatasBellaVistaLogo,
+  'SIC': SICLogo,
+};
+
 export interface MatchCenterProps {
   lastMatch?: {
     id: number;
@@ -28,65 +60,110 @@ export interface MatchCenterProps {
 
 export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProps) => {
   return (
-    <section 
-      class="relative z-10 w-full bg-[#0a1128]"
-      style={{
-        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 6vw), 0 100%)',
-        marginBottom: '-6vw'
-      }}
+    <section
+      class="relative z-20 w-full bg-[#0a1128] -mt-12 md:-mt-24 shadow-2xl"
     >
       <div class="grid grid-cols-1 lg:grid-cols-2">
-        {/* Last Result */}
-        <div class="bg-[#0a1128] text-white pt-[14vw] pb-[10vw] lg:pt-[10vw] lg:pb-[14vw] px-6 md:px-12 flex flex-col justify-center items-center text-center">
+        <div class="bg-[#0a1128] text-white p-6 md:p-10 py-12 md:py-16 flex flex-col justify-center items-center text-center">
           <span class="text-[#FFD700] font-black tracking-widest uppercase mb-6 text-xl md:text-2xl" style={{ fontFamily: "'Oswald', sans-serif" }}>
             Último Resultado
           </span>
           {lastMatch ? (
-            <h2 class="text-[18vw] md:text-[14vw] lg:text-[10vw] font-black uppercase tracking-tighter leading-none mb-10 flex items-center justify-center gap-4 md:gap-8" style={{ fontFamily: "'Oswald', sans-serif" }}>
-              <span class="flex flex-col items-center">
-                 <span class="text-3xl lg:text-5xl text-gray-400 mb-2 truncate max-w-[150px]">{lastMatch.homeTeam}</span>
-                 <span class="text-[#FFD700]">{lastMatch.homeScore}</span>
-              </span>
-              <span class="text-gray-600 text-[12vw] lg:text-[8vw] leading-none mb-4 md:mb-6">-</span>
-              <span class="flex flex-col items-center">
-                 <span class="text-3xl lg:text-5xl text-gray-400 mb-2 truncate max-w-[150px]">{lastMatch.awayTeam}</span>
-                 <span class="text-white">{lastMatch.awayScore}</span>
-              </span>
-            </h2>
-          ) : (
-             <h2 class="text-[8vw] lg:text-[5vw] font-black uppercase tracking-tighter mb-10 text-gray-600" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                Sin resultados recientes
-             </h2>
-          )}
-          <div class="flex gap-8 items-center mt-auto">
-            <div class="w-16 h-16 md:w-24 md:h-24 bg-white/5 rounded-full flex items-center justify-center font-black text-xl md:text-3xl text-gray-400">P</div>
-            <span class="text-2xl md:text-4xl font-black text-gray-600">VS</span>
-            <div class="w-16 h-16 md:w-24 md:h-24 bg-white/5 rounded-full flex items-center justify-center font-black text-xl md:text-3xl text-gray-400">S</div>
-          </div>
-        </div>
+            <div class="flex items-center justify-center gap-2 md:gap-4 mb-10 w-full">
+              {/* Home Team */}
+              <div class="flex flex-col items-center justify-center gap-2 flex-1">
+                {ClubLogos[lastMatch.homeTeam] ? (
+                  <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
+                    {(() => { const Logo = ClubLogos[lastMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" />; })()}
+                  </div>
+                ) : (
+                  <img src={`/clubes/${lastMatch.homeTeam}.png`} alt={lastMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
+                )}
+                <span class="text-xs md:text-sm text-gray-400 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  {lastMatch.homeTeam}
+                </span>
+              </div>
+              
+              {/* Scoreline */}
+              <div class="px-2 md:px-8 text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                {lastMatch.homeScore} - {lastMatch.awayScore}
+              </div>
 
-        {/* Next Match */}
-        <div class="bg-[#FFD700] text-[#0a1128] pt-[10vw] pb-[18vw] lg:pt-[10vw] lg:pb-[14vw] px-6 md:px-12 flex flex-col justify-center items-center text-center">
+              {/* Away Team */}
+              <div class="flex flex-col items-center justify-center gap-2 flex-1">
+                {ClubLogos[lastMatch.awayTeam] ? (
+                  <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
+                    {(() => { const Logo = ClubLogos[lastMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" />; })()}
+                  </div>
+                ) : (
+                  <img src={`/clubes/${lastMatch.awayTeam}.png`} alt={lastMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
+                )}
+                <span class="text-xs md:text-sm text-gray-400 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  {lastMatch.awayTeam}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <h2 class="text-[8vw] lg:text-[5vw] font-black uppercase tracking-tighter mb-10 text-gray-600" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              Sin resultados recientes
+            </h2>
+          )}
+        </div>
+        <div class="bg-[#FFD700] text-[#0a1128] p-6 md:p-10 py-12 md:py-16 flex flex-col justify-center items-center text-center">
           <span class="text-[#0a1128] font-black tracking-widest uppercase mb-6 text-xl md:text-2xl" style={{ fontFamily: "'Oswald', sans-serif" }}>
             Próximo Partido
           </span>
           {nextMatch ? (
-            <>
-              <h2 class="text-[14vw] md:text-[10vw] lg:text-[8vw] font-black uppercase tracking-tighter leading-none mb-6" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                VS {nextMatch.awayTeam}
-              </h2>
-              <p class="text-[6vw] md:text-[4vw] lg:text-[3vw] font-black uppercase tracking-tight mb-12 text-[#0a1128]/80" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                {
-                  (typeof nextMatch.matchDate === 'string' 
-                    ? new Date(nextMatch.matchDate.replace(' ', 'T')) 
-                    : new Date(nextMatch.matchDate)
-                  ).toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute:'2-digit', hour12: false })
-                } HS
-              </p>
-            </>
+            <div class="flex flex-col items-center justify-center mb-6 w-full">
+              <div class="flex items-center justify-center gap-2 md:gap-4 mb-4 w-full">
+                {/* Home Team */}
+                <div class="flex flex-col items-center justify-center gap-2 flex-1">
+                  {ClubLogos[nextMatch.homeTeam] ? (
+                    <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
+                      {(() => { const Logo = ClubLogos[nextMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" />; })()}
+                    </div>
+                  ) : (
+                    <img src={`/clubes/${nextMatch.homeTeam}.png`} alt={nextMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
+                  )}
+                  <span class="text-xs md:text-sm text-[#0a1128]/70 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    {nextMatch.homeTeam}
+                  </span>
+                </div>
+                
+                <span class="px-2 md:px-8 text-5xl md:text-7xl font-black text-[#0a1128] uppercase tracking-tighter" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                  VS
+                </span>
+                
+                {/* Away Team */}
+                <div class="flex flex-col items-center justify-center gap-2 flex-1">
+                  {ClubLogos[nextMatch.awayTeam] ? (
+                    <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
+                      {(() => { const Logo = ClubLogos[nextMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" />; })()}
+                    </div>
+                  ) : (
+                    <img src={`/clubes/${nextMatch.awayTeam}.png`} alt={nextMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
+                  )}
+                  <span class="text-xs md:text-sm text-[#0a1128]/70 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    {nextMatch.awayTeam}
+                  </span>
+                </div>
+              </div>
+
+              <div class="bg-[#0a1128] text-[#FFD700] px-6 py-2 rounded-lg mt-4 w-full md:w-auto">
+                <p class="text-sm font-bold uppercase tracking-widest text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  {
+                    (typeof nextMatch.matchDate === 'string'
+                      ? new Date(nextMatch.matchDate.replace(' ', 'T'))
+                      : new Date(nextMatch.matchDate)
+                    ).toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', hour12: false })
+                  } HS
+                  {nextMatch.location && ` | ${nextMatch.location}`}
+                </p>
+              </div>
+            </div>
           ) : (
             <h2 class="text-[8vw] lg:text-[5vw] font-black uppercase tracking-tighter leading-none mb-6 text-[#0a1128]/50" style={{ fontFamily: "'Oswald', sans-serif" }}>
-               Pronto...
+              Pronto...
             </h2>
           )}
           <div class="mt-auto">

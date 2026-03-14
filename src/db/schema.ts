@@ -11,3 +11,10 @@ export const matches = sqliteTable('matches', {
   location: text('location').notNull(),
   competition: text('competition'),
 });
+
+export const boardMembers = sqliteTable('board_members', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  fullName: text('full_name').notNull(),
+  role: text('role').notNull(),
+  displayOrder: integer('display_order').notNull(),
+});

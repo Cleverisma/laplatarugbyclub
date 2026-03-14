@@ -1,74 +1,39 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import img1 from '~/media/1.jpeg';
-import img2 from '~/media/6.jpeg';
-import img3 from '~/media/7.jpeg';
-import img4 from '~/media/14.jpeg';
-import img5 from '~/media/18.jpeg';
+import { component$ } from '@builder.io/qwik';
+// Use the new hero video
+import heroVideo from '~/media/hero-video.mp4';
 
 export const Hero = component$(() => {
-  const images = [img1, img2, img3, img4, img5];
-  const activeIndex = useSignal(0);
-
-  // Auto-advance slider every 7.5 seconds
-  // eslint-disable-next-line qwik/no-use-visible-task
-  useVisibleTask$(({ cleanup }) => {
-    const interval = setInterval(() => {
-      activeIndex.value = (activeIndex.value + 1) % images.length;
-    }, 7500);
-    
-    cleanup(() => clearInterval(interval));
-  });
-
   return (
     <section 
-      class="relative h-[100svh] min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-black z-20"
-      style={{ 
-        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 6vw), 0 100%)',
-        marginBottom: '-6vw'
-      }}
+      class="relative h-[100svh] min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-black"
     >
-      {/* Background Images Slider */}
-      {images.map((src, idx) => {
-        const isActive = idx === activeIndex.value;
-        return (
-          <div
-            key={idx}
-            class={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isActive ? 'opacity-80 z-10' : 'opacity-0 z-0'}`}
-          >
-             <img
-               src={src}
-               alt={`Hero Slide ${idx + 1}`}
-               width="1920"
-               height="1080"
-               class="w-full h-full object-cover origin-center bg-black"
-               style={{
-                 // Apply a slow pan and scale when active, reset otherwise
-                 transform: isActive ? 'scale(1.15) translateX(-3%)' : 'scale(1) translateX(0)',
-                 transition: isActive ? 'transform 10s linear' : 'none'
-               }}
-               fetchPriority={idx === 0 ? "high" : "auto"}
-               decoding={idx === 0 ? "sync" : "async"}
-             />
-          </div>
-        );
-      })}
-
-      {/* Solid Dark Gradient Overlay for the bottom section to smoothly transition into MatchCenter */}
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128] via-transparent to-black/20 z-20 pointer-events-none" />
-      
-      {/* Visual cue to encourage scrolling down to the MatchCenter */}
-      <div class="absolute z-30 bottom-[8vw] left-1/2 -translate-x-1/2 flex flex-col items-center justify-center opacity-80 pointer-events-none">
-        <span 
-          class="text-white text-xs md:text-sm font-semibold uppercase tracking-widest mb-2"
-          style={{ fontFamily: "'Oswald', sans-serif" }}
+      {/* Background Video */}
+      <div class="absolute inset-0 w-full h-full z-0">
+        <video 
+          autoplay 
+          loop 
+          muted 
+          playsInline 
+          class="w-full h-full object-cover origin-center opacity-80"
         >
-          Desliza
-        </span>
-        <div class="w-[2px] h-12 bg-white/20 overflow-hidden relative">
-           <div class="w-full h-1/2 bg-[#FFD700] animate-[slideDown_2s_ease-in-out_infinite]" />
-        </div>
+          <source src={heroVideo} type="video/mp4" />
+        </video>
       </div>
 
+      {/* Dark Overlay for Text Contrast */}
+      <div class="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
+
+      {/* Giant Foreground Text */}
+      <div class="relative z-20 flex flex-col items-center justify-center pointer-events-none w-full px-4">
+        <h1 
+          class="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] text-white font-black uppercase tracking-tighter leading-none text-center drop-shadow-2xl"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          LA PLATA
+          <span class="block text-yellow-400 mt-[-1%]">RUGBY CLUB</span>
+        </h1>
+      </div>
+      
     </section>
   );
 });

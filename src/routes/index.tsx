@@ -11,6 +11,10 @@ import { LatestEvents } from '~/components/home/latest-events/latest-events';
 import { SocialFeed } from '~/components/home/social-feed/social-feed';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
 import { Infantil } from '~/components/home/infantil/infantil';
+
+import { ImageDivider } from '~/components/ui/image-divider';
+import juego1Img from '~/media/juego-1.jpeg';
+
 import { Contact } from '~/components/home/contact/contact';
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
@@ -65,6 +69,9 @@ export default component$(() => {
       </section>
 
       <LatestEvents />
+      
+      <ImageDivider imageUrl={juego1Img} />
+
       <PromoVideo />
       <SocialFeed />
       <Infantil />
