@@ -155,7 +155,7 @@ export const LatestEvents = component$(() => {
           </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-800">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {MOCK_EVENTS.map((event) => (
             <EventCard key={event.id} {...event} />
           ))}

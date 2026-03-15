@@ -58,21 +58,16 @@ export const Footer = component$(() => {
           <div class="md:pl-10">
             <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Enlaces Rápidos</h3>
             <ul class="space-y-4">
-              <li>
-                <a href="/#institucional" class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">
-                  <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> Institucional
-                </a>
-              </li>
-              <li>
-                <a href="/#autoridades" class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">
-                  <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> Autoridades
-                </a>
-              </li>
-              <li>
-                <a href="/#contacto" class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">
-                  <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> Contacto
-                </a>
-              </li>
+              {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
+                const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
+                return (
+                  <li key={labels[i]}>
+                    <a href={href} class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">
+                      <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> {labels[i]}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

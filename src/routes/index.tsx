@@ -10,8 +10,8 @@ import { Button } from '~/components/ui/button/button';
 import { LatestEvents } from '~/components/home/latest-events/latest-events';
 import { SocialFeed } from '~/components/home/social-feed/social-feed';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
-import { ImageDivider } from '~/components/ui/image-divider';
 import juego1Img from '~/media/juego-1.jpeg';
+import juego7Img from '~/media/7.jpeg';
 
 import { Contact } from '~/components/home/contact/contact';
 
@@ -41,43 +41,64 @@ export default component$(() => {
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950">
       <Hero />
-      <MatchCenter 
-        lastMatch={matchesData.value.lastMatch} 
-        nextMatch={matchesData.value.nextMatch} 
+      <MatchCenter
+        lastMatch={matchesData.value.lastMatch}
+        nextMatch={matchesData.value.nextMatch}
       />
-      
+
       {/* Transition Banner to El Club */}
-      <section class="w-full bg-white flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-16 md:py-24 px-4 z-10 relative">
-        <h2 
-          class="text-4xl md:text-5xl lg:text-6xl font-black text-[#0a1128] uppercase tracking-tighter text-center md:text-left"
-          style={{ fontFamily: "'Oswald', sans-serif" }}
-        >
-          MÁS DE 90 AÑOS <span class="break-words sm:break-normal"><br class="hidden md:block" /> DE HISTORIA</span>
-        </h2>
-        <a href="/el-club">
-          <Button
-            look="primary"
-            size="lg"
-            class="rounded-none bg-[#FFD700] text-[#0a1128] border-none hover:bg-[#0a1128] hover:text-[#FFD700] font-black uppercase tracking-widest text-xl md:text-2xl transition-all duration-300 px-10 py-6 md:px-14 md:py-8"
+      <section
+        class="w-full relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-24 md:py-32 px-4 z-10 overflow-hidden"
+        style={{
+          backgroundImage: `url(${juego1Img})`,
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
+        }}
+      >
+        <div class="absolute inset-0 bg-[#0a1128]/80 z-0"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full">
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter text-center md:text-left drop-shadow-lg"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            CONOCÉ EL CLUB
-          </Button>
-        </a>
+            MÁS DE 90 AÑOS <span class="break-words sm:break-normal text-[#FFD700]"><br class="hidden md:block" /> DE HISTORIA</span>
+          </h2>
+          <a href="/el-club">
+            <Button
+              look="primary"
+              size="lg"
+              class="rounded-none bg-[#FFD700] text-[#0a1128] border-none hover:bg-white hover:text-[#0a1128] font-black uppercase tracking-widest text-xl md:text-2xl transition-all duration-300 px-10 py-6 md:px-14 md:py-8 shadow-xl"
+              style={{ fontFamily: "'Oswald', sans-serif" }}
+            >
+              CONOCÉ EL CLUB
+            </Button>
+          </a>
+        </div>
       </section>
 
       <LatestEvents />
-      
-      <ImageDivider imageUrl={juego1Img} />
+
+      <section
+        class="w-full relative h-64 md:h-96 z-10"
+        style={{
+          backgroundImage: `url(${juego7Img})`,
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
+        }}
+      >
+        <div class="absolute inset-0 bg-black/40 z-0"></div>
+      </section>
 
       <PromoVideo />
       <SocialFeed />
-      
+
       {/* Transition Banner to Autoridades */}
-      <section 
+      <section
         class="w-full bg-[#FFD700] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-16 px-4 z-10 relative"
       >
-        <h2 
+        <h2
           class="text-4xl md:text-5xl font-black text-[#0a1128] uppercase tracking-tighter text-center md:text-left"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
