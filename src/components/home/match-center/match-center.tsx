@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { Button } from '~/components/ui/button/button';
 
 import AlumniLogo from '~/media/clubes/Alumni.png?jsx';
 import AtleticoDelRosarioLogo from '~/media/clubes/Atletico Del Rosario.png?jsx';

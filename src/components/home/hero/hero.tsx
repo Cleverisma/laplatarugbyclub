@@ -1,6 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-// Use the new hero video
-import heroVideo from '~/media/hero-video.mp4';
 
 export const Hero = component$(() => {
   return (
@@ -16,7 +14,7 @@ export const Hero = component$(() => {
           playsInline
           class="w-full h-full object-cover origin-center opacity-80"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src="/videos/hero.webm" type="video/webm" />
         </video>
       </div>
 

@@ -15,11 +15,10 @@ export const Navbar = component$(() => {
 
   return (
     <nav
-      class={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled.value
-          ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
-          : 'bg-gradient-to-b from-black/50 to-transparent py-8'
-      }`}
+      class={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled.value
+        ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
+        : 'bg-gradient-to-b from-black/50 to-transparent py-8'
+        }`}
     >
       <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-7xl flex items-center justify-between">
         {/* Logo */}
@@ -59,7 +58,7 @@ export const Navbar = component$(() => {
             <Button
               look="primary"
               size="lg"
-              class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-base lg:text-lg transition-all duration-300 px-8 py-4 lg:px-10 lg:py-5"
+              class="rounded-none bg-[#FFD700] text-[#0047AB] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-base lg:text-lg transition-all duration-300 px-8 py-4 lg:px-10 lg:py-5"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
               HACETE SOCIO
@@ -87,9 +86,8 @@ export const Navbar = component$(() => {
 
       {/* Mobile Navigation Dropdown */}
       <div
-        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-md shadow-2xl transition-all duration-300 origin-top overflow-hidden border-t border-yellow-400/20 ${
-          isMobileMenuOpen.value ? 'max-h-[400px]' : 'max-h-0'
-        }`}
+        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-md shadow-2xl transition-all duration-300 origin-top overflow-hidden border-t border-yellow-400/20 ${isMobileMenuOpen.value ? 'max-h-[400px]' : 'max-h-0'
+          }`}
       >
         <div class="flex flex-col p-6 gap-5">
           {['/el-club', '/autoridades', '/#contacto'].map((href, i) => {
@@ -115,7 +113,7 @@ export const Navbar = component$(() => {
             <Button
               look="primary"
               size="lg"
-              class="rounded-none w-full bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-xl transition-all duration-300 py-6"
+              class="rounded-none w-full bg-[#FFD700] text-[#0047AB] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-xl transition-all duration-300 py-6"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
               HACETE SOCIO
