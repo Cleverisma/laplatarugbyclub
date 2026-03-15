@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-white pb-32">
       {/* Hero Header */}
-      <section 
+      <section
         class="relative h-[40vh] min-h-[300px] w-full bg-[#0a1128] flex items-center justify-center pt-20"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
@@ -22,7 +22,7 @@ export default component$(() => {
       </section>
 
       <div class="container mx-auto px-4 max-w-5xl mt-12 space-y-24">
-        
+
         {/* Intro Blocks */}
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 text-gray-800 text-lg md:text-xl leading-relaxed font-light">
           {/* Left Column — Origins + Community */}
@@ -63,10 +63,10 @@ export default component$(() => {
               </p>
               <ul class="space-y-3 text-base" style={{ fontFamily: "'Inter', sans-serif" }}>
                 {[
-                  'nacen amistades que duran toda la vida',
-                  'se comparten valores y experiencias',
-                  'se aprende a trabajar en equipo',
-                  'se disfruta del deporte en comunidad',
+                  'Nacen amistades que duran toda la vida',
+                  'Se comparten valores y experiencias',
+                  'Se aprende a trabajar en equipo',
+                  'Se disfruta del deporte en comunidad',
                 ].map((item) => (
                   <li key={item} class="flex items-start gap-3">
                     <span class="mt-1.5 w-2 h-2 bg-yellow-400 shrink-0" />
@@ -98,10 +98,10 @@ export default component$(() => {
               </p>
               <ul class="space-y-3 text-base" style={{ fontFamily: "'Inter', sans-serif" }}>
                 {[
-                  'compartimos momentos inolvidables',
-                  'aprendemos unos de otros',
-                  'formamos nuevas generaciones',
-                  'fortalecemos la comunidad',
+                  'Compartimos momentos inolvidables',
+                  'Aprendemos unos de otros',
+                  'Formamos nuevas generaciones',
+                  'Fortalecemos la comunidad',
                 ].map((item) => (
                   <li key={item} class="flex items-start gap-3 font-medium">
                     <span class="mt-1.5 w-2 h-2 bg-[#0a1128] shrink-0" />
@@ -134,7 +134,7 @@ export default component$(() => {
         </section>
 
         {/* Diagonal Transition Div */}
-        <div 
+        <div
           class="w-full h-16 bg-yellow-400 my-16"
           style={{ clipPath: 'polygon(0 0, 100% 50%, 100% 100%, 0 50%)' }}
         />
@@ -162,7 +162,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-3xl font-black font-mono tracking-tight text-white group-hover:text-yellow-400 transition-colors">1995</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Campeón<br/>de la UAR</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Campeón<br />de la UAR</span>
               </div>
 
               <div class="flex flex-col items-center transform -translate-y-4">
@@ -172,7 +172,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-4xl font-black font-mono tracking-tight text-yellow-400 drop-shadow-lg">1998</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Copa Federal<br/>de Clubes</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Copa Federal<br />de Clubes</span>
               </div>
 
               <div class="flex flex-col items-center">
@@ -182,7 +182,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-3xl font-black font-mono tracking-tight text-white group-hover:text-yellow-400 transition-colors">2007</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Nacional<br/>de Clubes</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Nacional<br />de Clubes</span>
               </div>
             </div>
 

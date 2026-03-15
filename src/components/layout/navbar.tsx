@@ -1,6 +1,7 @@
 import { component$, useSignal, useOnWindow, $ } from '@builder.io/qwik';
 import lprcLogo from '~/media/lprc.svg';
 import { Button } from '~/components/ui/button/button';
+import { NavLink } from '~/components/ui/nav-link';
 
 export const Navbar = component$(() => {
   const isScrolled = useSignal(false);
@@ -37,15 +38,16 @@ export const Navbar = component$(() => {
           {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
             const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
             return (
-              <a
+              <NavLink
                 key={href}
                 href={href}
+                activeClass="!text-yellow-400 active-link-desktop"
                 class="text-gray-200 hover:text-yellow-400 transition-colors uppercase tracking-widest text-base lg:text-lg font-bold relative group"
                 style={{ fontFamily: "'Oswald', sans-serif" }}
               >
                 {labels[i]}
-                <span class="absolute -bottom-1 left-0 w-0 h-px bg-yellow-400 group-hover:w-full transition-all duration-300" />
-              </a>
+                <span class="absolute -bottom-1 left-0 w-0 h-px bg-yellow-400 group-hover:w-full group-[.active-link-desktop]:w-full transition-all duration-300" />
+              </NavLink>
             );
           })}
 
@@ -93,14 +95,15 @@ export const Navbar = component$(() => {
           {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
             const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
             return (
-              <a
+              <NavLink
                 key={href}
                 href={href}
+                activeClass="!text-[#FFD700] active-link-mobile"
                 class="text-2xl text-gray-200 hover:text-[#FFD700] transition-colors border-b border-gray-800 pb-4 uppercase tracking-widest font-bold"
                 style={{ fontFamily: "'Oswald', sans-serif" }}
               >
                 {labels[i]}
-              </a>
+              </NavLink>
             );
           })}
 
