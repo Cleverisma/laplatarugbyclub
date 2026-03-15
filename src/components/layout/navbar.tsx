@@ -34,8 +34,8 @@ export const Navbar = component$(() => {
 
         {/* Desktop Navigation */}
         <div class="hidden md:flex items-center gap-10">
-          {['/el-club', '/autoridades', '/#contacto'].map((href, i) => {
-            const labels = ['El Club', 'Autoridades', 'Contacto'];
+          {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
+            const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
             return (
               <a
                 key={href}
@@ -90,8 +90,8 @@ export const Navbar = component$(() => {
           }`}
       >
         <div class="flex flex-col p-6 gap-5">
-          {['/el-club', '/autoridades', '/#contacto'].map((href, i) => {
-            const labels = ['El Club', 'Autoridades', 'Contacto'];
+          {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
+            const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
             return (
               <a
                 key={href}

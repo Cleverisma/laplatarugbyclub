@@ -1,177 +1,120 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { coachesStaff, type Coach } from '~/data/club-info';
+import { component$, useSignal } from '@builder.io/qwik';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
+import { getDb } from '~/db/client';
 
-export const CoachCard = component$<{ coach: Coach }>(({ coach }) => {
+export const useStaffLoader = routeLoader$(async (requestEvent) => {
+  const db = getDb(requestEvent.env);
+  const divisionsData = await db.query.divisions.findMany({
+    with: {
+      staffMembers: {
+        orderBy: (staffMembers, { asc }) => [asc(staffMembers.displayOrder)],
+      },
+    },
+    orderBy: (divisions, { asc }) => [asc(divisions.displayOrder)],
+  });
+  return divisionsData;
+});
+
+export const head: DocumentHead = {
+  title: 'Staff Técnico & Directivo | La Plata Rugby Club',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conocé a nuestro staff técnico y directivo.',
+    },
+  ],
+};
+
+export default component$(() => {
+  const divisionsLoader = useStaffLoader();
+  const categories = ['Plantel Superior', 'Juvenil', 'Infantil'];
+  const activeCategory = useSignal(categories[0]);
+
   return (
-    <div class="bg-black/50 border border-gray-800 p-8 flex flex-col items-center text-center group w-full h-full relative overflow-hidden transition-all duration-300 hover:border-yellow-400/50">
-      {/* Gold top line */}
-      <div class="absolute top-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-500" />
-
-      {/* Avatar — profile photos changed to rounded-none */}
-      <div class="w-24 h-24 rounded-none overflow-hidden mb-6 shadow-md border-2 border-gray-700 group-hover:border-yellow-400 transition-colors duration-500 aspect-square">
-        {coach.imageUrl ? (
-          <img
-            src={coach.imageUrl}
-            alt={coach.category}
-            width="96"
-            height="96"
-            class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
-          />
-        ) : (
-          <div class="w-full h-full bg-gray-800 flex items-center justify-center text-gray-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 opacity-30" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-            </svg>
-          </div>
-        )}
+    <div class="relative min-h-screen bg-[#0a1128] pt-48 md:pt-52 pb-24 overflow-hidden">
+      {/* Background Overlay */}
+      <div class="fixed inset-0 z-0">
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a1128]/80 via-black/50 to-[#0a1128]/90 z-20"></div>
       </div>
 
-      <h3
-        class="text-2xl font-black text-white mb-1 group-hover:text-yellow-400 transition-colors"
-        style={{ fontFamily: "'Oswald', sans-serif" }}
-      >
-        {coach.category}
-      </h3>
-
-      <div class="w-8 h-px bg-yellow-400/40 my-4" />
-
-      <div class="w-full flex flex-col items-center space-y-4">
-        <div class="w-full">
-          <span
-            class="block text-xs text-yellow-400/60 uppercase tracking-widest mb-1.5"
+      <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-6xl relative z-30">
+        <div class="text-center mb-12">
+          <h1
+            class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            Head Coach
-          </span>
-          <span
-            class="text-base font-semibold text-gray-200"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            {coach.headCoach}
-          </span>
+            Staff Técnico & Directivo
+          </h1>
+          <div class="w-24 h-1 bg-yellow-400 mx-auto mt-6"></div>
         </div>
 
-        {coach.assistants.length > 0 && (
-          <div class="w-full pt-4 border-t border-gray-800">
-            <span
-              class="block text-xs text-yellow-400/60 uppercase tracking-widest mb-1.5"
+        {/* Category Chips */}
+        <div class="flex flex-wrap justify-center gap-4 mb-16">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick$={() => (activeCategory.value = category)}
+              class={`px-6 py-3 rounded-full font-bold uppercase tracking-widest text-sm transition-all duration-300 border-2 ${activeCategory.value === category
+                ? 'bg-yellow-400 text-[#0a1128] border-yellow-400'
+                : 'bg-white/5 text-gray-300 border-gray-600 hover:border-yellow-400 hover:text-yellow-400'
+                }`}
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Entrenadores
-            </span>
-            <span
-              class="text-gray-400 text-sm leading-relaxed"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {coach.assistants.join(' · ')}
-            </span>
-          </div>
-        )}
+              {category}
+            </button>
+          ))}
+        </div>
 
-        {coach.manager && (
-          <div class="w-full pt-4 border-t border-gray-800">
-            <span
-              class="block text-xs text-yellow-400/60 uppercase tracking-widest mb-1.5"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Manager
-            </span>
-            <span
-              class="text-gray-400 text-sm"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {coach.manager}
-            </span>
-          </div>
-        )}
+        <div class="space-y-12">
+          {(() => {
+            const categoryDivisions = divisionsLoader.value.filter((d) => d.groupType === activeCategory.value);
+
+            if (categoryDivisions.length === 0) return (
+              <div class="text-center text-gray-400 py-12">
+                <p>No se encontraron divisiones para esta categoría.</p>
+              </div>
+            );
+
+            return categoryDivisions.map((division) => (
+              <div key={division.id} class="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 md:p-10 animate-[fadeIn_0.5s_ease-out]">
+                <h3
+                  class="text-2xl md:text-3xl font-bold text-yellow-500 uppercase tracking-widest mb-8 border-b border-white/10 pb-4"
+                  style={{ fontFamily: "'Oswald', sans-serif" }}
+                >
+                  {division.name}
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {division.staffMembers.map((member) => (
+                    <div
+                      key={member.id}
+                      class={`p-4 rounded-lg flex flex-col justify-center border-l-4 ${member.displayOrder === 1
+                        ? 'bg-white/10 border-yellow-400'
+                        : 'bg-white/5 border-gray-600'
+                        } transition-all duration-300 hover:bg-white/10`}
+                    >
+                      <h3 class="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                        {member.fullName}
+                      </h3>
+                      <p class="text-sm font-medium text-gray-400 uppercase tracking-wider">{member.role}</p>
+                    </div>
+                  ))}
+                  {division.staffMembers.length === 0 && (
+                    <p class="text-gray-400 italic">No hay staff registrado aún.</p>
+                  )}
+                </div>
+              </div>
+            ));
+          })()}
+
+          {divisionsLoader.value.length === 0 && (
+            <div class="text-center text-gray-400 py-12">
+              <p>No se encontraron divisiones ni miembros del staff.</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 });
-
-export default component$(() => {
-  return (
-    <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-blue-950 pt-24">
-      {/* Decorative background element */}
-      <div class="fixed top-0 right-0 w-[800px] h-[800px] bg-blue-900 rounded-full blur-3xl opacity-20 pointer-events-none" />
-
-      <section class="py-16 relative z-10">
-        <div class="container mx-auto px-4 max-w-7xl">
-          <div class="text-center mb-20">
-            <div class="inline-flex items-center gap-3 px-5 py-2 bg-white/10 text-yellow-400 font-bold text-sm uppercase tracking-widest rounded-full mb-8 border border-white/10 backdrop-blur-sm">
-              <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-              La Plata Rugby Club
-            </div>
-            <h1
-              class="text-6xl md:text-8xl font-black text-white mb-4 leading-none tracking-tight"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              STAFF DE<br />
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">ENTRENADORES</span>
-            </h1>
-            <p
-              class="text-blue-200 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed mt-6"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Quienes día a día forman a las nuevas generaciones de jugadores con compromiso, valores y pasión por el rugby.
-            </p>
-          </div>
-
-          <div class="mb-24">
-            <div class="flex items-center gap-4 mb-10">
-              <h2 class="text-3xl md:text-4xl font-black text-white tracking-widest uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>Plantel Superior</h2>
-              <div class="h-px bg-white/20 flex-grow" />
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-900 border border-gray-800">
-              {coachesStaff.map((coach) => (
-                <CoachCard key={`ps-${coach.id}`} coach={coach} />
-              ))}
-            </div>
-          </div>
-
-          <div class="mb-24">
-            <div class="flex items-center gap-4 mb-10">
-              <h2 class="text-3xl md:text-4xl font-black text-white tracking-widest uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>Juveniles</h2>
-              <div class="h-px bg-white/20 flex-grow" />
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-900 border border-gray-800">
-              {coachesStaff.map((coach) => (
-                <CoachCard key={`juv-${coach.id}`} coach={coach} />
-              ))}
-            </div>
-          </div>
-
-          <div class="mb-24">
-            <div class="flex items-center gap-4 mb-10">
-              <h2 class="text-3xl md:text-4xl font-black text-white tracking-widest uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>Infantiles</h2>
-              <div class="h-px bg-white/20 flex-grow" />
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-900 border border-gray-800">
-              {coachesStaff.map((coach) => (
-                <CoachCard key={`inf-${coach.id}`} coach={coach} />
-              ))}
-            </div>
-          </div>
-          
-          <div class="mt-20 text-center pb-20">
-             <a href="/" class="inline-flex items-center gap-2 text-yellow-400 hover:text-white transition-colors uppercase tracking-widest text-sm font-bold border-b border-transparent hover:border-white pb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                ← Volver al inicio
-             </a>
-          </div>
-
-        </div>
-      </section>
-    </main>
-  );
-});
-
-export const head: DocumentHead = {
-  title: 'Staff de Entrenadores | La Plata Rugby Club',
-  meta: [
-    {
-      name: 'description',
-      content: 'Conocé al staff de entrenadores de La Plata Rugby Club. Plantel Superior, Juveniles e Infantiles.',
-    },
-  ],
-};

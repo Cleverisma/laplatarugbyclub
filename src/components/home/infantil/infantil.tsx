@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { infantilCategories, infantilStaff, type InfantilCategory } from '~/data/infantil-info';
+import { infantilCategories, type InfantilCategory } from '~/data/infantil-info';
 
 export const CategoryCard = component$<{ category: InfantilCategory }>(({ category }) => {
   return (
@@ -110,72 +110,7 @@ export const Infantil = component$(() => {
           </div>
         </div>
 
-        {/* Staff Section */}
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-16">
-            <h2
-              class="text-4xl md:text-6xl font-black text-yellow-500 mb-4 leading-none"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              STAFF
-            </h2>
-            <div class="h-px w-20 bg-yellow-400 mx-auto mb-12" />
-          </div>
 
-          <div class="flex flex-col md:flex-row gap-8 justify-center items-stretch w-full">
-            {/* Subcomisión de Rugby */}
-            <div class="bg-black/40 border border-gray-800 p-8 flex flex-col items-center text-center w-full md:w-1/2 relative overflow-hidden group transition-all duration-300 hover:border-yellow-400/50">
-              <div class="absolute top-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-500" />
-              
-              <div class="w-full pb-4 border-b border-yellow-500/80 mb-6">
-                <h3
-                  class="text-xl md:text-2xl font-bold text-yellow-500 uppercase italic tracking-widest"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  SUBCOMISIÓN DE RUGBY
-                </h3>
-              </div>
-              
-              <div class="flex flex-col space-y-2">
-                {infantilStaff.subcomision.map((name) => (
-                  <span
-                    key={name}
-                    class="text-gray-300 text-lg font-medium"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Área Técnica */}
-            <div class="bg-black/40 border border-gray-800 p-8 flex flex-col items-center text-center w-full md:w-1/2 relative overflow-hidden group transition-all duration-300 hover:border-yellow-400/50">
-              <div class="absolute top-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-500" />
-              
-              <div class="w-full pb-4 border-b border-yellow-500/80 mb-6">
-                <h3
-                  class="text-xl md:text-2xl font-bold text-yellow-500 uppercase italic tracking-widest"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  ÁREA TÉCNICA
-                </h3>
-              </div>
-              
-              <div class="flex flex-col space-y-2">
-                {infantilStaff.areaTecnica.map((name) => (
-                  <span
-                    key={name}
-                    class="text-gray-300 text-lg font-medium"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
     </section>
