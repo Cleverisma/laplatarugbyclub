@@ -88,7 +88,7 @@ export const Navbar = component$(() => {
 
       {/* Mobile Navigation Dropdown */}
       <div
-        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-md shadow-2xl transition-all duration-300 origin-top overflow-hidden border-t border-yellow-400/20 ${isMobileMenuOpen.value ? 'max-h-[400px]' : 'max-h-0'
+        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-md shadow-2xl transition-all duration-300 origin-top overflow-hidden border-t ${isMobileMenuOpen.value ? 'border-yellow-400/20 max-h-[400px]' : 'border-transparent max-h-0'
           }`}
       >
         <div class="flex flex-col p-6 gap-5">
