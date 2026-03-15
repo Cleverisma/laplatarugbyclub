@@ -29,6 +29,7 @@ export default component$(() => {
   const divisionsLoader = useStaffLoader();
   const categories = ['Plantel Superior', 'Juvenil', 'Infantil'];
   const activeCategory = useSignal(categories[0]);
+  const activeSubcategory = useSignal('Todas');
 
   return (
     <div class="relative min-h-screen bg-[#0a1128] pt-48 md:pt-52 pb-24 overflow-hidden">
@@ -54,7 +55,10 @@ export default component$(() => {
           {categories.map((category) => (
             <button
               key={category}
-              onClick$={() => (activeCategory.value = category)}
+              onClick$={() => {
+                activeCategory.value = category;
+                activeSubcategory.value = 'Todas';
+              }}
               class={`px-6 py-3 rounded-full font-bold uppercase tracking-widest text-sm transition-all duration-300 border-2 ${activeCategory.value === category
                 ? 'bg-yellow-400 text-[#0a1128] border-yellow-400'
                 : 'bg-white/5 text-gray-300 border-gray-600 hover:border-yellow-400 hover:text-yellow-400'
@@ -69,6 +73,7 @@ export default component$(() => {
         <div class="space-y-12">
           {(() => {
             const categoryDivisions = divisionsLoader.value.filter((d) => d.groupType === activeCategory.value);
+            const subcategories = ['Todas', ...categoryDivisions.map((d) => d.name)];
 
             if (categoryDivisions.length === 0) return (
               <div class="text-center text-gray-400 py-12">
@@ -76,7 +81,35 @@ export default component$(() => {
               </div>
             );
 
-            return categoryDivisions.map((division) => (
+            const displayedDivisions = activeSubcategory.value === 'Todas' 
+              ? categoryDivisions 
+              : categoryDivisions.filter((d) => d.name === activeSubcategory.value);
+
+            return (
+              <div class="animate-[fadeIn_0.5s_ease-out]">
+                {/* Nested Subcategory Chips */}
+                {subcategories.length > 2 && (
+                  <div class="flex flex-wrap justify-center gap-2 mb-12">
+                    {subcategories.map((sub) => (
+                      <button
+                        key={`sub-${sub}`}
+                        onClick$={() => (activeSubcategory.value = sub)}
+                        class={`px-4 py-1.5 rounded-full font-medium tracking-wide text-xs transition-colors duration-200 border ${
+                          activeSubcategory.value === sub
+                            ? 'bg-white/20 text-white border-white/50'
+                            : 'bg-white/5 text-gray-400 border-gray-700 hover:bg-white/10 hover:text-gray-200 hover:border-gray-500'
+                        }`}
+                        style={{ fontFamily: "'Inter', sans-serif" }}
+                      >
+                        {sub}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Filtered Display */}
+                <div class="space-y-12">
+                  {displayedDivisions.map((division) => (
               <div key={division.id} class="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 md:p-10 animate-[fadeIn_0.5s_ease-out]">
                 <h3
                   class="text-2xl md:text-3xl font-bold text-yellow-500 uppercase tracking-widest mb-8 border-b border-white/10 pb-4"
@@ -105,7 +138,10 @@ export default component$(() => {
                   )}
                 </div>
               </div>
-            ));
+                  ))}
+                </div>
+              </div>
+            );
           })()}
 
           {divisionsLoader.value.length === 0 && (
