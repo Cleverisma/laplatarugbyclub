@@ -77,6 +77,8 @@ export default component$(() => {
         </div>
       </section>
 
+      <PromoVideo />
+
       <LatestEvents />
 
       <section
@@ -91,7 +93,6 @@ export default component$(() => {
         <div class="absolute inset-0 bg-black/40 z-0"></div>
       </section>
 
-      <PromoVideo />
       <SocialFeed />
 
       {/* Transition Banner to Autoridades */}
