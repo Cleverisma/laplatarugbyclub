@@ -59,7 +59,13 @@ export const MOCK_INSTAGRAM_POSTS: InstagramPostProps[] = [
   },
 ];
 
-export const SocialFeed = component$(() => {
+type SocialFeedProps = {
+  posts?: InstagramPostProps[];
+};
+
+export const SocialFeed = component$<SocialFeedProps>(({ posts }) => {
+  const safePosts = posts && posts.length > 0 ? posts : MOCK_INSTAGRAM_POSTS;
+
   return (
     <section class="relative py-20 bg-[#0a1128] text-white">
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -94,7 +100,7 @@ export const SocialFeed = component$(() => {
         </header>
 
         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-4 xl:grid-cols-6">
-          {MOCK_INSTAGRAM_POSTS.map((post) => (
+          {safePosts.map((post) => (
             <a
               key={post.id}
               href={post.link}

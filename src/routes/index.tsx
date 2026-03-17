@@ -4,11 +4,15 @@ import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
 import { matches } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
-import { Hero } from '~/components/home/hero/hero';
+import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
 import { Button } from '~/components/ui/button/button';
 import { LatestEvents } from '~/components/home/latest-events/latest-events';
-import { SocialFeed } from '~/components/home/social-feed/social-feed';
+import {
+  SocialFeed,
+  MOCK_INSTAGRAM_POSTS,
+  type InstagramPostProps,
+} from '~/components/home/social-feed/social-feed';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
 import juego1Img from '~/media/juego-1.jpeg';
 import juego7Img from '~/media/7.jpeg';
@@ -35,12 +39,60 @@ export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   return { lastMatch, nextMatch };
 });
 
+export const useInstagramFeed = routeLoader$(async () => {
+  try {
+    const res = await fetch('https://v2.behold.so/TU_ID_DE_BEHOLD', {
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!res.ok) {
+      return MOCK_INSTAGRAM_POSTS;
+    }
+
+    const data = (await res.json()) as {
+      posts?: Array<{
+        id: string;
+        media_url?: string;
+        permalink?: string;
+        caption?: string;
+      }>;
+    };
+
+    const mappedPosts: Array<InstagramPostProps | null> =
+      data.posts?.map((item): InstagramPostProps | null => {
+        if (!item.id || !item.media_url || !item.permalink) return null;
+
+        return {
+          id: item.id,
+          imageUrl: item.media_url,
+          link: item.permalink,
+          caption: item.caption,
+        };
+      }) ?? [];
+
+    const posts = mappedPosts.filter(
+      (p): p is InstagramPostProps => p !== null,
+    );
+
+    if (!posts.length) {
+      return MOCK_INSTAGRAM_POSTS;
+    }
+
+    return posts;
+  } catch {
+    return MOCK_INSTAGRAM_POSTS;
+  }
+});
+
 export default component$(() => {
   const matchesData = useMatchesLoader();
+  const instagramFeed = useInstagramFeed();
 
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950">
-      <Hero />
+      <HeroSlider />
       <MatchCenter
         lastMatch={matchesData.value.lastMatch}
         nextMatch={matchesData.value.nextMatch}
@@ -77,8 +129,6 @@ export default component$(() => {
         </div>
       </section>
 
-      <PromoVideo />
-
       <LatestEvents />
 
       <section
@@ -93,7 +143,7 @@ export default component$(() => {
         <div class="absolute inset-0 bg-black/40 z-0"></div>
       </section>
 
-      <SocialFeed />
+      <SocialFeed posts={instagramFeed.value} />
 
       {/* Transition Banner to Autoridades */}
       <section
