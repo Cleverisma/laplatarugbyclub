@@ -47,8 +47,8 @@ export const Navbar = component$(() => {
 
         {/* Desktop Navigation Menu (Visible from LG) */}
         <div class="hidden lg:flex items-center gap-[clamp(1.5rem,2vw,5rem)] w-full justify-center">
-          {['/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-            const labels = ['EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
+          {['/', '/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
+            const labels = ['INICIO', 'EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
             return (
               <NavLink
                 key={href}
@@ -96,8 +96,8 @@ export const Navbar = component$(() => {
         }`}
       >
         <div class="flex flex-col p-10 gap-8 items-center text-center">
-          {['/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-            const labels = ['EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
+          {['/', '/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
+            const labels = ['INICIO', 'EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
             return (
               <NavLink
                 key={href}

@@ -85,13 +85,15 @@ export const HeroSlider = component$(() => {
           
           {/* Logo Header (Fixed Position) */}
           <div class="flex flex-col items-center mb-12 md:mb-20 lg:mb-24 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
-            <img 
-              src={lprcLogo} 
-              alt="La Plata Rugby Club" 
-              width="320" 
-              height="320" 
-              class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
-            />
+            <a href="/" class="block transition-transform hover:scale-105 active:scale-95">
+              <img 
+                src={lprcLogo} 
+                alt="La Plata Rugby Club" 
+                width="320" 
+                height="320" 
+                class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
+              />
+            </a>
           </div>
 
           {/* Slides Container (Relative wrapper for absolute text items) */}
