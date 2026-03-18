@@ -1,15 +1,17 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import bgImage from '~/media/3.jpeg';
 
 export default component$(() => {
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-white pb-32">
       {/* Hero Header */}
       <section
-        class="relative h-[40vh] min-h-[300px] w-full bg-[#0a1128] flex items-center justify-center pt-20"
+        class="relative h-[50vh] min-h-[400px] w-full bg-[#0a1128] flex items-center justify-center pt-32 bg-cover bg-center"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
-          marginBottom: '4vw'
+          marginBottom: '4vw',
+          backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
         }}
       >
         <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5 pointer-events-none" />

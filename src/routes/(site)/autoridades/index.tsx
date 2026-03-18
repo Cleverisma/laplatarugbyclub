@@ -4,6 +4,7 @@ import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
 import { boardMembers } from '~/db/schema';
 import { asc } from 'drizzle-orm';
+import bgImage from '~/media/3.jpeg';
 
 export const useBoardMembersLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -32,10 +33,11 @@ export default component$(() => {
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
       {/* Hero Header */}
       <section 
-        class="relative w-full bg-[#0a1128] py-16 md:py-24 px-4 flex flex-col items-center justify-center z-10"
+        class="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center z-10 bg-cover bg-center"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
-          marginBottom: '-4vw'
+          marginBottom: '-4vw',
+          backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
         }}
       >
         <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block" style={{ fontFamily: "'Oswald', sans-serif" }}>
@@ -45,7 +47,7 @@ export default component$(() => {
           class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter text-center leading-none"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
-          AUTORIDADES
+          COMISIÓN DIRECTIVA 2026
         </h1>
         <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
       </section>
@@ -134,11 +136,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Autoridades | La Plata Rugby Club',
+  title: 'Comisión Directiva 2026 | La Plata Rugby Club',
   meta: [
     {
       name: 'description',
-      content: 'Conoce al equipo de trabajo y autoridades que lideran nuestro club con compromiso y dedicación bajo los valores de LPRC.',
+      content: 'Conoce al equipo de trabajo y comisión directiva que lideran nuestro club con compromiso y dedicación bajo los valores de LPRC.',
     },
   ],
 };

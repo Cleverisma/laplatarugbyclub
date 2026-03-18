@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { EventCard } from '~/components/home/latest-events/latest-events';
 import { getEvents } from '~/data/events-data';
+import bgImage from '~/media/3.jpeg';
 
 export const useEventsLoader = routeLoader$(async (requestEvent) => {
   return getEvents(requestEvent.env);
@@ -21,7 +22,10 @@ export default component$(() => {
   const eventsData = useEventsLoader();
 
   return (
-    <main class="min-h-screen relative" style={{ background: 'linear-gradient(135deg, #0a1128 0%, #001f54 50%, #000000 100%)' }}>
+    <main 
+      class="min-h-screen relative bg-cover bg-center" 
+      style={{ backgroundImage: `linear-gradient(135deg, rgba(10, 17, 40, 0.92), rgba(0, 31, 84, 0.98)), url(${bgImage})` }}
+    >
       {/* Subtle grid texture */}
       <div
         class="absolute inset-0 pointer-events-none opacity-5"
@@ -31,7 +35,7 @@ export default component$(() => {
         }}
       />
 
-      <div class="container mx-auto px-4 max-w-6xl relative z-10 pb-20">
+      <div class="container mx-auto px-4 max-w-6xl relative z-10 pt-44 pb-20">
         {/* Header */}
         <div class="mb-16">
           <div class="flex items-center gap-4 mb-4">

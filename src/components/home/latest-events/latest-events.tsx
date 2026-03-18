@@ -10,7 +10,7 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
         {/* Gold top accent */}
         <div class="absolute top-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-500 z-10" />
 
-        <div class="aspect-video relative overflow-hidden bg-gray-900">
+        <div class="aspect-[9/16] relative overflow-hidden bg-gray-900">
           {imageUrl ? (
             <img src={imageUrl} alt={title} width="600" height="338" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out filter brightness-90 group-hover:brightness-100" />
           ) : (

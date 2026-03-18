@@ -45,7 +45,7 @@ export const useDeleteBoardAction = routeAction$(
 );
 
 export const head: DocumentHead = {
-  title: 'Autoridades — Admin | LPRC',
+  title: 'Comisión Directiva 2026 — Admin | LPRC',
 };
 
 export default component$(() => {
@@ -68,7 +68,7 @@ export default component$(() => {
       <div class="flex items-center justify-between mb-8">
         <div>
           <h1 class="text-3xl font-black text-gray-900" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Autoridades
+            Comisión Directiva 2026
           </h1>
           <p class="text-sm text-gray-500 mt-1">{members.value.length} miembros registrados</p>
         </div>

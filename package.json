@@ -58,6 +58,8 @@
   "nx": {},
   "dependencies": {
     "@libsql/client": "^0.17.0",
+    "@vercel/blob": "^2.3.1",
+    "browser-image-compression": "^2.0.2",
     "cssnano": "^7.1.3",
     "drizzle-orm": "^0.45.1"
   }

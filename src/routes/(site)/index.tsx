@@ -6,6 +6,7 @@ import { matches } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
 import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
+import { StatsCounter } from '~/components/home/stats-counter/stats-counter';
 import { Button } from '~/components/ui/button/button';
 import { LatestEvents } from '~/components/home/latest-events/latest-events';
 import {
@@ -22,19 +23,15 @@ import { PromoVideo } from '~/components/home/promo-video/promo-video';
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
 
-  const [lastMatch] = await db
-    .select()
-    .from(matches)
-    .where(eq(matches.status, 'played'))
-    .orderBy(desc(matches.matchDate))
-    .limit(1);
+  const lastMatch = await db.query.matches.findFirst({
+    where: eq(matches.status, 'played'),
+    orderBy: [desc(matches.matchDate)],
+  });
 
-  const [nextMatch] = await db
-    .select()
-    .from(matches)
-    .where(eq(matches.status, 'upcoming'))
-    .orderBy(asc(matches.matchDate))
-    .limit(1);
+  const nextMatch = await db.query.matches.findFirst({
+    where: eq(matches.status, 'upcoming'),
+    orderBy: [asc(matches.matchDate)],
+  });
 
   return { lastMatch, nextMatch };
 });
@@ -112,6 +109,8 @@ export default component$(() => {
         nextMatch={matchesData.value.nextMatch}
       />
 
+      <StatsCounter />
+
       <PromoVideo />
 
       <LatestEvents events={eventsData.value} />
@@ -166,7 +165,7 @@ export default component$(() => {
             class="rounded-none bg-[#0a1128] text-white border-2 border-[#0a1128] hover:bg-white hover:text-[#0a1128] font-black uppercase tracking-widest text-xl transition-all duration-300 px-10 py-6"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            VER AUTORIDADES
+            VER COMISIÓN DIRECTIVA 2026
           </Button>
         </a>
       </section>

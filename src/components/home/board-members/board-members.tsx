@@ -51,7 +51,7 @@ export const BoardMembers = component$(() => {
               class="text-5xl md:text-7xl font-black text-white mb-4 leading-none"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              AUTORIDADES
+              COMISION DIRECTIVA 2026
             </h2>
             <div class="h-px w-20 bg-yellow-400 mx-auto mb-8" />
             <p
@@ -76,7 +76,7 @@ export const BoardMembers = component$(() => {
               class="bg-yellow-400 text-[#0a1128] border-2 border-yellow-400 hover:bg-transparent hover:text-yellow-400 font-black uppercase tracking-widest text-lg transition-all duration-300 px-12 py-5"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              STAFF 2026
+              STAFF DE ENTRENADORES 2026
             </button>
           </a>
         </div>

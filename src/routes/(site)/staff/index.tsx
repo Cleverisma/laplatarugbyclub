@@ -1,6 +1,7 @@
 import { component$, useSignal } from '@builder.io/qwik';
 import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
+import bgImage from '~/media/3.jpeg';
 
 export const useStaffLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -16,7 +17,7 @@ export const useStaffLoader = routeLoader$(async (requestEvent) => {
 });
 
 export const head: DocumentHead = {
-  title: 'Staff Técnico & Directivo | La Plata Rugby Club',
+  title: 'Staff de entrenadores | La Plata Rugby Club',
   meta: [
     {
       name: 'description',
@@ -32,7 +33,10 @@ export default component$(() => {
   const activeSubcategory = useSignal('Todas');
 
   return (
-    <div class="relative min-h-screen bg-[#0a1128] pt-48 md:pt-52 pb-24 overflow-hidden">
+    <div 
+      class="relative min-h-screen pt-48 md:pt-52 pb-24 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.90), rgba(10, 17, 40, 0.95)), url(${bgImage})` }}
+    >
       {/* Background Overlay */}
       <div class="fixed inset-0 z-0">
         <div class="absolute inset-0 bg-black/60 z-10"></div>
@@ -45,7 +49,7 @@ export default component$(() => {
             class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            Staff Técnico & Directivo
+            Staff de entrenadores
           </h1>
           <div class="w-24 h-1 bg-yellow-400 mx-auto mt-6"></div>
         </div>

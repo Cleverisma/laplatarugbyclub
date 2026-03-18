@@ -5,10 +5,11 @@ import { getDb } from '~/db/client';
 export const useDashboardStats = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
 
-  const [divisions, boardMembers, matches] = await Promise.all([
+  const [divisions, boardMembers, matches, eventsCount] = await Promise.all([
     db.query.divisions.findMany({ with: { staffMembers: true } }),
     db.query.boardMembers.findMany(),
     db.query.matches.findMany(),
+    db.query.events.findMany(),
   ]);
 
   const totalStaff = divisions.reduce(
@@ -28,6 +29,7 @@ export const useDashboardStats = routeLoader$(async (requestEvent) => {
     totalStaff,
     totalBoardMembers: boardMembers.length,
     totalDivisions: divisions.length,
+    totalEvents: eventsCount.length,
     lastMatch: lastMatch
       ? {
           homeTeam: lastMatch.homeTeam,
@@ -104,7 +106,7 @@ export default component$(() => {
       {/* Stats grid */}
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
         <StatCard
-          title="Total Staff"
+          title="Staff de entrenadores"
           value={stats.value.totalStaff}
           subtitle={`en ${stats.value.totalDivisions} divisiones`}
           icon="👥"
@@ -112,7 +114,7 @@ export default component$(() => {
           href="/admin/staff"
         />
         <StatCard
-          title="Autoridades"
+          title="Comisión Directiva 2026"
           value={stats.value.totalBoardMembers}
           subtitle="miembros de la comisión"
           icon="🏛️"
@@ -126,6 +128,14 @@ export default component$(() => {
           icon="📂"
           color="text-[#0a1128]"
           href="/admin/staff"
+        />
+        <StatCard
+          title="Eventos"
+          value={stats.value.totalEvents}
+          subtitle="en cartelera"
+          icon="📅"
+          color="text-[#0a1128]"
+          href="/admin/eventos"
         />
       </div>
 
@@ -214,28 +224,28 @@ export default component$(() => {
         <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
           Acciones Rápidas
         </p>
-        <div class="flex flex-wrap gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link
             href="/admin/staff/new"
-            class="inline-flex items-center gap-2 bg-[#0a1128] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#0f1d45] transition-colors"
+            class="inline-flex items-center justify-center gap-2 bg-[#0a1128] text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-[#0f1d45] transition-colors shadow-sm"
           >
-            + Nuevo miembro staff
+            + Nuevo miembro staff de entrenadores
           </Link>
           <Link
             href="/admin/autoridades/new"
-            class="inline-flex items-center gap-2 bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+            class="inline-flex items-center justify-center gap-2 bg-white text-[#0a1128] border border-gray-200 text-sm font-semibold px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
           >
-            + Nueva autoridad
+            + Nueva autoridad comisión directiva 2026
           </Link>
           <Link
             href="/admin/partidos/new"
-            class="inline-flex items-center gap-2 bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+            class="inline-flex items-center justify-center gap-2 bg-white text-[#0a1128] border border-gray-200 text-sm font-semibold px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
           >
             + Nuevo partido
           </Link>
           <Link
             href="/admin/eventos/new"
-            class="inline-flex items-center gap-2 bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+            class="inline-flex items-center justify-center gap-2 bg-[#FFD700] text-[#0a1128] text-sm font-black px-4 py-3 rounded-lg hover:bg-yellow-400 transition-colors shadow-sm"
           >
             + Nuevo evento
           </Link>

@@ -11,9 +11,23 @@ export const Footer = component$(() => {
       <div class="container mx-auto px-4 max-w-7xl relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
           <div class="flex flex-col space-y-6">
-            <a href="/" class="flex items-center gap-4 mb-2">
-              <img src={lprcLogo} alt="La Plata Rugby Club Logo" width="80" height="80" class="h-16 md:h-20 w-auto drop-shadow-lg" />
-            </a>
+            <div class="flex items-center justify-between mb-2">
+              <a href="/" class="shrink-0">
+                <img src={lprcLogo} alt="La Plata Rugby Club Logo" width="80" height="80" class="h-16 md:h-20 w-auto drop-shadow-lg" />
+              </a>
+              <div class="flex items-center gap-2 md:gap-4 pl-4 md:pl-6 border-l border-white/10">
+                {[1995, 1998, 2007].map((year) => (
+                  <div key={`cup-${year}`} class="flex flex-col items-center group cursor-default" title={`Campeón Nacional ${year}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.6)] group-hover:scale-110 group-hover:text-yellow-300 transition-all duration-300 opacity-90 group-hover:opacity-100" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 27.395 27.395 0 002.053.244v3.24a4 4 0 00-2.048 3.102 4 4 0 00-1.123 1.166H5v1.5a.75.75 0 00.75.75h12.5a.75.75 0 00.75-.75v-1.5h-1.631a4 4 0 00-1.123-1.166 4 4 0 00-2.048-3.102v-3.24c.71-.05 1.403-.122 2.053-.244a6.753 6.753 0 006.138-5.6.75.75 0 00-.584-.86 48.016 48.016 0 00-3.071-.542v-.858a.75.75 0 00-.75-.75H5.916a.75.75 0 00-.75.75z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-[10px] md:text-xs font-black text-white/60 group-hover:text-yellow-400 mt-1 drop-shadow-md transition-colors duration-300 tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                      {year}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
             <p class="text-blue-200 leading-relaxed text-lg max-w-sm">
               Formar buenas personas que disfruten del rugby. Un club basado en valores, deporte y amistad desde 1934.
             </p>
@@ -31,7 +45,7 @@ export const Footer = component$(() => {
             <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Enlaces Rápidos</h3>
             <ul class="space-y-4">
               {['/el-club', '/historia', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-                const labels = ['El Club', 'Historia', 'Staff', 'Autoridades', 'Agenda', 'Contacto'];
+                const labels = ['El Club', 'Historia', 'Staff de entrenadores', 'Comisión Directiva 2026', 'Agenda', 'Contacto'];
                 return (
                   <li key={labels[i]}>
                     <a href={href} class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">

@@ -29,7 +29,7 @@ export const useDeleteStaffAction = routeAction$(
 );
 
 export const head: DocumentHead = {
-  title: 'Gestión de Staff — Admin | La Plata Rugby Club',
+  title: 'Gestión de Staff de entrenadores — Admin | La Plata Rugby Club',
 };
 
 export default component$(() => {
@@ -51,7 +51,7 @@ export default component$(() => {
             class="text-3xl font-black text-gray-900"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            Staff Técnico & Directivo
+            Staff de entrenadores
           </h1>
           <p class="text-sm text-gray-500 mt-1">
             {totalMembers} miembros en {divisions.length} divisiones

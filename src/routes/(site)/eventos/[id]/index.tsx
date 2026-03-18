@@ -59,13 +59,13 @@ export default component$(() => {
 
         {/* Hero image */}
         {imageUrl && (
-          <div class="w-full aspect-video rounded-sm overflow-hidden mb-10 border border-white/10 shadow-2xl">
+          <div class="w-full max-w-sm md:max-w-md mx-auto aspect-[9/16] rounded-2xl overflow-hidden mb-10 border border-white/10 shadow-[0_0_50px_rgba(255,215,0,0.15)]">
             <img
               src={imageUrl}
               alt={title}
-              width="900"
-              height="506"
-              class="w-full h-full object-cover"
+              width="600"
+              height="1066"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
         )}

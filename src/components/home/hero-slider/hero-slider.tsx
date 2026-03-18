@@ -3,6 +3,7 @@ import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import img1 from '~/media/7.jpeg';
 import img2 from '~/media/5.jpeg';
 import img3 from '~/media/4.jpeg';
+import lprcLogo from '~/media/lprc.svg';
 
 // Each slide has a dedicated CSS animation class so images always fill the frame (object-cover)
 // while still having visible motion (zoom-in / zoom-out / pan).
@@ -79,31 +80,48 @@ export const HeroSlider = component$(() => {
           );
         })}
 
-        {/* ── Centred hero text ── */}
-        <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-[50vh] min-h-[300px]">
-          {slides.map((slide, index) => {
-            const isActive = currentSlide.value === index;
-            return (
-              <div
-                key={`text-${index}`}
-                class="absolute flex flex-col items-center transition-all duration-700 ease-out w-full"
-                style={{
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'translateY(0)' : 'translateY(30px) scale(0.98)',
-                  pointerEvents: isActive ? 'auto' : 'none',
-                }}
-              >
-                <h1
-                  class="text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white leading-[0.9] tracking-tighter text-center max-w-5xl mx-auto drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]"
-                  style={{ fontFamily: "'Oswald', sans-serif" }}
+        {/* ── Centered hero content ── */}
+        <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-full min-h-screen pt-16 md:pt-24 lg:pt-32">
+          
+          {/* Logo Header (Fixed Position) */}
+          <div class="flex flex-col items-center mb-12 md:mb-20 lg:mb-24 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
+            <img 
+              src={lprcLogo} 
+              alt="La Plata Rugby Club" 
+              width="320" 
+              height="320" 
+              class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
+            />
+          </div>
+
+          {/* Slides Container (Relative wrapper for absolute text items) */}
+          <div class="relative w-full h-[50vh] md:h-[40vh] min-h-[300px] flex items-start justify-center overflow-visible">
+            {slides.map((slide, index) => {
+              const isActive = currentSlide.value === index;
+              return (
+                <div
+                  key={`text-${index}`}
+                  class="absolute flex flex-col items-center transition-all duration-1000 ease-out w-full"
+                  style={{
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'translateY(0) scale(1.05)' : 'translateY(40px) scale(0.95)',
+                    pointerEvents: isActive ? 'auto' : 'none',
+                    transitionDelay: isActive ? '200ms' : '0ms'
+                  }}
                 >
-                  {slide.text}
-                </h1>
-                <div class="w-24 md:w-32 h-2 md:h-3 bg-yellow-400 mx-auto mt-6 md:mt-8 shadow-[0_5px_15px_rgba(255,215,0,0.3)]"></div>
-              </div>
-            );
-          })}
+                  <h1
+                    class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white leading-[0.9] tracking-tighter text-center max-w-6xl mx-auto drop-shadow-[0_15px_15px_rgba(0,0,0,0.9)] px-2"
+                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                  >
+                    {slide.text}
+                  </h1>
+                  <div class="w-20 md:w-32 h-1.5 md:h-3 bg-yellow-400 mx-auto mt-6 md:mt-12 shadow-[0_5px_20px_rgba(255,215,0,0.4)] transition-all duration-500 rounded-full"></div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
 
         {/* ── Slide indicator dots ── */}
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
