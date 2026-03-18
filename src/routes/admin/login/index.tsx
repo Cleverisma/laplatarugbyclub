@@ -10,15 +10,14 @@ export const useLoginAction = routeAction$(
     }
 
     // Set secure session cookie
-    requestEvent.cookie.set('admin_session', 'authenticated', {
+    requestEvent.cookie.set('lprc_admin_auth', 'authenticated', {
       httpOnly: true,
       sameSite: 'lax',
       path: '/',
       maxAge: 60 * 60 * 24, // 24 hours
-      secure: true,
     });
 
-    throw requestEvent.redirect(302, '/admin');
+    throw requestEvent.redirect(302, '/admin/');
   },
   zod$({ password: z.string().min(1, 'La contraseña es obligatoria') }),
 );

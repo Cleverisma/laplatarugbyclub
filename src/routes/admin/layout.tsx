@@ -11,11 +11,11 @@ export const onRequest: RequestHandler = (requestEvent) => {
     noStore: true,
   });
 
-  const session = requestEvent.cookie.get('admin_session');
-  const isLoginPage = requestEvent.url.pathname === '/admin/login/' || requestEvent.url.pathname === '/admin/login';
+  const session = requestEvent.cookie.get('lprc_admin_auth') || requestEvent.cookie.get('admin_session');
+  const isLoginPage = requestEvent.url.pathname.startsWith('/admin/login');
 
   if (!session && !isLoginPage) {
-    throw requestEvent.redirect(302, '/admin/login');
+    throw requestEvent.redirect(302, '/admin/login/');
   }
 };
 
