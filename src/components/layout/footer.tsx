@@ -30,8 +30,8 @@ export const Footer = component$(() => {
           <div class="md:pl-10">
             <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Enlaces Rápidos</h3>
             <ul class="space-y-4">
-              {['/el-club', '/staff', '/autoridades', '/#contacto'].map((href, i) => {
-                const labels = ['El Club', 'Staff', 'Autoridades', 'Contacto'];
+              {['/el-club', '/historia', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
+                const labels = ['El Club', 'Historia', 'Staff', 'Autoridades', 'Agenda', 'Contacto'];
                 return (
                   <li key={labels[i]}>
                     <a href={href} class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">

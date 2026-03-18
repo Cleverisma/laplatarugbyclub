@@ -16,6 +16,7 @@ import {
 import juego1Img from '~/media/juego-1.jpeg';
 import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
+import { PromoActivities } from '~/components/home/promo-activities/promo-activities';
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -121,18 +122,20 @@ export default component$(() => {
           >
             MÁS DE 90 AÑOS <span class="break-words sm:break-normal text-[#FFD700]"><br class="hidden md:block" /> DE HISTORIA</span>
           </h2>
-          <a href="/el-club">
+          <a href="/historia">
             <Button
               look="primary"
               size="lg"
               class="rounded-none bg-[#FFD700] text-[#0a1128] border-none hover:bg-white hover:text-[#0a1128] font-black uppercase tracking-widest text-xl md:text-2xl transition-all duration-300 px-10 py-6 md:px-14 md:py-8 shadow-xl"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              CONOCÉ EL CLUB
+              CONOCÉ NUESTRA HISTORIA
             </Button>
           </a>
         </div>
       </section>
+
+      <PromoActivities />
 
       <SocialFeed posts={instagramFeed.value} />
 
