@@ -3,8 +3,16 @@ import type { RequestHandler } from '@builder.io/qwik-city';
 import { Link, useLocation } from '@builder.io/qwik-city';
 
 export const onRequest: RequestHandler = (requestEvent) => {
+  // Prevent caching of any admin route!
+  // If Vercel caches a 302 redirect to /admin/login, authenticated users will also get redirected.
+  requestEvent.cacheControl({
+    staleWhileRevalidate: 0,
+    maxAge: 0,
+    noStore: true,
+  });
+
   const session = requestEvent.cookie.get('admin_session');
-  const isLoginPage = requestEvent.url.pathname === '/admin/login/';
+  const isLoginPage = requestEvent.url.pathname === '/admin/login/' || requestEvent.url.pathname === '/admin/login';
 
   if (!session && !isLoginPage) {
     throw requestEvent.redirect(302, '/admin/login');
