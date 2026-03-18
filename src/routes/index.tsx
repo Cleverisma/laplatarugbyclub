@@ -13,9 +13,7 @@ import {
   MOCK_INSTAGRAM_POSTS,
   type InstagramPostProps,
 } from '~/components/home/social-feed/social-feed';
-import { PromoVideo } from '~/components/home/promo-video/promo-video';
 import juego1Img from '~/media/juego-1.jpeg';
-import juego7Img from '~/media/7.jpeg';
 
 import { Contact } from '~/components/home/contact/contact';
 
@@ -98,6 +96,8 @@ export default component$(() => {
         nextMatch={matchesData.value.nextMatch}
       />
 
+      <LatestEvents />
+
       {/* Transition Banner to El Club */}
       <section
         class="w-full relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-24 md:py-32 px-4 z-10 overflow-hidden"
@@ -127,20 +127,6 @@ export default component$(() => {
             </Button>
           </a>
         </div>
-      </section>
-
-      <LatestEvents />
-
-      <section
-        class="w-full relative h-64 md:h-96 z-10"
-        style={{
-          backgroundImage: `url(${juego7Img})`,
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
-        }}
-      >
-        <div class="absolute inset-0 bg-black/40 z-0"></div>
       </section>
 
       <SocialFeed posts={instagramFeed.value} />
