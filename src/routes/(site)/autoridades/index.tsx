@@ -78,7 +78,7 @@ export default component$(() => {
                 {groupedMembers.map((group) => (
                   <div key={group.role} class="flex flex-col">
                     <h3 
-                      class="text-2xl md:text-3xl text-[#FFD700] font-black uppercase tracking-widest border-b border-gray-800 pb-2 mb-6"
+                      class="text-sm text-gray-500 uppercase tracking-wider font-bold border-b border-gray-800 pb-2 mb-6"
                       style={{ fontFamily: "'Oswald', sans-serif" }}
                     >
                       {group.role}
@@ -90,7 +90,7 @@ export default component$(() => {
                           class="bg-black/40 p-4 border-l-2 border-transparent hover:border-[#FFD700] transition-colors rounded-none flex items-center"
                         >
                           <span 
-                            class="text-base font-semibold text-gray-200"
+                            class="text-xl md:text-2xl font-bold text-white"
                             style={{ fontFamily: "'Inter', sans-serif" }}
                           >
                             {person.fullName}

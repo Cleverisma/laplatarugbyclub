@@ -7,18 +7,18 @@ export const BoardMemberCard = component$<{ boardMember: BoardMember }>(({ board
       {/* Gold accent line */}
       <div class="absolute top-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-500" />
 
-      <h3
-        class="text-xs font-black text-yellow-400/70 uppercase tracking-widest mb-4 group-hover:text-yellow-400 transition-colors"
+      <p
+        class="text-sm text-gray-500 uppercase tracking-wider mb-4 group-hover:text-yellow-400 transition-colors"
         style={{ fontFamily: "'Oswald', sans-serif" }}
       >
         {boardMember.role}
-      </h3>
+      </p>
 
       <div class="flex flex-col space-y-2 w-full">
         {boardMember.names.map((name) => (
           <span
             key={name}
-            class="text-base font-semibold text-gray-300 border-l-2 border-transparent group-hover:border-yellow-400 pl-0 group-hover:pl-3 transition-all duration-300"
+            class="text-xl md:text-2xl font-bold text-white border-l-2 border-transparent group-hover:border-yellow-400 pl-0 group-hover:pl-3 transition-all duration-300"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {name}

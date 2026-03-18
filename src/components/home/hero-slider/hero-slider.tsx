@@ -1,5 +1,4 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import { LiteYouTube } from '~/components/ui/lite-youtube';
 
 import img1 from '~/media/7.jpeg';
 import img2 from '~/media/5.jpeg';
@@ -14,9 +13,9 @@ const SLIDE_ANIMATIONS = [
 ];
 
 const slides = [
-  { image: img1 },
-  { image: img2 },
-  { image: img3 },
+  { image: img1, text: 'RUGBY, VALORES Y AMISTAD DESDE 1934' },
+  { image: img2, text: 'FORMAMOS JUGADORES. CONSTRUIMOS PERSONAS' },
+  { image: img3, text: 'DONDE EL RUGBY SE VIVE Y SE APRENDE' },
 ];
 
 export const HeroSlider = component$(() => {
@@ -52,7 +51,7 @@ export const HeroSlider = component$(() => {
       `}</style>
 
       <section class="relative w-full overflow-hidden flex flex-col items-center justify-center"
-        style={{ minHeight: '110svh', paddingTop: '12rem', paddingBottom: '9rem' }}
+        style={{ minHeight: '100svh' }}
       >
         {/* ── Background Slides ── */}
         {slides.map((slide, index) => {
@@ -74,13 +73,33 @@ export const HeroSlider = component$(() => {
                 height={1080}
                 class={`absolute inset-0 w-full h-full object-cover ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
               />
-              {/* Dark gradient overlay – heavier at top for navbar legibility */}
-              <div class="absolute inset-0"
-                style={{ background: 'linear-gradient(to bottom, rgba(10,17,40,0.6) 0%, rgba(10,17,40,0.35) 50%, rgba(10,17,40,0.7) 100%)' }}
-              />
+              {/* Dark overlay for text legibility */}
+              <div class="absolute inset-0 bg-black/50" />
             </div>
           );
         })}
+
+        {/* ── Centred hero text ── */}
+        <div class="relative z-10 flex flex-col items-center justify-center px-6 text-center">
+          {slides.map((slide, index) => {
+            const isActive = currentSlide.value === index;
+            return (
+              <h1
+                key={`text-${index}`}
+                class="absolute text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-tight transition-all duration-700"
+                style={{
+                  fontFamily: "'Oswald', sans-serif",
+                  textShadow: '0 4px 20px rgba(0,0,0,0.6)',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(20px)',
+                  pointerEvents: isActive ? 'auto' : 'none',
+                }}
+              >
+                {slide.text}
+              </h1>
+            );
+          })}
+        </div>
 
         {/* ── Slide indicator dots ── */}
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -93,13 +112,6 @@ export const HeroSlider = component$(() => {
               aria-label={`Slide ${index + 1}`}
             />
           ))}
-        </div>
-
-        {/* ── Video ── */}
-        <div class="relative z-10 w-full max-w-4xl mx-auto px-4">
-          <div class="shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden border border-white/10 bg-[#0a1128] transition-transform duration-500 hover:scale-[1.01]">
-            <LiteYouTube videoId="CG0Tm0oQ5Tg" title="Video Institucional La Plata Rugby Club" />
-          </div>
         </div>
       </section>
     </>

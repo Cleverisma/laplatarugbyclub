@@ -17,6 +17,7 @@ import juego1Img from '~/media/juego-1.jpeg';
 import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
 import { VerticalVideo } from '~/components/home/vertical-video/vertical-video';
+import { PromoVideo } from '~/components/home/promo-video/promo-video';
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -101,6 +102,8 @@ export default component$(() => {
         lastMatch={matchesData.value.lastMatch}
         nextMatch={matchesData.value.nextMatch}
       />
+
+      <PromoVideo />
 
       <LatestEvents events={eventsData.value} />
 
