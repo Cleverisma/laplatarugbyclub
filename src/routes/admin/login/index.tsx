@@ -11,9 +11,10 @@ export const useLoginAction = routeAction$(
 
     // Set secure session cookie
     requestEvent.cookie.set('lprc_admin_auth', 'authenticated', {
+      path: '/',
+      secure: true,
       httpOnly: true,
       sameSite: 'lax',
-      path: '/',
       maxAge: 60 * 60 * 24, // 24 hours
     });
 

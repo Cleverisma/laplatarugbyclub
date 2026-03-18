@@ -6,9 +6,9 @@ export const onRequest: RequestHandler = (requestEvent) => {
   // Prevent caching of any admin route!
   // If Vercel caches a 302 redirect to /admin/login, authenticated users will also get redirected.
   requestEvent.cacheControl({
+    noCache: true,
+    private: true,
     staleWhileRevalidate: 0,
-    maxAge: 0,
-    noStore: true,
   });
 
   const session = requestEvent.cookie.get('lprc_admin_auth') || requestEvent.cookie.get('admin_session');
