@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 
 export const Contact = component$(() => {
   return (
-    <section id="contacto" class="w-full bg-blue-950 pt-24 pb-16 relative overflow-hidden">
+    <section id="contacto" class="w-full bg-blue-950 pt-24 pb-0 relative overflow-hidden">
       {/* Decorative Accents */}
       <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
       

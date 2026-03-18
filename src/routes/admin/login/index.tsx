@@ -12,7 +12,7 @@ export const useLoginAction = routeAction$(
     // Set secure session cookie
     requestEvent.cookie.set('admin_session', 'authenticated', {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/',
       maxAge: 60 * 60 * 24, // 24 hours
       secure: true,

@@ -151,7 +151,7 @@ export default component$(() => {
                 value={String(div.id)}
                 selected={div.id === member.divisionId}
               >
-                {div.name} ({div.groupType})
+                {`${div.name} (${div.groupType})`}
               </option>
             ))}
           </select>

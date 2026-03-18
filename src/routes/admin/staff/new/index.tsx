@@ -79,7 +79,7 @@ export default component$(() => {
             <option value="">— Seleccioná una división —</option>
             {divisions.value.map((div) => (
               <option key={div.id} value={String(div.id)}>
-                {div.name} ({div.groupType})
+                {`${div.name} (${div.groupType})`}
               </option>
             ))}
           </select>
@@ -98,7 +98,7 @@ export default component$(() => {
             name="fullName"
             type="text"
             required
-            value={action.value?.formData?.get('fullName') as string ?? ''}
+            value={action.formData?.get('fullName') as string ?? ''}
             placeholder="Ej: Juan Pérez"
             class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a1128] focus:border-transparent"
           />
@@ -117,7 +117,7 @@ export default component$(() => {
             name="role"
             type="text"
             required
-            value={action.value?.formData?.get('role') as string ?? ''}
+            value={action.formData?.get('role') as string ?? ''}
             placeholder="Ej: Entrenador Principal"
             class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a1128] focus:border-transparent"
           />
@@ -137,7 +137,7 @@ export default component$(() => {
             type="number"
             min="1"
             required
-            value={action.value?.formData?.get('displayOrder') as string ?? '1'}
+            value={action.formData?.get('displayOrder') as string ?? '1'}
             class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a1128] focus:border-transparent"
           />
           <p class="text-xs text-gray-400 mt-1">Números más bajos aparecen primero (1 = primero).</p>
