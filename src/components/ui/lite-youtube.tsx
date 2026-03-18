@@ -19,6 +19,8 @@ export const LiteYouTube = component$<LiteYouTubeProps>(({ videoId, title = 'You
             src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
             alt={title}
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={1280}
+            height={720}
             loading="lazy"
           />
           {/* Play Button Overlay */}
@@ -32,8 +34,8 @@ export const LiteYouTube = component$<LiteYouTubeProps>(({ videoId, title = 'You
               viewBox="0 0 100 100"
               class="drop-shadow-2xl"
             >
-              <circle cx="50" cy="50" r="48" fill="#0047AB" />
-              <polygon points="40,30 70,50 40,70" fill="white" />
+              <circle cx="50" cy="50" r="48" fill="#FFD700" />
+              <polygon points="42,30 72,50 42,70" fill="#0a1128" />
             </svg>
           </div>
         </>

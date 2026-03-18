@@ -29,7 +29,7 @@ export const Navbar = component$(() => {
             alt="La Plata Rugby Club"
             width="150"
             height="150"
-            class={`transition-all duration-300 ${isScrolled.value ? 'h-20 md:h-24 w-auto scale-90' : 'h-32 md:h-48 w-auto drop-shadow-2xl scale-100'}`}
+            class={`transition-all duration-300 ${isScrolled.value ? 'h-24 md:h-28 w-auto scale-90' : 'h-40 md:h-56 w-auto drop-shadow-2xl scale-100'}`}
           />
         </a>
 

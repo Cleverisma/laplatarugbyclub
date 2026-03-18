@@ -167,6 +167,20 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
           )}
         </div>
       </div>
+
+      {/* Centered "Ver Fixture" button */}
+      <div class="flex justify-center -mt-5 relative z-10">
+        <a
+          href="/admin/partidos"
+          class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-8 py-3 uppercase tracking-widest text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-lg"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Ver Fixture
+        </a>
+      </div>
     </section>
   );
 });
