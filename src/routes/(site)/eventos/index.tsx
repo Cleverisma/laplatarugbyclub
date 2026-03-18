@@ -31,7 +31,7 @@ export default component$(() => {
         }}
       />
 
-      <div class="container mx-auto px-4 max-w-6xl relative z-10 pt-32 pb-20">
+      <div class="container mx-auto px-4 max-w-6xl relative z-10 pb-20">
         {/* Header */}
         <div class="mb-16">
           <div class="flex items-center gap-4 mb-4">

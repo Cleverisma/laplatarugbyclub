@@ -29,7 +29,7 @@ export default component$(() => {
   }, [] as { role: string, people: typeof boardMembersData.value }[]);
 
   return (
-    <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 pt-24 md:pt-32 bg-[#0a1128]">
+    <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
       {/* Hero Header */}
       <section 
         class="relative w-full bg-[#0a1128] py-16 md:py-24 px-4 flex flex-col items-center justify-center z-10"

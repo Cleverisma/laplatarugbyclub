@@ -1,4 +1,5 @@
 import { component$, useSignal, useOnWindow, $ } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
 import lprcLogo from '~/media/lprc.svg';
 import { Button } from '~/components/ui/button/button';
 import { NavLink } from '~/components/ui/nav-link';
@@ -6,6 +7,8 @@ import { NavLink } from '~/components/ui/nav-link';
 export const Navbar = component$(() => {
   const isScrolled = useSignal(false);
   const isMobileMenuOpen = useSignal(false);
+  const loc = useLocation();
+  const isHome = loc.url.pathname === '/';
 
   useOnWindow(
     'scroll',
@@ -14,9 +17,12 @@ export const Navbar = component$(() => {
     })
   );
 
+  // On inner pages the navbar is always solid & compact (no scroll effect).
+  const solid = !isHome || isScrolled.value;
+
   return (
     <nav
-      class={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled.value
+      class={`fixed top-0 w-full z-50 transition-all duration-300 ${solid
         ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
         : 'bg-gradient-to-b from-black/50 to-transparent py-8'
         }`}
@@ -29,7 +35,7 @@ export const Navbar = component$(() => {
             alt="La Plata Rugby Club"
             width="150"
             height="150"
-            class={`transition-all duration-300 ${isScrolled.value ? 'h-28 md:h-32 w-auto scale-90' : 'h-52 md:h-72 w-auto drop-shadow-2xl scale-100'}`}
+            class={`transition-all duration-300 ${solid ? 'h-28 md:h-32 w-auto scale-90' : 'h-52 md:h-72 w-auto drop-shadow-2xl scale-100'}`}
           />
         </a>
 

@@ -44,7 +44,7 @@ export default component$(() => {
         }}
       />
 
-      <div class="container mx-auto px-4 max-w-4xl relative z-10 pt-32 pb-20">
+      <div class="container mx-auto px-4 max-w-4xl relative z-10 pb-20">
         {/* Back link */}
         <Link
           href="/eventos"

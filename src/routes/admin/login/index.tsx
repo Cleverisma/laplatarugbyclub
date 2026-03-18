@@ -9,13 +9,12 @@ export const useLoginAction = routeAction$(
       return requestEvent.fail(401, { error: 'Contraseña incorrecta. Intentá de nuevo.' });
     }
 
-    // Set secure session cookie
-    requestEvent.cookie.set('lprc_admin_auth', 'authenticated', {
-      path: '/',
-      secure: true,
+    requestEvent.cookie.set("lprc_admin_auth", "authenticated", {
       httpOnly: true,
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24, // 24 hours
+      secure: true,
+      path: "/",
+      maxAge: 60 * 60 * 24, // 1 día
+      sameSite: "lax",
     });
 
     throw requestEvent.redirect(302, '/admin/');
