@@ -1,12 +1,14 @@
 import { component$ } from '@builder.io/qwik';
-import { type DocumentHead, Link } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, Link, routeLoader$ } from '@builder.io/qwik-city';
 import { getEventById } from '~/data/events-data';
 
-export const useEventLoader = routeLoader$((requestEvent) => {
-  const id = requestEvent.params.id;
-  const event = getEventById(id);
+export const useEventLoader = routeLoader$(async (requestEvent) => {
+  const id = Number(requestEvent.params.id);
+  if (!id || isNaN(id)) {
+    throw requestEvent.redirect(302, '/eventos');
+  }
 
+  const event = await getEventById(requestEvent.env, id);
   if (!event) {
     throw requestEvent.redirect(302, '/eventos');
   }

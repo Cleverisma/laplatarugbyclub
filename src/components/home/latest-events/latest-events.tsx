@@ -1,8 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import { Button } from '~/components/ui/button/button';
-import { EVENTS, type EventData } from '~/data/events-data';
+import type { EventData } from '~/data/events-data';
 
-export const EventCard = component$<EventData>(({ id, title, datetime, description, imageUrl }) => {
+export const EventCard = component$<{ event: EventData }>(({ event }) => {
+  const { id, title, datetime, description, imageUrl } = event;
   return (
     <a href={`/eventos/${id}`} class="block h-full">
       <article class="bg-black/60 border border-gray-800 backdrop-blur-md flex flex-col h-full group overflow-hidden relative transition-all duration-300 hover:border-yellow-400/50">
@@ -72,7 +73,7 @@ export const EventCard = component$<EventData>(({ id, title, datetime, descripti
   );
 });
 
-export const LatestEvents = component$(() => {
+export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => {
   return (
     <section class="py-28 relative" style={{ background: 'linear-gradient(135deg, #0a1128 0%, #001f54 50%, #000000 100%)' }}>
       {/* Diagonal top edge */}
@@ -124,11 +125,17 @@ export const LatestEvents = component$(() => {
           </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {EVENTS.map((event) => (
-            <EventCard key={event.id} {...event} />
-          ))}
-        </div>
+        {events.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {events.slice(0, 3).map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-16">
+            <p class="text-gray-500 text-lg">No hay eventos programados por el momento.</p>
+          </div>
+        )}
 
         <div class="mt-10 text-center md:hidden">
           <a href="/eventos">

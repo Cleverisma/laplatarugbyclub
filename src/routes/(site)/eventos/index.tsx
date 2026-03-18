@@ -1,7 +1,11 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { EventCard } from '~/components/home/latest-events/latest-events';
-import { EVENTS } from '~/data/events-data';
+import { getEvents } from '~/data/events-data';
+
+export const useEventsLoader = routeLoader$(async (requestEvent) => {
+  return getEvents(requestEvent.env);
+});
 
 export const head: DocumentHead = {
   title: 'Calendario de Eventos | La Plata Rugby Club',
@@ -14,6 +18,8 @@ export const head: DocumentHead = {
 };
 
 export default component$(() => {
+  const eventsData = useEventsLoader();
+
   return (
     <main class="min-h-screen relative" style={{ background: 'linear-gradient(135deg, #0a1128 0%, #001f54 50%, #000000 100%)' }}>
       {/* Subtle grid texture */}
@@ -50,14 +56,13 @@ export default component$(() => {
         </div>
 
         {/* Events Grid */}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {EVENTS.map((event) => (
-            <EventCard key={event.id} {...event} />
-          ))}
-        </div>
-
-        {/* Empty state (for when there are no events) */}
-        {EVENTS.length === 0 && (
+        {eventsData.value.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {eventsData.value.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
           <div class="text-center py-20">
             <p class="text-gray-500 text-lg">No hay eventos programados por el momento.</p>
           </div>

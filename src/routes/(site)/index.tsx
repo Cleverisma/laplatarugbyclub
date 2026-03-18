@@ -14,8 +14,8 @@ import {
   type InstagramPostProps,
 } from '~/components/home/social-feed/social-feed';
 import juego1Img from '~/media/juego-1.jpeg';
-
 import { Contact } from '~/components/home/contact/contact';
+import { getEvents } from '~/data/events-data';
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -84,9 +84,14 @@ export const useInstagramFeed = routeLoader$(async () => {
   }
 });
 
+export const useEventsLoader = routeLoader$(async (requestEvent) => {
+  return getEvents(requestEvent.env);
+});
+
 export default component$(() => {
   const matchesData = useMatchesLoader();
   const instagramFeed = useInstagramFeed();
+  const eventsData = useEventsLoader();
 
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950">
@@ -96,7 +101,7 @@ export default component$(() => {
         nextMatch={matchesData.value.nextMatch}
       />
 
-      <LatestEvents />
+      <LatestEvents events={eventsData.value} />
 
       {/* Transition Banner to El Club */}
       <section

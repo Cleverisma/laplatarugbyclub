@@ -35,6 +35,15 @@ export const staffMembers = sqliteTable('staff_members', {
   displayOrder: integer('display_order').notNull(),
 });
 
+export const events = sqliteTable('events', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  title: text('title').notNull(),
+  datetime: text('datetime').notNull(),
+  description: text('description').notNull(),
+  imageUrl: text('image_url'),
+  displayOrder: integer('display_order').notNull().default(0),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));
