@@ -74,29 +74,33 @@ export const HeroSlider = component$(() => {
                 class={`absolute inset-0 w-full h-full object-cover ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
               />
               {/* Dark overlay for text legibility */}
-              <div class="absolute inset-0 bg-black/50" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/90 via-black/60 to-transparent" />
             </div>
           );
         })}
 
         {/* ── Centred hero text ── */}
-        <div class="relative z-10 flex flex-col items-center justify-center px-6 text-center">
+        <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-[50vh] min-h-[300px]">
           {slides.map((slide, index) => {
             const isActive = currentSlide.value === index;
             return (
-              <h1
+              <div
                 key={`text-${index}`}
-                class="absolute text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-tight transition-all duration-700"
+                class="absolute flex flex-col items-center transition-all duration-700 ease-out w-full"
                 style={{
-                  fontFamily: "'Oswald', sans-serif",
-                  textShadow: '0 4px 20px rgba(0,0,0,0.6)',
                   opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'translateY(0)' : 'translateY(20px)',
+                  transform: isActive ? 'translateY(0)' : 'translateY(30px) scale(0.98)',
                   pointerEvents: isActive ? 'auto' : 'none',
                 }}
               >
-                {slide.text}
-              </h1>
+                <h1
+                  class="text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white leading-[0.9] tracking-tighter text-center max-w-5xl mx-auto drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]"
+                  style={{ fontFamily: "'Oswald', sans-serif" }}
+                >
+                  {slide.text}
+                </h1>
+                <div class="w-24 md:w-32 h-2 md:h-3 bg-yellow-400 mx-auto mt-6 md:mt-8 shadow-[0_5px_15px_rgba(255,215,0,0.3)]"></div>
+              </div>
             );
           })}
         </div>
