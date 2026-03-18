@@ -22,8 +22,8 @@ export const Navbar = component$(() => {
 
   return (
     <nav
-      class={`fixed top-0 w-full z-50 transition-all duration-300 ${solid
-        ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
+      class={`fixed top-0 w-full z-50 transition-all duration-300 border-b-0 ${solid
+        ? 'bg-[#0a1128]/97 backdrop-blur-md shadow-none md:shadow-[0_2px_0_0_rgba(255,215,0,0.15)] py-4'
         : 'bg-gradient-to-b from-black/50 to-transparent py-8'
         }`}
     >

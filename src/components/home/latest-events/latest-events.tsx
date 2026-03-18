@@ -97,9 +97,9 @@ export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => 
       />
 
       <div class="container mx-auto px-4 max-w-6xl relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-          <div>
-            <div class="flex items-center gap-4 mb-4">
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16">
+          <div class="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto">
+            <div class="flex items-center gap-4 mb-4 justify-center md:justify-start w-full">
               <div class="h-px w-12 bg-yellow-400" />
               <span
                 class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs"
@@ -107,6 +107,7 @@ export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => 
               >
                 Calendario
               </span>
+              <div class="h-px w-12 bg-yellow-400 md:hidden" />
             </div>
             <h2
               class="text-5xl md:text-6xl font-black text-white leading-none"
