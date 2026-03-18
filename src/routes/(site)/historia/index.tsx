@@ -1,5 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import img7 from '~/media/7.jpeg';
+import img10 from '~/media/10.jpeg';
+import img11 from '~/media/11.jpeg';
+import img14 from '~/media/14.jpeg';
 
 export const head: DocumentHead = {
   title: 'Historia, Valores y Pasión desde 1934 | La Plata Rugby Club',
@@ -104,6 +108,15 @@ export default component$(() => {
               Pero La Plata Rugby Club es mucho más que un equipo de rugby. Es un espacio de encuentro para familias, un lugar donde se forjan amistades para toda la vida, y una comunidad que trabaja permanentemente para ofrecer lo mejor a sus socios. El tercer tiempo, tan emblemático del rugby, encuentra en nuestro club uno de sus mejores exponentes: un momento para compartir, celebrar y fortalecer los lazos que nos unen.
             </p>
           </article>
+
+          {/* History Gallery */}
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img src={img7} alt="Historia LPRC 1" width={800} height={600} class="w-full h-64 md:h-80 object-cover rounded-2xl border border-white/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+            <img src={img10} alt="Historia LPRC 2" width={800} height={600} class="w-full h-64 md:h-80 object-cover rounded-2xl border border-white/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+            <img src={img11} alt="Historia LPRC 3" width={800} height={600} class="w-full h-64 md:h-80 object-cover rounded-2xl border border-white/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+            <img src={img14} alt="Historia LPRC 4" width={800} height={600} class="w-full h-64 md:h-80 object-cover rounded-2xl border border-white/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+          </div>
+
         </div>
       </section>
 

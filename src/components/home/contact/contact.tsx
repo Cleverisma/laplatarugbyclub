@@ -1,8 +1,15 @@
 import { component$ } from '@builder.io/qwik';
+import bgImage from '~/media/3.jpeg';
 
 export const Contact = component$(() => {
   return (
-    <section id="contacto" class="w-full bg-blue-950 pt-24 pb-12 relative overflow-hidden">
+    <section
+      id="contacto"
+      class="w-full pt-24 pb-12 relative overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(23, 37, 84, 0.93), rgba(10, 17, 40, 0.95)), url(${bgImage})`,
+      }}
+    >
       {/* Decorative Accents */}
       <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
       

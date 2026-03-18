@@ -5,10 +5,16 @@ import sponsorMacro from '~/media/sponsors/macro.svg?url';
 import sponsorPlusmar from '~/media/sponsors/plusmar.png?url';
 import sponsorStella from '~/media/sponsors/stella.svg?url';
 import sponsorAon from '~/media/sponsors/aon.svg?url';
+import bgImage from '~/media/8.jpeg';
 
 export const Sponsors = component$(() => {
   return (
-    <section class="w-full bg-[#FFD700] py-14 relative z-20">
+    <section
+      class="w-full py-14 relative z-20 bg-cover bg-center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(255, 215, 0, 0.92), rgba(255, 215, 0, 0.95)), url(${bgImage})`,
+      }}
+    >
       <div class="container mx-auto px-4 max-w-7xl">
         <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 lg:gap-28">
           <a href="#" class="group" aria-label="Sponsor Banco Macro">

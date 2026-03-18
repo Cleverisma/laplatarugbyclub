@@ -16,7 +16,7 @@ import {
 import juego1Img from '~/media/juego-1.jpeg';
 import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
-import { PromoActivities } from '~/components/home/promo-activities/promo-activities';
+import { VerticalVideo } from '~/components/home/vertical-video/vertical-video';
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -135,8 +135,6 @@ export default component$(() => {
         </div>
       </section>
 
-      <PromoActivities />
-
       <SocialFeed posts={instagramFeed.value} />
 
       {/* Transition Banner to Autoridades */}
@@ -160,6 +158,8 @@ export default component$(() => {
           </Button>
         </a>
       </section>
+
+      <VerticalVideo />
 
       <Contact />
     </main>

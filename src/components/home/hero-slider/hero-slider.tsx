@@ -52,7 +52,7 @@ export const HeroSlider = component$(() => {
       `}</style>
 
       <section class="relative w-full overflow-hidden flex flex-col items-center justify-center"
-        style={{ minHeight: '110svh', paddingTop: '6rem', paddingBottom: '9rem' }}
+        style={{ minHeight: '110svh', paddingTop: '12rem', paddingBottom: '9rem' }}
       >
         {/* ── Background Slides ── */}
         {slides.map((slide, index) => {
