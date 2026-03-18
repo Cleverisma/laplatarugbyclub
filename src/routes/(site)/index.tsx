@@ -41,7 +41,7 @@ export const useMatchesLoader = routeLoader$(async (requestEvent) => {
 
 export const useInstagramFeed = routeLoader$(async () => {
   try {
-    const res = await fetch('https://v2.behold.so/TU_ID_DE_BEHOLD', {
+    const res = await fetch('https://feeds.behold.so/DPNOhrNZKVOOvpy5y2OS', {
       headers: {
         Accept: 'application/json',
       },
@@ -54,19 +54,28 @@ export const useInstagramFeed = routeLoader$(async () => {
     const data = (await res.json()) as {
       posts?: Array<{
         id: string;
-        media_url?: string;
+        mediaUrl?: string;
         permalink?: string;
         caption?: string;
+        mediaType?: string;
+        thumbnailUrl?: string;
       }>;
     };
 
     const mappedPosts: Array<InstagramPostProps | null> =
       data.posts?.map((item): InstagramPostProps | null => {
-        if (!item.id || !item.media_url || !item.permalink) return null;
+        if (!item.id || !item.permalink) return null;
+
+        const imageUrl =
+          item.mediaType === 'VIDEO' && item.thumbnailUrl
+            ? item.thumbnailUrl
+            : item.mediaUrl;
+
+        if (!imageUrl) return null;
 
         return {
           id: item.id,
-          imageUrl: item.media_url,
+          imageUrl,
           link: item.permalink,
           caption: item.caption,
         };
