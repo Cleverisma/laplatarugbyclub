@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useSignal } from '@builder.io/qwik';
 import { Form, Link, routeAction$, routeLoader$, z, zod$, type DocumentHead } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
 import { staffMembers } from '~/db/schema';
@@ -37,7 +37,14 @@ export default component$(() => {
   const deleteAction = useDeleteStaffAction();
   const divisions = divisionsLoader.value;
 
-  const totalMembers = divisions.reduce(
+  const filterCategory = useSignal('Todos');
+  const categories = ['Todos', 'Plantel Superior', 'Juvenil', 'Infantil', 'Escuelita'];
+
+  const filteredDivisions = filterCategory.value === 'Todos'
+    ? divisions
+    : divisions.filter((d) => d.groupType === filterCategory.value);
+
+  const totalMembers = filteredDivisions.reduce(
     (sum, div) => sum + div.staffMembers.length,
     0,
   );
@@ -54,7 +61,7 @@ export default component$(() => {
             Staff de entrenadores
           </h1>
           <p class="text-sm text-gray-500 mt-1">
-            {totalMembers} miembros en {divisions.length} divisiones
+            {totalMembers} miembros en {filteredDivisions.length} divisiones
           </p>
         </div>
         <Link
@@ -68,11 +75,28 @@ export default component$(() => {
         </Link>
       </div>
 
+      {/* Category Filter */}
+      <div class="flex flex-wrap gap-2 mb-8">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick$={() => (filterCategory.value = cat)}
+            class={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${
+              filterCategory.value === cat
+                ? 'bg-[#0a1128] text-white border-[#0a1128]'
+                : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {/* No data */}
-      {divisions.length === 0 && (
+      {filteredDivisions.length === 0 && (
         <div class="bg-white rounded-xl border border-gray-200 p-16 text-center">
           <p class="text-4xl mb-3">👥</p>
-          <p class="text-gray-500 font-medium">No hay divisiones registradas aún.</p>
+          <p class="text-gray-500 font-medium">No hay divisiones registradas aún {filterCategory.value !== 'Todos' && `para ${filterCategory.value}`}.</p>
           <Link href="/admin/staff/new" class="inline-block mt-4 text-sm text-yellow-600 font-semibold hover:underline">
             + Agregar primer miembro
           </Link>
@@ -81,7 +105,7 @@ export default component$(() => {
 
       {/* Divisions + Members tables */}
       <div class="space-y-8">
-        {divisions.map((division) => (
+        {filteredDivisions.map((division) => (
           <div key={division.id} class="bg-white rounded-xl border border-gray-200 overflow-hidden">
             {/* Division header */}
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50">

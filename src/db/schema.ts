@@ -23,7 +23,8 @@ export const boardMembers = sqliteTable('board_members', {
 export const divisions = sqliteTable('divisions', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
-  groupType: text('group_type').notNull(),
+  groupType: text('group_type').notNull(), // 'Plantel Superior', 'Juvenil', 'Infantil', 'Escuelita'
+  sectionType: text('section_type').notNull().default('equipo'), // 'subcomision', 'coaching', 'equipo'
   displayOrder: integer('display_order').notNull(),
 });
 
