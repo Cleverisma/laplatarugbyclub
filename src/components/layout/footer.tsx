@@ -59,7 +59,7 @@ export const Footer = component$(() => {
 
           {/* Redes Sociales y Contactos */}
           <div>
-            <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Conectate</h3>
+            <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Contactanos</h3>
             <div class="space-y-6">
               <a href="https://wa.me/5492216796537" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-gray-400 hover:text-green-400 transition-colors bg-black/40 p-4 border border-gray-800 hover:border-green-500/30 w-fit">
                 <div class="bg-gray-800 p-3 group-hover:bg-green-500 text-white transition-colors">

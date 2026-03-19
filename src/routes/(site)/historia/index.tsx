@@ -231,7 +231,7 @@ export default component$(() => {
             class="inline-flex items-center gap-3 bg-yellow-400 text-[#0a1128] px-10 py-4 font-black uppercase tracking-widest text-base hover:bg-white transition-all duration-300 shadow-lg"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            Hacete socio
+            SUMATE
           </a>
         </div>
       </section>

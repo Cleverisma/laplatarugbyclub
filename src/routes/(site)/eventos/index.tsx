@@ -9,7 +9,7 @@ export const useEventsLoader = routeLoader$(async (requestEvent) => {
 });
 
 export const head: DocumentHead = {
-  title: 'Calendario de Eventos | La Plata Rugby Club',
+  title: 'Agenda | La Plata Rugby Club',
   meta: [
     {
       name: 'description',
@@ -22,8 +22,8 @@ export default component$(() => {
   const eventsData = useEventsLoader();
 
   return (
-    <main 
-      class="min-h-screen relative bg-cover bg-center" 
+    <main
+      class="min-h-screen relative bg-cover bg-center"
       style={{ backgroundImage: `linear-gradient(135deg, rgba(10, 17, 40, 0.92), rgba(0, 31, 84, 0.98)), url(${bgImage})` }}
     >
       {/* Subtle grid texture */}
@@ -51,8 +51,7 @@ export default component$(() => {
             class="text-5xl md:text-7xl font-black text-white leading-none mb-4"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            CALENDARIO DE<br />
-            <span class="text-yellow-400">EVENTOS</span>
+            <span class="text-yellow-400">AGENDA</span>
           </h1>
           <p class="text-gray-400 text-lg max-w-xl" style={{ fontFamily: "'Inter', sans-serif" }}>
             Todas las actividades, encuentros y eventos que se vienen en La Plata Rugby Club.

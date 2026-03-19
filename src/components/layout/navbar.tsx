@@ -27,7 +27,7 @@ export const Navbar = component$(() => {
         }`}
     >
       <div class="container mx-auto px-10 xl:px-14 max-w-[1800px] relative flex items-center justify-center">
-        
+
         {/* Mobile Menu Toggle (Visible up to LG) */}
         <button
           class="lg:hidden text-white p-5 focus:outline-none transition-transform hover:scale-110 active:scale-95"
@@ -55,7 +55,7 @@ export const Navbar = component$(() => {
                 href={href}
                 activeClass="!text-yellow-400 active-link-desktop"
                 class="text-gray-100 hover:text-yellow-400 transition-colors uppercase tracking-[0.3em] xl:tracking-[0.4em] font-black relative group whitespace-nowrap"
-                style={{ 
+                style={{
                   fontFamily: "'Oswald', sans-serif",
                   fontSize: 'clamp(14px, 1.1vw, 20px)'
                 }}
@@ -65,7 +65,7 @@ export const Navbar = component$(() => {
               </NavLink>
             );
           })}
-          
+
           {/* Socio Button in Desktop Nav */}
           <a
             href="https://api.whatsapp.com/send?phone=5492216796537&text=Hola%20vengo%20desde%20el%20sitio%20web%20de%20www.laplatarugbyclub.com.ar%20y%20estoy%20interesado%20en%20hacerme%20socio."
@@ -77,13 +77,13 @@ export const Navbar = component$(() => {
               look="primary"
               size="lg"
               class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap"
-              style={{ 
+              style={{
                 fontFamily: "'Oswald', sans-serif",
                 fontSize: 'clamp(14px, 1vw, 18px)',
                 padding: 'clamp(0.8rem, 1.2vw, 1.6rem) clamp(1.5rem, 2.5vw, 3.5rem)'
               }}
             >
-              HACETE SOCIO
+              SUMATE
             </Button>
           </a>
         </div>
@@ -91,9 +91,8 @@ export const Navbar = component$(() => {
 
       {/* Mobile Navigation Dropdown */}
       <div
-        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-2xl shadow-2xl transition-all duration-500 origin-top overflow-hidden border-t border-yellow-400/10 ${
-          isMobileMenuOpen.value ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
-        }`}
+        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-2xl shadow-2xl transition-all duration-500 origin-top overflow-hidden border-t border-yellow-400/10 ${isMobileMenuOpen.value ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+          }`}
       >
         <div class="flex flex-col p-10 gap-8 items-center text-center">
           {['/', '/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
@@ -124,10 +123,10 @@ export const Navbar = component$(() => {
               class="rounded-none w-full bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-xl transition-all duration-300 py-6"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              HACETE SOCIO
+              SUMATE
             </Button>
           </a>
-          
+
           <p class="text-[10px] text-gray-500 tracking-[0.5em] font-bold mt-12 uppercase">
             La Plata Rugby Club
           </p>
