@@ -22,43 +22,38 @@ export default component$(() => {
   const eventsData = useEventsLoader();
 
   return (
-    <main
-      class="min-h-screen relative bg-cover bg-center"
-      style={{ backgroundImage: `linear-gradient(135deg, rgba(10, 17, 40, 0.92), rgba(0, 31, 84, 0.98)), url(${bgImage})` }}
-    >
-      {/* Subtle grid texture */}
-      <div
-        class="absolute inset-0 pointer-events-none opacity-5"
+    <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
+      {/* Hero Header */}
+      <section 
+        class="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center z-10 bg-cover bg-center"
         style={{
-          backgroundImage: 'linear-gradient(rgba(255,215,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.3) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
+          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+          marginBottom: '-4vw',
+          backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
         }}
-      />
+      >
+        <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block" style={{ fontFamily: "'Oswald', sans-serif" }}>
+          Actividades
+        </span>
+        <h1 
+          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter text-center leading-none"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          AGENDA
+        </h1>
+        <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
+      </section>
 
-      <div class="container mx-auto px-4 max-w-6xl relative z-10 pt-44 pb-20">
-        {/* Header */}
-        <div class="mb-16">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="h-px w-12 bg-yellow-400" />
-            <span
-              class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Actividades
-            </span>
-          </div>
-          <h1
-            class="text-5xl md:text-7xl font-black text-white leading-none mb-4"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            <span class="text-yellow-400">AGENDA</span>
-          </h1>
-          <p class="text-gray-400 text-lg max-w-xl" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <section
+        class="pb-24 pt-24 md:pt-32 relative border-t border-gray-900 flex-1"
+        style={{ background: 'linear-gradient(180deg, #000000 0%, #0a1128 100%)' }}
+      >
+        <div class="container mx-auto px-4 max-w-6xl relative z-30">
+          <p class="text-gray-400 text-lg max-w-xl mx-auto text-center mb-16" style={{ fontFamily: "'Inter', sans-serif" }}>
             Todas las actividades, encuentros y eventos que se vienen en La Plata Rugby Club.
           </p>
-        </div>
 
-        {/* Events Grid */}
+          {/* Events Grid */}
         {eventsData.value.length > 0 ? (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {eventsData.value.map((event) => (
@@ -70,7 +65,8 @@ export default component$(() => {
             <p class="text-gray-500 text-lg">No hay eventos programados por el momento.</p>
           </div>
         )}
-      </div>
+        </div>
+      </section>
     </main>
   );
 });

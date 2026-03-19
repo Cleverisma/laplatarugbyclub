@@ -33,29 +33,32 @@ export default component$(() => {
   const activeSubcategory = useSignal('Todas');
 
   return (
-    <div 
-      class="relative min-h-screen pt-48 md:pt-52 pb-24 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.90), rgba(10, 17, 40, 0.95)), url(${bgImage})` }}
-    >
-      {/* Background Overlay */}
-      <div class="fixed inset-0 z-0">
-        <div class="absolute inset-0 bg-black/60 z-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0a1128]/80 via-black/50 to-[#0a1128]/90 z-20"></div>
-      </div>
+    <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
+      {/* Hero Header */}
+      <section 
+        class="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center z-10 bg-cover bg-center"
+        style={{
+          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+          marginBottom: '-4vw',
+          backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
+        }}
+      >
+        <h1 
+          class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter text-center leading-none"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          STAFF DE ENTRENADORES
+        </h1>
+        <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
+      </section>
 
-      <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-6xl relative z-30">
-        <div class="text-center mb-12">
-          <h1
-            class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            Staff de entrenadores
-          </h1>
-          <div class="w-24 h-1 bg-yellow-400 mx-auto mt-6"></div>
-        </div>
-
-        {/* Category Chips */}
-        <div class="flex flex-wrap justify-center gap-4 mb-16">
+      <section
+        class="pb-24 pt-24 md:pt-32 relative border-t border-gray-900 flex-1"
+        style={{ background: 'linear-gradient(180deg, #000000 0%, #0a1128 100%)' }}
+      >
+        <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-6xl relative z-30">
+          {/* Category Chips */}
+          <div class="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category) => (
             <button
               key={category}
@@ -154,7 +157,8 @@ export default component$(() => {
             </div>
           )}
         </div>
-      </div>
-    </div>
+        </div>
+      </section>
+    </main>
   );
 });

@@ -76,27 +76,27 @@ export default component$(() => {
             </div>
 
             {groupedMembers.length > 0 ? (
-              <div class="flex flex-col gap-16">
+              <div class="space-y-12">
                 {groupedMembers.map((group) => (
-                  <div key={group.role} class="flex flex-col">
+                  <div key={group.role} class="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 md:p-10 animate-[fadeIn_0.5s_ease-out]">
                     <h3 
-                      class="text-sm text-gray-500 uppercase tracking-wider font-bold border-b border-gray-800 pb-2 mb-6"
+                      class="text-2xl md:text-3xl font-bold text-yellow-500 uppercase tracking-widest mb-8 border-b border-white/10 pb-4"
                       style={{ fontFamily: "'Oswald', sans-serif" }}
                     >
                       {group.role}
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                       {group.people.map((person) => (
                         <div 
                           key={person.id} 
-                          class="bg-black/40 p-4 border-l-2 border-transparent hover:border-[#FFD700] transition-colors rounded-none flex items-center"
+                          class={`p-4 rounded-lg flex flex-col justify-center border-l-4 ${person.displayOrder === 1
+                            ? 'bg-white/10 border-yellow-400'
+                            : 'bg-white/5 border-gray-600'
+                          } transition-all duration-300 hover:bg-white/10`}
                         >
-                          <span 
-                            class="text-xl md:text-2xl font-bold text-white"
-                            style={{ fontFamily: "'Inter', sans-serif" }}
-                          >
+                          <h3 class="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>
                             {person.fullName}
-                          </span>
+                          </h3>
                         </div>
                       ))}
                     </div>
