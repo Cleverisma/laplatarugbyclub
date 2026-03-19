@@ -3,7 +3,9 @@ import { Button } from '~/components/ui/button/button';
 import type { EventData } from '~/data/events-data';
 
 export const EventCard = component$<{ event: EventData }>(({ event }) => {
-  const { id, title, datetime, description, imageUrl } = event;
+  const { id, title, datetime, description, imageUrl, eventDate } = event;
+  const isPast = eventDate ? eventDate < Date.now() : false;
+
   return (
     <a href={`/eventos/${id}`} class="block h-full">
       <article class="bg-black/60 border border-gray-800 backdrop-blur-md flex flex-col h-full group overflow-hidden relative transition-all duration-300 hover:border-yellow-400/50">
@@ -24,12 +26,14 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
             </div>
           )}
           {/* Badge */}
-          <div
-            class="absolute top-4 left-0 bg-yellow-400 text-[#0a1128] text-xs font-black px-4 py-1.5 uppercase tracking-wider shadow-md"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            Próximo
-          </div>
+          {!isPast && (
+            <div
+              class="absolute top-4 left-0 bg-yellow-400 text-[#0a1128] text-xs font-black px-4 py-1.5 uppercase tracking-wider shadow-md"
+              style={{ fontFamily: "'Oswald', sans-serif" }}
+            >
+              PRÓXIMO
+            </div>
+          )}
         </div>
 
         <div class="p-6 flex flex-col flex-grow">

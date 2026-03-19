@@ -19,6 +19,8 @@ export const useCreateEventAction = routeAction$(
       uploadedImageUrl = url;
     }
 
+    const parsedEventDate = data.event_date ? new Date(data.event_date).getTime() : null;
+
     const db = getDb(requestEvent.env);
     await db.insert(events).values({
       title: data.title,
@@ -26,12 +28,14 @@ export const useCreateEventAction = routeAction$(
       description: data.description,
       imageUrl: uploadedImageUrl || (typeof data.imageUrl === 'string' && data.imageUrl.length > 0 ? data.imageUrl : null),
       displayOrder: Number(data.displayOrder) || 0,
+      eventDate: parsedEventDate,
     });
     throw requestEvent.redirect(302, '/admin/eventos');
   },
   zod$({
     title: z.string().min(1, 'El título es obligatorio'),
     datetime: z.string().min(1, 'La fecha/hora es obligatoria'),
+    event_date: z.string().optional(),
     description: z.string().min(1, 'La descripción es obligatoria'),
     imageUrl: z.string().optional(),
     image: z.any().optional(),
@@ -138,7 +142,7 @@ export default component$(() => {
           </div>
 
           <div>
-            <label for="datetime" class="block text-sm font-semibold text-gray-700 mb-2">Fecha / Hora *</label>
+            <label for="datetime" class="block text-sm font-semibold text-gray-700 mb-2">Fecha / Hora (Texto para visualización) *</label>
             <input
               type="text"
               id="datetime"
@@ -147,6 +151,18 @@ export default component$(() => {
               class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition-all"
               placeholder="Ej: Sábado 14 de Marzo, 15:30 hs"
             />
+          </div>
+
+          <div>
+            <label for="event_date" class="block text-sm font-semibold text-gray-700 mb-2">Fecha Exacta (Interna) *</label>
+            <input
+              type="datetime-local"
+              id="event_date"
+              name="event_date"
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition-all"
+            />
+            <p class="text-xs text-gray-400 mt-1">Usada para ordenar y determinar si el evento ya finalizó.</p>
           </div>
 
           <div>

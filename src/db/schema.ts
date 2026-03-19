@@ -42,6 +42,7 @@ export const events = sqliteTable('events', {
   description: text('description').notNull(),
   imageUrl: text('image_url'),
   displayOrder: integer('display_order').notNull().default(0),
+  eventDate: integer('event_date'),
 });
 
 export const divisionsRelations = relations(divisions, ({ many }) => ({

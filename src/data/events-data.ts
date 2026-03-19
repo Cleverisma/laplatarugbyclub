@@ -10,6 +10,7 @@ export interface EventData {
   description: string;
   imageUrl: string | null;
   displayOrder: number;
+  eventDate: number | null;
 }
 
 export async function getEvents(env: EnvGetter): Promise<EventData[]> {

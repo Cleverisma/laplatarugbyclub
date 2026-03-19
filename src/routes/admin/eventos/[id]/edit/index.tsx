@@ -34,12 +34,15 @@ export const useUpdateEventAction = routeAction$(
       uploadedImageUrl = url;
     }
 
+    const parsedEventDate = data.event_date ? new Date(data.event_date).getTime() : null;
+
     await db.update(events).set({
       title: data.title,
       datetime: data.datetime,
       description: data.description,
       imageUrl: uploadedImageUrl,
       displayOrder: Number(data.displayOrder) || 0,
+      eventDate: parsedEventDate,
     }).where(eq(events.id, id));
 
     throw requestEvent.redirect(302, '/admin/eventos');
@@ -47,6 +50,7 @@ export const useUpdateEventAction = routeAction$(
   zod$({
     title: z.string().min(1, 'El título es obligatorio'),
     datetime: z.string().min(1, 'La fecha/hora es obligatoria'),
+    event_date: z.string().optional(),
     description: z.string().min(1, 'La descripción es obligatoria'),
     imageUrl: z.string().optional(),
     image: z.any().optional(),
@@ -64,6 +68,14 @@ export default component$(() => {
   const event = eventData.value;
   const descriptionSig = useSignal(event.description);
   const isCompressing = useSignal(false);
+
+  let defaultEventDate = '';
+  if (event.eventDate) {
+    const d = new Date(event.eventDate);
+    const tzOffset = d.getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(d.getTime() - tzOffset)).toISOString().slice(0, 16);
+    defaultEventDate = localISOTime;
+  }
 
   const handleSubmit = $(async (e: Event, currentTarget: HTMLFormElement) => {
     if (isCompressing.value || updateAction.isRunning) return;
@@ -154,7 +166,7 @@ export default component$(() => {
           </div>
 
           <div>
-            <label for="datetime" class="block text-sm font-semibold text-gray-700 mb-2">Fecha / Hora *</label>
+            <label for="datetime" class="block text-sm font-semibold text-gray-700 mb-2">Fecha / Hora (Texto para visualización) *</label>
             <input
               type="text"
               id="datetime"
@@ -163,6 +175,19 @@ export default component$(() => {
               value={event.datetime}
               class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition-all"
             />
+          </div>
+
+          <div>
+            <label for="event_date" class="block text-sm font-semibold text-gray-700 mb-2">Fecha Exacta (Interna) *</label>
+            <input
+              type="datetime-local"
+              id="event_date"
+              name="event_date"
+              required
+              value={defaultEventDate}
+              class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition-all"
+            />
+            <p class="text-xs text-gray-400 mt-1">Usada para ordenar y determinar si el evento ya finalizó.</p>
           </div>
 
           <div>
