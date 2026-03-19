@@ -94,7 +94,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                 ) : (
                   <img src={`/clubes/${lastMatch.homeTeam}.png`} alt={lastMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
                 )}
-                <span class="text-xs md:text-sm text-gray-400 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <span class="text-base md:text-xl text-gray-400 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {lastMatch.homeTeam}
                 </span>
               </div>
@@ -113,7 +113,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                 ) : (
                   <img src={`/clubes/${lastMatch.awayTeam}.png`} alt={lastMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
                 )}
-                <span class="text-xs md:text-sm text-gray-400 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <span class="text-base md:text-xl text-gray-400 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {lastMatch.awayTeam}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                   ) : (
                     <img src={`/clubes/${nextMatch.homeTeam}.png`} alt={nextMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
                   )}
-                  <span class="text-xs md:text-sm text-[#0a1128]/70 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <span class="text-base md:text-xl text-[#0a1128]/80 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {nextMatch.homeTeam}
                   </span>
                 </div>
@@ -158,7 +158,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                   ) : (
                     <img src={`/clubes/${nextMatch.awayTeam}.png`} alt={nextMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
                   )}
-                  <span class="text-xs md:text-sm text-[#0a1128]/70 font-medium uppercase text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <span class="text-base md:text-xl text-[#0a1128]/80 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {nextMatch.awayTeam}
                   </span>
                 </div>
@@ -184,11 +184,10 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
         </div>
       </div>
 
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex justify-center items-center gap-4 md:gap-6 z-40 w-full px-4">
-        <img src={UrbaLogo} alt="URBA Top 14" class="h-10 md:h-12 w-auto mix-blend-screen drop-shadow-lg" width="100" height="48" loading="lazy" />
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex flex-col justify-center items-center gap-2 md:gap-3 z-40 w-full px-4">
         <Link
           href="/fixture"
-          class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-6 md:px-8 py-2 md:py-3 uppercase tracking-widest text-xs md:text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-lg"
+          class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-6 md:px-8 py-2 md:py-3 uppercase tracking-widest text-xs md:text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-xl"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
@@ -196,6 +195,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
           </svg>
           Ver Fixture
         </Link>
+        <img src={UrbaLogo} alt="URBA Top 14" class="h-16 md:h-20 w-auto mt-2 mix-blend-screen drop-shadow-lg" width="100" height="48" loading="lazy" />
       </div>
     </section>
   );

@@ -78,9 +78,8 @@ export const StatsCounter = component$(() => {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-[#003B73]">
 
           {/* Jugadores */}
-          <div class="flex flex-col items-center justify-center space-y-1">
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          <div class="flex flex-col items-center justify-start space-y-1">
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center">
               <span>+ DE</span>
             </div>
             <div
@@ -89,16 +88,14 @@ export const StatsCounter = component$(() => {
             >
               {formatNumber(playersCount.value)}
             </div>
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-lg md:text-xl">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center">
               <span>JUGADORES</span>
             </div>
           </div>
 
           {/* Socios */}
-          <div class="flex flex-col items-center justify-center space-y-1">
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          <div class="flex flex-col items-center justify-start space-y-1">
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center">
               <span>+ DE</span>
             </div>
             <div
@@ -107,16 +104,14 @@ export const StatsCounter = component$(() => {
             >
               {formatNumber(membersCount.value)}
             </div>
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-lg md:text-xl">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center">
               <span>SOCIOS</span>
             </div>
           </div>
 
           {/* Seguidores */}
-          <div class="flex flex-col items-center justify-center space-y-1">
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          <div class="flex flex-col items-center justify-start space-y-1">
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center">
               <span>+ DE</span>
             </div>
             <div
@@ -125,14 +120,13 @@ export const StatsCounter = component$(() => {
             >
               {formatNumber(followersCount.value)}
             </div>
-            <div class="flex items-center gap-3 mt-1 pb-1 opacity-80 transition-opacity hover:opacity-100">
+            <div class="font-bold uppercase tracking-widest text-lg md:text-xl text-center mt-2 mb-1">
+              <span>SEGUIDORES</span>
+            </div>
+            <div class="flex items-center gap-3 opacity-80 transition-opacity hover:opacity-100">
               <InstagramIcon />
               <FacebookIcon />
               <XIcon />
-            </div>
-            <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-lg md:text-xl">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-              <span>SEGUIDORES</span>
             </div>
           </div>
 

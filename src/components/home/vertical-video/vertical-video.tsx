@@ -1,4 +1,6 @@
 import { component$ } from '@builder.io/qwik';
+import preview2Img from '~/media/preview-2.png?url';
+import preview3Img from '~/media/preview-3.png?url';
 
 export const VerticalVideo = component$(() => {
   return (
@@ -19,6 +21,8 @@ export const VerticalVideo = component$(() => {
             <div class="relative bg-black rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10" style={{ aspectRatio: '9/16', width: '300px', maxWidth: '100%' }}>
               <video
                 src="/videos/2.mp4"
+                poster={preview2Img}
+                preload="none"
                 class="w-full h-full object-cover"
                 controls
                 playsInline
@@ -35,6 +39,8 @@ export const VerticalVideo = component$(() => {
             <div class="relative bg-black rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10" style={{ aspectRatio: '9/16', width: '300px', maxWidth: '100%' }}>
               <video
                 src="/videos/3.mp4"
+                poster={preview3Img}
+                preload="none"
                 class="w-full h-full object-cover"
                 controls
                 playsInline

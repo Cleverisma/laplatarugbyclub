@@ -7,7 +7,7 @@ export default component$(() => {
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-white pb-32">
       {/* Hero Header */}
       <section
-        class="relative h-[50vh] min-h-[400px] w-full bg-[#0a1128] flex items-center justify-center pt-32 bg-cover bg-center"
+        class="relative h-[50vh] min-h-[400px] w-full bg-[#0a1128] flex flex-col items-center justify-center pt-32 bg-cover bg-center"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
           marginBottom: '4vw',
@@ -15,11 +15,15 @@ export default component$(() => {
         }}
       >
         <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5 pointer-events-none" />
+        <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block z-10 text-center" style={{ fontFamily: "'Oswald', sans-serif" }}>
+          El primer club de rugby de la ciudad
+        </span>
         <h1
-          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter shadow-sm z-10"
+          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter shadow-sm z-10 text-center flex flex-col items-center"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           EL CLUB
+          <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
         </h1>
       </section>
 

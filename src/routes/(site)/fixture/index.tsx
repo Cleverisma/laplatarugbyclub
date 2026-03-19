@@ -5,6 +5,7 @@ import { matches } from '~/db/schema';
 import { asc } from 'drizzle-orm';
 import { getClubLogoPath } from '~/components/home/match-center/match-center';
 import bgImage from '~/media/3.jpeg';
+import urbaLogo from '~/media/urba.png';
 
 export const useFixtureLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -73,10 +74,11 @@ export default component$(() => {
             
             {/* Left Column: FIXTURE */}
             <div class="lg:col-span-7 space-y-8">
-              <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-3xl font-black text-white uppercase tracking-widest leading-none drop-shadow-sm" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              <div class="flex items-center gap-4 md:gap-6 mb-8">
+                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-widest leading-none drop-shadow-sm flex items-center gap-4" style={{ fontFamily: "'Oswald', sans-serif" }}>
                   Torneo <span class="text-[#FFD700]">URBA</span>
                 </h2>
+                <img src={urbaLogo} alt="URBA" width="120" height="48" class="h-10 md:h-14 w-auto object-contain drop-shadow-lg" loading="lazy" />
                 <div class="h-px flex-1 bg-white/10" />
               </div>
 

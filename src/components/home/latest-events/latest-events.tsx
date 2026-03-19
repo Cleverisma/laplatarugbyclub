@@ -57,7 +57,7 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
           <div class="w-8 h-px bg-yellow-400/50 mb-4" />
 
           <p class="text-gray-400 flex-grow text-sm leading-relaxed line-clamp-4"
-             style={{ fontFamily: "'Inter', sans-serif" }}>
+            style={{ fontFamily: "'Inter', sans-serif" }}>
             {description.split('\n')[0]}
           </p>
 
@@ -68,7 +68,7 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
               class="rounded-none text-gray-400 border border-gray-700 hover:border-yellow-400 hover:text-yellow-400 uppercase tracking-widest text-xs transition-all duration-200 self-start px-4"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Ver Detalles →
+              + INFO
             </Button>
           </div>
         </div>

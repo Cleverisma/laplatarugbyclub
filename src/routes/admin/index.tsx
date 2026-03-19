@@ -32,20 +32,20 @@ export const useDashboardStats = routeLoader$(async (requestEvent) => {
     totalEvents: eventsCount.length,
     lastMatch: lastMatch
       ? {
-          homeTeam: lastMatch.homeTeam,
-          awayTeam: lastMatch.awayTeam,
-          homeScore: lastMatch.homeScore,
-          awayScore: lastMatch.awayScore,
-          matchDate: lastMatch.matchDate,
-        }
+        homeTeam: lastMatch.homeTeam,
+        awayTeam: lastMatch.awayTeam,
+        homeScore: lastMatch.homeScore,
+        awayScore: lastMatch.awayScore,
+        matchDate: lastMatch.matchDate,
+      }
       : null,
     nextMatch: nextMatch
       ? {
-          homeTeam: nextMatch.homeTeam,
-          awayTeam: nextMatch.awayTeam,
-          matchDate: nextMatch.matchDate,
-          location: nextMatch.location,
-        }
+        homeTeam: nextMatch.homeTeam,
+        awayTeam: nextMatch.awayTeam,
+        matchDate: nextMatch.matchDate,
+        location: nextMatch.location,
+      }
       : null,
   };
 });
@@ -79,7 +79,7 @@ const StatCard = (props: {
         <div class={`text-3xl opacity-80`}>{props.icon}</div>
       </div>
       <div class="mt-4 flex items-center text-xs text-gray-400 group-hover:text-yellow-500 transition-colors font-medium">
-        Ver detalles →
+        + INFO
       </div>
     </div>
   </Link>

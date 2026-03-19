@@ -38,11 +38,11 @@ export default component$(() => {
   const divisions = divisionsLoader.value;
 
   const filterCategory = useSignal('Todos');
-  const categories = ['Todos', 'Plantel Superior', 'Juvenil', 'Infantil', 'Departamento de Coaching'];
+  const categories = ['Todos', 'Plantel Superior', 'Juvenil', 'Infantil', 'Staff Profesional de Soporte'];
 
   const filteredDivisions = filterCategory.value === 'Todos'
     ? divisions
-    : filterCategory.value === 'Departamento de Coaching'
+    : filterCategory.value === 'Staff Profesional de Soporte'
       ? divisions.filter((d) => (d as any).sectionType === 'coaching')
       : filterCategory.value === 'Infantil'
         ? divisions.filter((d) => (d.groupType === 'Infantil' || d.groupType === 'Escuelita') && (d as any).sectionType !== 'coaching')
@@ -85,11 +85,10 @@ export default component$(() => {
           <button
             key={cat}
             onClick$={() => (filterCategory.value = cat)}
-            class={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${
-              filterCategory.value === cat
+            class={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${filterCategory.value === cat
                 ? 'bg-[#0a1128] text-white border-[#0a1128]'
                 : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
-            }`}
+              }`}
           >
             {cat}
           </button>

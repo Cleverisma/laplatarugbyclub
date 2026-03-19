@@ -15,7 +15,7 @@ export const useStaffLoader = routeLoader$(async (requestEvent) => {
   });
 
   const categories = ['Plantel Superior', 'Juvenil', 'Infantil'] as const;
-  
+
   const groupedData = categories.reduce((acc, cat) => {
     acc[cat] = {
       subcomision: [],
@@ -32,13 +32,13 @@ export const useStaffLoader = routeLoader$(async (requestEvent) => {
     if (group === 'Escuelita') {
       group = 'Infantil'; // Mapear Escuelita como un equipo dentro de Infantil
     }
-    
+
     const type = (division as any).sectionType || 'equipo';
-    
+
     if (type === 'coaching') {
       allCoachingDivisions.push(division);
     }
-    
+
     if (groupedData[group]) {
       if (type === 'subcomision') groupedData[group].subcomision.push(division);
       else if (type === 'coaching') groupedData[group].coaching.push(division);
@@ -63,14 +63,14 @@ export default component$(() => {
   const dataLoader = useStaffLoader();
   const { groupedData, allCoaching } = dataLoader.value;
 
-  const categories = ['Plantel Superior', 'Juvenil', 'Infantil', 'Departamento de Coaching'];
+  const categories = ['Plantel Superior', 'Juvenil', 'Infantil', 'Staff Profesional de Soporte'];
   const activeCategory = useSignal(categories[0]);
   const activeSubcategory = useSignal('Todas');
 
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
       {/* Hero Header */}
-      <section 
+      <section
         class="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center z-10 bg-cover bg-center"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
@@ -78,13 +78,16 @@ export default component$(() => {
           backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
         }}
       >
-        <h1 
-          class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter text-center leading-none"
+        <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block z-10" style={{ fontFamily: "'Oswald', sans-serif" }}>
+          Nuestros equipos
+        </span>
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter text-center leading-none z-10"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           STAFF DE ENTRENADORES
         </h1>
-        <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
+        <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto z-10" />
       </section>
 
       {/* 
@@ -101,7 +104,7 @@ export default component$(() => {
 
       <section class="pb-24 pt-24 md:pt-32 relative border-t border-white/5 flex-1 space-y-16">
         <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-6xl relative z-30">
-          
+
           {/* Category Tabs */}
           <div class="flex flex-wrap justify-center gap-4 mb-20">
             {categories.map((category) => (
@@ -124,34 +127,34 @@ export default component$(() => {
 
           <div class="animate-[fadeIn_0.5s_ease-out]">
             {(() => {
-              if (activeCategory.value === 'Departamento de Coaching') {
+              if (activeCategory.value === 'Staff Profesional de Soporte') {
                 if (allCoaching.length === 0) {
                   return (
                     <div class="text-center text-gray-400 py-12 italic">
-                      <p>No se encontraron entrenadores registrados en el Departamento de Coaching.</p>
+                      <p>No se encontraron entrenadores registrados en el Staff Profesional de Soporte.</p>
                     </div>
                   );
                 }
-                
+
                 return (
                   <div>
                     <div class="flex items-center justify-center mb-10">
                       <div class="hidden sm:block h-px w-12 bg-white/20"></div>
                       <h2 class="text-2xl md:text-3xl font-black text-gray-200 text-center mx-6 uppercase tracking-wider" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                        DEPARTAMENTO DE <span class="text-yellow-400">COACHING</span>
+                        STAFF PROFESIONAL DE <span class="text-yellow-400">SOPORTE</span>
                       </h2>
                       <div class="hidden sm:block h-px w-12 bg-white/20"></div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                       {allCoaching.map(division => (
-                          division.staffMembers.map(member => (
-                            <div key={member.id} class="bg-white/5 border border-white/10 p-5 rounded-lg text-center hover:bg-white/10 transition-colors shadow-lg">
-                               <h3 class="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>{member.fullName}</h3>
-                               <p class="text-gray-400 uppercase tracking-wider text-xs font-semibold">{member.role}</p>
-                            </div>
-                          ))
-                       ))}
+                      {allCoaching.map(division => (
+                        division.staffMembers.map(member => (
+                          <div key={member.id} class="bg-white/5 border border-white/10 p-5 rounded-lg text-center hover:bg-white/10 transition-colors shadow-lg">
+                            <h3 class="text-xl font-bold text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>{member.fullName}</h3>
+                            <p class="text-gray-400 uppercase tracking-wider text-xs font-semibold">{member.role}</p>
+                          </div>
+                        ))
+                      ))}
                     </div>
                   </div>
                 );
@@ -180,14 +183,14 @@ export default component$(() => {
                         SUBCOMISIÓN DE <span class="text-yellow-400">RUGBY</span>
                       </h2>
                       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                         {subcomision.map(division => (
-                            division.staffMembers.map(member => (
-                              <div key={member.id} class="bg-gradient-to-br from-white/10 to-transparent border border-white/20 p-6 rounded-xl text-center shadow-lg backdrop-blur-md transition-transform hover:-translate-y-1">
-                                 <h3 class="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>{member.fullName}</h3>
-                                 <p class="text-yellow-400 uppercase tracking-widest text-xs font-bold">{member.role}</p>
-                              </div>
-                            ))
-                         ))}
+                        {subcomision.map(division => (
+                          division.staffMembers.map(member => (
+                            <div key={member.id} class="bg-gradient-to-br from-white/10 to-transparent border border-white/20 p-6 rounded-xl text-center shadow-lg backdrop-blur-md transition-transform hover:-translate-y-1">
+                              <h3 class="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>{member.fullName}</h3>
+                              <p class="text-yellow-400 uppercase tracking-widest text-xs font-bold">{member.role}</p>
+                            </div>
+                          ))
+                        ))}
                       </div>
                     </div>
                   )}
@@ -195,8 +198,8 @@ export default component$(() => {
                   {/* 3. EQUIPOS / DIVISIONES REGULARES */}
                   {equipos.length > 0 && (() => {
                     const subcategories = ['Todas', ...equipos.map((d) => d.name).filter(name => name !== 'Plantel Superior - Staff General')];
-                    const displayedDivisions = activeSubcategory.value === 'Todas' 
-                      ? equipos 
+                    const displayedDivisions = activeSubcategory.value === 'Todas'
+                      ? equipos
                       : equipos.filter((d) => d.name === activeSubcategory.value);
 
                     return (
@@ -208,11 +211,10 @@ export default component$(() => {
                               <button
                                 key={`sub-${sub}`}
                                 onClick$={() => (activeSubcategory.value = sub)}
-                                class={`px-4 py-1.5 rounded-full font-bold tracking-wide text-xs transition-colors duration-200 border whitespace-nowrap flex-shrink-0 ${
-                                  activeSubcategory.value === sub
-                                    ? 'bg-yellow-400 text-[#0a1128] border-yellow-400'
-                                    : 'bg-white/5 text-gray-400 border-gray-700 hover:bg-white/10 hover:text-gray-200 hover:border-gray-500'
-                                }`}
+                                class={`px-4 py-1.5 rounded-full font-bold tracking-wide text-xs transition-colors duration-200 border whitespace-nowrap flex-shrink-0 ${activeSubcategory.value === sub
+                                  ? 'bg-yellow-400 text-[#0a1128] border-yellow-400'
+                                  : 'bg-white/5 text-gray-400 border-gray-700 hover:bg-white/10 hover:text-gray-200 hover:border-gray-500'
+                                  }`}
                                 style={{ fontFamily: "'Inter', sans-serif" }}
                               >
                                 {sub}
