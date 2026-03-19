@@ -51,12 +51,7 @@ export const HeroSlider = component$(() => {
         .hero-slide-pan      { animation: heroPan     6s ease-in-out forwards; }
       `}</style>
 
-      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center aspect-[3/4] min-h-[75svh] md:min-h-[100svh] md:aspect-auto"
-        style={{
-          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
-          marginBottom: '-4vw'
-        }}
-      >
+      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center aspect-[3/4] min-h-[75svh] md:min-h-[85vh] lg:min-h-[95vh] md:aspect-auto">
         {/* ── Background Slides ── */}
         {slides.map((slide, index) => {
           const isActive = currentSlide.value === index;
@@ -84,10 +79,10 @@ export const HeroSlider = component$(() => {
         })}
 
         {/* ── Centered hero content ── */}
-        <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-full min-h-screen pt-16 md:pt-24 lg:pt-32">
+        <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-full min-h-[75svh] md:min-h-full lg:min-h-full pt-28 md:pt-32 lg:pt-40">
           
           {/* Logo Header (Fixed Position) */}
-          <div class="flex flex-col items-center mb-12 md:mb-20 lg:mb-24 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
+          <div class="flex flex-col items-center mb-10 md:mb-16 lg:mb-20 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
             <a href="/" class="block transition-transform hover:scale-105 active:scale-95">
               <img 
                 src={lprcLogo} 
@@ -100,7 +95,7 @@ export const HeroSlider = component$(() => {
           </div>
 
           {/* Slides Container (Relative wrapper for absolute text items) */}
-          <div class="relative w-full h-[50vh] md:h-[40vh] min-h-[300px] flex items-start justify-center overflow-visible">
+          <div class="relative w-full h-[50vh] md:h-[30vh] lg:h-[25vh] min-h-[250px] flex items-start justify-center overflow-visible md:-translate-y-4">
             {slides.map((slide, index) => {
               const isActive = currentSlide.value === index;
               return (

@@ -194,7 +194,7 @@ export default component$(() => {
 
                   {/* 3. EQUIPOS / DIVISIONES REGULARES */}
                   {equipos.length > 0 && (() => {
-                    const subcategories = ['Todas', ...equipos.map((d) => d.name)];
+                    const subcategories = ['Todas', ...equipos.map((d) => d.name).filter(name => name !== 'Plantel Superior - Staff General')];
                     const displayedDivisions = activeSubcategory.value === 'Todas' 
                       ? equipos 
                       : equipos.filter((d) => d.name === activeSubcategory.value);

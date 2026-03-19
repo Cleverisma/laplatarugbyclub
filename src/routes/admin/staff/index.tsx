@@ -38,11 +38,15 @@ export default component$(() => {
   const divisions = divisionsLoader.value;
 
   const filterCategory = useSignal('Todos');
-  const categories = ['Todos', 'Plantel Superior', 'Juvenil', 'Infantil', 'Escuelita'];
+  const categories = ['Todos', 'Plantel Superior', 'Juvenil', 'Infantil', 'Departamento de Coaching'];
 
   const filteredDivisions = filterCategory.value === 'Todos'
     ? divisions
-    : divisions.filter((d) => d.groupType === filterCategory.value);
+    : filterCategory.value === 'Departamento de Coaching'
+      ? divisions.filter((d) => (d as any).sectionType === 'coaching')
+      : filterCategory.value === 'Infantil'
+        ? divisions.filter((d) => (d.groupType === 'Infantil' || d.groupType === 'Escuelita') && (d as any).sectionType !== 'coaching')
+        : divisions.filter((d) => d.groupType === filterCategory.value && (d as any).sectionType !== 'coaching');
 
   const totalMembers = filteredDivisions.reduce(
     (sum, div) => sum + div.staffMembers.length,

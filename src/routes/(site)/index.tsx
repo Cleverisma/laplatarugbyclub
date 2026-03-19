@@ -19,7 +19,7 @@ import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
 import { VerticalVideo } from '~/components/home/vertical-video/vertical-video';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
-
+import { FuarBanner } from '~/components/home/fuar-banner/fuar-banner';
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
 
@@ -179,6 +179,7 @@ export default component$(() => {
       <VerticalVideo />
 
       <Contact />
+      <FuarBanner />
     </main>
   );
 });

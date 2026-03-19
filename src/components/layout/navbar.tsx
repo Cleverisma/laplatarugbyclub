@@ -2,6 +2,7 @@ import { component$, useSignal, useOnWindow, $ } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import { Button } from '~/components/ui/button/button';
 import { NavLink } from '~/components/ui/nav-link';
+import { FacebookIcon, InstagramIcon, XIcon } from '~/components/home/stats-counter/stats-counter';
 import lprcLogo from '~/media/lprc.svg';
 
 export const Navbar = component$(() => {
@@ -41,15 +42,15 @@ export const Navbar = component$(() => {
         </div>
 
         {/* Desktop Navigation Menu (Visible from LG) */}
-        <div class="hidden lg:flex items-center gap-[clamp(1.5rem,2vw,5rem)] w-full justify-center">
-          {['/', '/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-            const labels = ['INICIO', 'EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
+        <div class="hidden lg:flex items-center lg:gap-4 xl:gap-[clamp(1rem,1.2vw,3rem)] 2xl:gap-[clamp(1.5rem,2vw,5rem)] w-full lg:justify-end xl:justify-center">
+          {['/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
+            const labels = ['EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
             return (
               <NavLink
                 key={href}
                 href={href}
                 activeClass="!text-yellow-400 active-link-desktop"
-                class="text-gray-100 hover:text-yellow-400 transition-colors uppercase tracking-[0.3em] xl:tracking-[0.4em] font-black relative group whitespace-nowrap"
+                class="text-gray-100 hover:text-yellow-400 transition-colors uppercase tracking-[0.15em] xl:tracking-[0.2em] 2xl:tracking-[0.4em] font-black relative group whitespace-nowrap"
                 style={{
                   fontFamily: "'Oswald', sans-serif",
                   fontSize: 'clamp(14px, 1.1vw, 20px)'
@@ -66,7 +67,7 @@ export const Navbar = component$(() => {
             href="https://api.whatsapp.com/send?phone=5492216796537&text=Hola%20vengo%20desde%20el%20sitio%20web%20de%20www.laplatarugbyclub.com.ar%20y%20estoy%20interesado%20en%20hacerme%20socio."
             target="_blank"
             rel="noopener noreferrer"
-            class="ml-4 xl:ml-12 shrink-0"
+            class="lg:ml-2 xl:ml-6 2xl:ml-12 shrink-0"
           >
             <Button
               look="primary"
@@ -81,6 +82,17 @@ export const Navbar = component$(() => {
               SUMATE
             </Button>
           </a>
+          <div class="flex items-center gap-3 2xl:gap-4 ml-4 xl:ml-4 2xl:ml-8 border-l border-white/20 pl-4 xl:pl-4 2xl:pl-8 text-white">
+            <a href="https://www.instagram.com/laplatarugby/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="Instagram">
+              <InstagramIcon />
+            </a>
+            <a href="https://www.facebook.com/LaPlataRugbyClub" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="Facebook">
+              <FacebookIcon />
+            </a>
+            <a href="https://twitter.com/laplatarugby" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="X (Twitter)">
+              <XIcon />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle (Visible up to LG) */}
@@ -103,18 +115,18 @@ export const Navbar = component$(() => {
 
       {/* Mobile Navigation Dropdown */}
       <div
-        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-2xl shadow-2xl transition-all duration-500 origin-top overflow-hidden border-t border-yellow-400/10 ${isMobileMenuOpen.value ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+        class={`md:hidden absolute top-full left-0 w-full bg-[#0a1128]/98 backdrop-blur-2xl shadow-2xl transition-all duration-500 origin-top overflow-y-auto border-t border-yellow-400/10 ${isMobileMenuOpen.value ? 'max-h-[calc(100vh-80px)] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
           }`}
       >
-        <div class="flex flex-col p-10 gap-8 items-center text-center">
-          {['/', '/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-            const labels = ['INICIO', 'EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
+        <div class="flex flex-col p-6 pt-4 pb-8 gap-5 items-center text-center">
+          {['/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
+            const labels = ['EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
             return (
               <NavLink
                 key={href}
                 href={href}
                 activeClass="!text-yellow-400 active-link-mobile"
-                class="text-4xl text-gray-200 hover:text-yellow-400 transition-colors uppercase tracking-widest font-black"
+                class="text-2xl sm:text-3xl text-gray-200 hover:text-yellow-400 transition-colors uppercase tracking-widest font-black"
                 style={{ fontFamily: "'Oswald', sans-serif" }}
                 onClick$={() => (isMobileMenuOpen.value = false)}
               >
@@ -139,7 +151,19 @@ export const Navbar = component$(() => {
             </Button>
           </a>
 
-          <p class="text-[10px] text-gray-500 tracking-[0.5em] font-bold mt-12 uppercase">
+          <div class="flex items-center justify-center gap-6 mt-6 text-white w-full border-t border-white/10 pt-8">
+            <a href="https://www.instagram.com/laplatarugby/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors" aria-label="Instagram">
+              <InstagramIcon />
+            </a>
+            <a href="https://www.facebook.com/LaPlataRugbyClub" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors" aria-label="Facebook">
+              <FacebookIcon />
+            </a>
+            <a href="https://twitter.com/laplatarugby" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors" aria-label="X (Twitter)">
+              <XIcon />
+            </a>
+          </div>
+
+          <p class="text-[10px] text-gray-500 tracking-[0.5em] font-bold mt-4 uppercase">
             La Plata Rugby Club
           </p>
         </div>

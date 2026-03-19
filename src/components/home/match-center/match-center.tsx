@@ -76,7 +76,7 @@ export interface MatchCenterProps {
 export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProps) => {
   return (
     <section
-      class="relative z-20 w-full -mt-12 md:-mt-24 shadow-2xl"
+      class="relative z-20 w-full mt-0 shadow-2xl"
     >
       <div class="grid grid-cols-1 lg:grid-cols-2">
         <div class="bg-[#0a1128] text-white p-6 md:p-10 py-12 md:py-16 flex flex-col justify-center items-center text-center">
