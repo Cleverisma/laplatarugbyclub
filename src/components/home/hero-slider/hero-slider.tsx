@@ -36,15 +36,15 @@ export const HeroSlider = component$(() => {
       <style>{`
         @keyframes heroZoomIn {
           from { transform: scale(1);   }
-          to   { transform: scale(1.15); }
+          to   { transform: scale(1.05); }
         }
         @keyframes heroZoomOut {
-          from { transform: scale(1.15); }
+          from { transform: scale(1.05); }
           to   { transform: scale(1);   }
         }
         @keyframes heroPan {
-          from { transform: scale(1.08) translateX(-4%); }
-          to   { transform: scale(1.08) translateX(4%);  }
+          from { transform: scale(1.02) translateX(-1%); }
+          to   { transform: scale(1.02) translateX(1%);  }
         }
         .hero-slide-zoom-in  { animation: heroZoomIn  6s ease-in-out forwards; }
         .hero-slide-zoom-out { animation: heroZoomOut 6s ease-in-out forwards; }
@@ -52,7 +52,11 @@ export const HeroSlider = component$(() => {
       `}</style>
 
       <section class="relative w-full overflow-hidden flex flex-col items-center justify-center"
-        style={{ minHeight: '100svh' }}
+        style={{
+          minHeight: '100svh',
+          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+          marginBottom: '-4vw'
+        }}
       >
         {/* ── Background Slides ── */}
         {slides.map((slide, index) => {
@@ -75,7 +79,7 @@ export const HeroSlider = component$(() => {
                 class={`absolute inset-0 w-full h-full object-cover ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
               />
               {/* Dark overlay for text legibility */}
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/90 via-black/60 to-transparent" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/70 via-black/30 to-black/5" />
             </div>
           );
         })}

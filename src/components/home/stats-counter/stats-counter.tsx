@@ -43,7 +43,13 @@ export const StatsCounter = component$(() => {
   };
 
   return (
-    <section class="w-full bg-[#FFD700] py-16 md:py-24 relative overflow-hidden flex justify-center border-t-8 border-[#0a1128] shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+    <section 
+      class="w-full bg-[#FFD700] py-16 md:py-24 pb-[calc(4rem+4vw)] md:pb-[calc(6rem+4vw)] relative overflow-hidden flex justify-center border-t-8 border-[#0a1128] shadow-[0_-10px_30px_rgba(0,0,0,0.1)] z-10"
+      style={{
+        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+        marginBottom: '-4vw'
+      }}
+    >
       {/* Background shape mimicking the user's reference image */}
       <div 
         class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-full bg-black/5 pointer-events-none" 

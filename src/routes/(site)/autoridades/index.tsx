@@ -55,8 +55,7 @@ export default component$(() => {
 
       {/* Board Members Section (Dynamic) */}
       <section
-        class="py-24 md:py-32 relative border-t border-gray-900"
-        style={{ background: 'linear-gradient(180deg, #000000 0%, #0a1128 100%)' }}
+        class="py-24 md:py-32 relative border-t border-white/5"
       >
         <div class="container mx-auto px-4 max-w-7xl">
           <div class="mb-32">

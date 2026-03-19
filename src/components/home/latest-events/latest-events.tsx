@@ -75,17 +75,7 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
 
 export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => {
   return (
-    <section class="py-28 relative" style={{ background: 'linear-gradient(135deg, #0a1128 0%, #001f54 50%, #000000 100%)' }}>
-      {/* Diagonal top edge */}
-      <div
-        class="absolute top-0 left-0 w-full overflow-hidden pointer-events-none"
-        style={{ height: '80px', marginTop: '-79px' }}
-        aria-hidden="true"
-      >
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full" style={{ display: 'block' }}>
-          <polygon points="0,100 100,0 100,100" fill="#0a1128" />
-        </svg>
-      </div>
+    <section class="py-28 pt-32 relative" style={{ background: 'linear-gradient(135deg, #0a1128 0%, #001f54 50%, #000000 100%)' }}>
 
       {/* Subtle grid texture */}
       <div

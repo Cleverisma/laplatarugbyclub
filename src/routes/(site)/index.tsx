@@ -109,16 +109,18 @@ export default component$(() => {
         nextMatch={matchesData.value.nextMatch}
       />
 
-      <StatsCounter />
-
       <PromoVideo />
+
+      <StatsCounter />
 
       <LatestEvents events={eventsData.value} />
 
       {/* Transition Banner to El Club */}
       <section
-        class="w-full relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-24 md:py-32 px-4 z-10 overflow-hidden"
+        class="w-full relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-24 md:py-32 pb-[calc(6rem+4vw)] px-4 z-10 overflow-hidden"
         style={{
+          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+          marginBottom: '-4vw',
           backgroundImage: `url(${juego1Img})`,
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
@@ -150,7 +152,11 @@ export default component$(() => {
 
       {/* Transition Banner to Autoridades */}
       <section
-        class="w-full bg-[#FFD700] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-16 px-4 z-10 relative"
+        class="w-full bg-[#FFD700] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-16 pb-[calc(4rem+4vw)] px-4 z-10 relative"
+        style={{
+          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
+          marginBottom: '-4vw'
+        }}
       >
         <h2
           class="text-4xl md:text-5xl font-black text-[#0a1128] uppercase tracking-tighter text-center md:text-left"

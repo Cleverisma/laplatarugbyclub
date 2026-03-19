@@ -53,8 +53,7 @@ export default component$(() => {
       </section>
 
       <section
-        class="pb-24 pt-24 md:pt-32 relative border-t border-gray-900 flex-1"
-        style={{ background: 'linear-gradient(180deg, #000000 0%, #0a1128 100%)' }}
+        class="pb-24 pt-24 md:pt-32 relative border-t border-white/5 flex-1"
       >
         <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-6xl relative z-30">
           {/* Category Chips */}
