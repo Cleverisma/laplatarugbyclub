@@ -51,9 +51,8 @@ export const HeroSlider = component$(() => {
         .hero-slide-pan      { animation: heroPan     6s ease-in-out forwards; }
       `}</style>
 
-      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center"
+      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center aspect-[3/4] min-h-[75svh] md:min-h-[100svh] md:aspect-auto"
         style={{
-          minHeight: '100svh',
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
           marginBottom: '-4vw'
         }}
@@ -76,7 +75,7 @@ export const HeroSlider = component$(() => {
                 alt=""
                 width={1920}
                 height={1080}
-                class={`absolute inset-0 w-full h-full object-cover ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
+                class={`absolute inset-0 w-full h-full object-cover object-center ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
               />
               {/* Dark overlay for text legibility */}
               <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/70 via-black/30 to-black/5" />

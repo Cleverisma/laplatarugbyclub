@@ -77,7 +77,7 @@ export const Footer = component$(() => {
                 </div>
                 <div>
                   <span class="block text-xs uppercase tracking-wider text-blue-300 font-bold mb-0.5">Seguinos</span>
-                  <span class="font-bold">@laplatarugbyclub</span>
+                  <span class="font-bold">@laplatarugby</span>
                 </div>
               </a>
             </div>

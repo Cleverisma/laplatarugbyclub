@@ -77,12 +77,12 @@ export const SocialFeed = component$<SocialFeedProps>(({ posts }) => {
               COMUNIDAD · CLUB · RUGBY
             </p>
             <h2 class="text-3xl font-black uppercase leading-tight tracking-[0.25em] md:text-4xl">
-              @LAPLATARUGBYCLUB
+              @laplatarugby
             </h2>
           </div>
 
           <a
-            href="https://instagram.com/laplatarugbyclub"
+            href="https://instagram.com/laplatarugby"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-3 border border-white bg-white text-black px-6 py-3 text-xs font-black uppercase tracking-[0.25em] transition hover:-translate-y-0.5 hover:bg-yellow-400"

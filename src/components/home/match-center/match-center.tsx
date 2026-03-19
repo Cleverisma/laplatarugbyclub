@@ -1,8 +1,20 @@
-import { component$, useSignal } from '@builder.io/qwik';
-import { Modal } from '~/components/ui/modal/modal';
+import { component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
+import UrbaLogo from '~/media/logo-urva-top14.png';
 
-import Fixture1Img from '~/media/fixture_ronda1.png?jsx';
-import Fixture2Img from '~/media/fixture_ronda2.png?jsx';
+const clubLogosUrlMap = import.meta.glob('../../../media/clubes/*.png', { eager: true, query: '?url', import: 'default' });
+
+export const getClubLogoPath = (teamName: string) => {
+  if (!teamName) return '';
+  const searchStr = teamName.toLowerCase().replace(/[^a-z0-9]/g, '') + 'png';
+  for (const [path, url] of Object.entries(clubLogosUrlMap)) {
+    const cleanPath = path.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (cleanPath.endsWith(searchStr)) {
+      return url as string;
+    }
+  }
+  return `/clubes/${teamName}.png`;
+};
 
 import AlumniLogo from '~/media/clubes/Alumni.png?jsx';
 import AtleticoDelRosarioLogo from '~/media/clubes/Atletico Del Rosario.png?jsx';
@@ -62,7 +74,6 @@ export interface MatchCenterProps {
 }
 
 export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProps) => {
-  const show = useSignal(false);
   return (
     <section
       class="relative z-20 w-full -mt-12 md:-mt-24 shadow-2xl"
@@ -173,36 +184,18 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
         </div>
       </div>
 
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex justify-center items-center z-10 w-full px-4">
-        <Modal.Root bind:show={show}>
-          <Modal.Trigger
-            class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-8 py-3 uppercase tracking-widest text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-lg"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            Ver Fixture
-          </Modal.Trigger>
-          <Modal.Panel class="bg-[#0a1128] text-white border border-yellow-400/30 max-w-4xl max-h-[90vh] overflow-y-auto w-[95%] p-6 md:p-8 rounded-xl relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-            <Modal.Title class="text-[#FFD700] font-black uppercase text-2xl md:text-3xl tracking-widest mb-6" style={{ fontFamily: "'Oswald', sans-serif" }}>
-              Fixture Oficial
-            </Modal.Title>
-            <div class="flex flex-col gap-8 w-full">
-              <div class="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                <Fixture1Img class="w-full h-auto object-contain" alt="Fixture Ronda 1" />
-              </div>
-              <div class="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                <Fixture2Img class="w-full h-auto object-contain" alt="Fixture Ronda 2" />
-              </div>
-            </div>
-            <Modal.Close class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full p-2 border border-white/10">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </Modal.Close>
-          </Modal.Panel>
-        </Modal.Root>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex justify-center items-center gap-4 md:gap-6 z-40 w-full px-4">
+        <img src={UrbaLogo} alt="URBA Top 14" class="h-10 md:h-12 w-auto mix-blend-screen drop-shadow-lg" width="100" height="48" loading="lazy" />
+        <Link
+          href="/fixture"
+          class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-6 md:px-8 py-2 md:py-3 uppercase tracking-widest text-xs md:text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-lg"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Ver Fixture
+        </Link>
       </div>
     </section>
   );
