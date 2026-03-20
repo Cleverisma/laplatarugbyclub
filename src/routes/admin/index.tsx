@@ -144,7 +144,7 @@ export default component$(() => {
         {/* Last match */}
         <div class="bg-white rounded-xl border border-gray-200 p-6">
           <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            Último Resultado
+            Último partido
           </p>
           {stats.value.lastMatch ? (
             <div class="text-center">

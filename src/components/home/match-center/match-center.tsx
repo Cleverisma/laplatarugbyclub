@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import UrbaLogo from '~/media/logo-urva-top14.png';
+import UrbaTop14Logo from '~/media/logo-urva-top14.png';
 
 const clubLogosUrlMap = import.meta.glob('../../../media/clubes/*.{png,avif,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' });
 
@@ -81,7 +81,7 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
       <div class="grid grid-cols-1 lg:grid-cols-2">
         <div class="bg-[#0a1128] text-white p-6 md:p-10 py-12 md:py-16 flex flex-col justify-center items-center text-center">
           <span class="text-[#FFD700] font-black tracking-widest uppercase mb-6 text-xl md:text-2xl" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Último Resultado
+            Último partido
           </span>
           {lastMatch ? (
             <div class="flex items-center justify-center gap-2 md:gap-4 mb-10 w-full">
@@ -187,15 +187,15 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
       <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex flex-col justify-center items-center gap-2 md:gap-3 z-40 w-full px-4">
         <Link
           href="/fixture"
-          class="inline-flex items-center gap-2 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-6 md:px-8 py-2 md:py-3 uppercase tracking-widest text-xs md:text-sm font-black hover:bg-[#FFD700] hover:text-[#0a1128] transition-all duration-300 shadow-xl"
+          class="inline-flex items-center gap-3 bg-[#0a1128] text-[#FFD700] border-2 border-[#FFD700] px-10 md:px-16 py-4 md:py-5 uppercase tracking-widest text-base md:text-lg font-black hover:bg-[#FFD700] hover:text-[#0a1128] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all duration-300 shadow-xl"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           Ver Fixture
         </Link>
-        <img src={UrbaLogo} alt="URBA Top 14" class="h-16 md:h-20 w-auto mt-2 mix-blend-screen drop-shadow-lg" width="100" height="48" loading="lazy" />
+        <img src={UrbaTop14Logo} alt="URBA Top 14" class="h-16 md:h-20 w-auto mt-4 mix-blend-screen drop-shadow-lg" width="100" height="48" loading="lazy" />
       </div>
     </section>
   );

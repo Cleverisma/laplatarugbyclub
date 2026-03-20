@@ -127,14 +127,14 @@ export default component$(() => {
         }}
       >
         <div class="absolute inset-0 bg-[#0a1128]/95 z-0"></div>
-        
+
         <div class="relative z-10 container mx-auto mb-16 mt-4 flex justify-center">
-            <h2
+          <h2
             class="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter text-center border-b-2 border-yellow-400 pb-4"
             style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-            CUMPLIMOS 92 ANOS <span class="text-[#FFD700]">EL PRIMER CLUB DE RUGBY DE LA CIUDAD</span>
-            </h2>
+          >
+            CUMPLIMOS 92 AÑOS <span class="text-[#FFD700]">EL PRIMER CLUB DE RUGBY DE LA CIUDAD</span>
+          </h2>
         </div>
 
         <div class="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24 w-full">
@@ -147,7 +147,7 @@ export default component$(() => {
               </svg>
             </div>
             <span class="text-4xl md:text-5xl font-black text-white mb-2 tracking-wide" style={{ fontFamily: "'Oswald', sans-serif" }}>1995</span>
-            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>CAMPEÓN<br/>DE LA UAR</span>
+            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>CAMPEÓN<br />DE LA UAR</span>
           </div>
 
           {/* 1998 */}
@@ -159,7 +159,7 @@ export default component$(() => {
               </svg>
             </div>
             <span class="text-4xl md:text-5xl font-black text-white mb-2 tracking-wide group-hover:text-[#FFD700] transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>1998</span>
-            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>COPA FEDERAL<br/>DE CLUBES</span>
+            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>COPA FEDERAL<br />DE CLUBES</span>
           </div>
 
           {/* 2007 */}
@@ -171,7 +171,7 @@ export default component$(() => {
               </svg>
             </div>
             <span class="text-4xl md:text-5xl font-black text-white mb-2 tracking-wide" style={{ fontFamily: "'Oswald', sans-serif" }}>2007</span>
-            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>NACIONAL<br/>DE CLUBES</span>
+            <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>NACIONAL<br />DE CLUBES</span>
           </div>
 
         </div>

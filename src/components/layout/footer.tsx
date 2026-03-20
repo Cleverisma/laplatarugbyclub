@@ -94,7 +94,7 @@ export const Footer = component$(() => {
 
           {/* FUAR Section */}
           <div class="lg:pl-4 flex flex-col">
-            <h3 class="text-lg font-bold mb-6 text-[#5C9CD7] uppercase tracking-widest border-b border-gray-800 pb-3 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Sumate a la FUAR</h3>
+            <h3 class="text-lg font-bold mb-6 text-[#5C9CD7] uppercase tracking-widest border-b border-gray-800 pb-3 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>JUNTOS EL JUEGO SIGUE</h3>
             <a
               href="https://donaronline.org/fundacion-union-argentina-de-rugby/fuar-somos-todos"
               target="_blank"
@@ -104,7 +104,7 @@ export const Footer = component$(() => {
               <span class="text-white text-3xl font-black italic tracking-tighter mb-1">FUAR</span>
               <span class="text-[10px] text-white/90 uppercase font-bold tracking-widest mb-3">Fundación UAR</span>
               <div class="w-full bg-[#0a1128] py-2 text-center group-hover:bg-[#111c40] transition-colors">
-                <span class="text-[#FFD700] font-black tracking-widest text-[10px] uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                <span class="text-white font-black tracking-widest text-[10px] uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>
                   Hacé tu donación
                 </span>
               </div>

@@ -18,7 +18,7 @@ export const ScrollToTop = component$(() => {
       type="button"
       aria-label="Volver arriba"
       onClick$={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      class={`fixed right-6 bottom-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-blue-900 text-yellow-400 shadow-xl transition-all duration-300 ease-in-out hover:scale-110 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900/50 ${
+      class={`fixed right-6 bottom-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#FFD700] text-[#0a1128] border-[3px] border-[#f2cc00] shadow-xl transition-all duration-300 ease-in-out hover:scale-110 hover:bg-[#e6c200] focus:outline-none focus:ring-2 focus:ring-[#FFD700]/50 ${
         show.value
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-10 opacity-0"

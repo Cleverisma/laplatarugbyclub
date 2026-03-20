@@ -6,6 +6,7 @@ import { asc, desc } from 'drizzle-orm';
 import { getClubLogoPath } from '~/components/home/match-center/match-center';
 import bgImage from '~/media/3.jpeg';
 import urbaLogo from '~/media/urba.png';
+import urbaTop14Logo from '~/media/logo-urva-top14.png';
 
 export const useFixtureLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -69,6 +70,7 @@ export default component$(() => {
                   Torneo <span class="text-[#FFD700]">URBA</span>
                 </h2>
                 <img src={urbaLogo} alt="URBA" width="120" height="48" class="h-10 md:h-14 w-auto object-contain drop-shadow-lg" loading="lazy" />
+                <img src={urbaTop14Logo} alt="URBA Top 14" width="120" height="48" class="h-10 md:h-14 w-auto object-contain drop-shadow-lg" loading="lazy" />
                 <div class="h-px flex-1 bg-white/10" />
               </div>
 

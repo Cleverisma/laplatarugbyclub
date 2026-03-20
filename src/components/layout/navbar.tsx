@@ -24,39 +24,46 @@ export const Navbar = component$(() => {
   return (
     <nav
       class={`fixed top-0 w-full z-50 transition-all duration-500 border-b-0 ${solid
-        ? 'bg-[#0a1128]/95 backdrop-blur-lg shadow-2xl py-6 md:py-8'
+        ? 'bg-[#FFD700] backdrop-blur-lg shadow-2xl py-4 md:py-5'
         : 'bg-gradient-to-b from-black/90 to-transparent py-10 md:py-16'
         }`}
     >
-      <div class="container mx-auto px-6 xl:px-14 max-w-[1800px] relative flex items-center justify-between lg:justify-center min-h-[56px] md:min-h-[64px]">
+      <div class="container mx-auto px-4 lg:px-6 xl:px-14 max-w-[1800px] relative flex items-center justify-between min-h-[56px] md:min-h-[64px]">
 
         {/* LOGO (Left) */}
         <div
-          class={`transition-all duration-500 lg:absolute lg:left-14 z-10 ${(!isHome || isScrolled.value) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          class={`transition-all duration-500 xl:absolute xl:left-6 z-10 shrink-0 ${(!isHome || isScrolled.value) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
             }`}
         >
           <a href="/" class="block hover:scale-105 transition-transform">
-            <img src={lprcLogo} alt="La Plata Rugby Club" class="h-14 md:h-16 lg:h-20 w-auto" width="80" height="80" />
+            <img
+              src={lprcLogo}
+              alt="La Plata Rugby Club"
+              class="h-24 md:h-28 lg:h-16 xl:h-24 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+              style={{ marginTop: '-12px', marginBottom: '-12px' }}
+              width="96"
+              height="96"
+            />
           </a>
         </div>
 
         {/* Desktop Navigation Menu (Visible from LG) */}
-        <div class="hidden lg:flex items-center lg:gap-4 xl:gap-[clamp(1rem,1.2vw,3rem)] 2xl:gap-[clamp(1.5rem,2vw,5rem)] w-full lg:justify-end xl:justify-center">
+        <div class="hidden lg:flex items-center lg:gap-2 xl:gap-8 2xl:gap-12 lg:flex-1 lg:justify-between xl:flex-none xl:w-full xl:justify-center">
           {['/el-club', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
             const labels = ['EL CLUB', 'STAFFS', 'COMISIÓN DIRECTIVA', 'AGENDA', 'CONTACTO'];
             return (
               <NavLink
                 key={href}
                 href={href}
-                activeClass="!text-yellow-400 active-link-desktop"
-                class="text-gray-100 hover:text-yellow-400 transition-colors uppercase tracking-[0.15em] xl:tracking-[0.2em] 2xl:tracking-[0.4em] font-black relative group whitespace-nowrap"
+                activeClass={solid ? '!text-[#0a1128] active-link-desktop' : '!text-yellow-400 active-link-desktop'}
+                class={`${solid ? 'text-[#0a1128]/80 hover:text-[#0a1128]' : 'text-gray-100 hover:text-yellow-400'} transition-colors uppercase tracking-normal xl:tracking-widest font-black relative group whitespace-nowrap`}
                 style={{
                   fontFamily: "'Oswald', sans-serif",
-                  fontSize: 'clamp(14px, 1.1vw, 20px)'
+                  fontSize: 'clamp(12px, 1.1vw, 18px)'
                 }}
               >
                 {labels[i]}
-                <span class="absolute -bottom-3 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full group-[.active-link-desktop]:w-full transition-all duration-300" />
+                <span class={`absolute -bottom-3 left-0 w-0 h-0.5 ${solid ? 'bg-[#0a1128]' : 'bg-yellow-400'} group-hover:w-full group-[.active-link-desktop]:w-full transition-all duration-300`} />
               </NavLink>
             );
           })}
@@ -71,24 +78,24 @@ export const Navbar = component$(() => {
             <Button
               look="primary"
               size="lg"
-              class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] scale-105"
+              class={`rounded-none border-2 font-black uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${solid ? 'bg-[#0a1128] text-[#FFD700] border-[#0a1128] hover:bg-transparent hover:text-[#0a1128] shadow-[0_0_20px_rgba(10,17,40,0.3)]' : 'bg-[#FFD700] text-[#0a1128] border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)]'}`}
               style={{
                 fontFamily: "'Oswald', sans-serif",
-                fontSize: 'clamp(16px, 1.2vw, 22px)',
-                padding: 'clamp(1rem, 1.4vw, 1.8rem) clamp(2rem, 3vw, 4rem)'
+                fontSize: 'clamp(13px, 1.1vw, 20px)',
+                padding: 'clamp(0.7rem, 1.1vw, 1.7rem) clamp(1.2rem, 2vw, 3.8rem)'
               }}
             >
               HACETE SOCIO
             </Button>
           </a>
-          <div class="flex items-center gap-3 2xl:gap-4 ml-4 xl:ml-4 2xl:ml-8 border-l border-white/20 pl-4 xl:pl-4 2xl:pl-8 text-white">
-            <a href="https://www.instagram.com/laplatarugby/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="Instagram">
+          <div class={`flex items-center gap-2 xl:gap-3 2xl:gap-4 ml-2 xl:ml-4 2xl:ml-8 border-l pl-2 xl:pl-4 2xl:pl-8 ${solid ? 'border-[#0a1128]/20 text-[#0a1128]' : 'border-white/20 text-white'}`}>
+            <a href="https://www.instagram.com/laplatarugby/" target="_blank" rel="noopener noreferrer" class={`transition-colors hover:scale-110 ${solid ? 'hover:text-[#0a1128]/60' : 'hover:text-yellow-400'}`} aria-label="Instagram">
               <InstagramIcon />
             </a>
-            <a href="https://www.facebook.com/LaPlataRugbyClub" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="Facebook">
+            <a href="https://www.facebook.com/LaPlataRugbyClub" target="_blank" rel="noopener noreferrer" class={`transition-colors hover:scale-110 ${solid ? 'hover:text-[#0a1128]/60' : 'hover:text-yellow-400'}`} aria-label="Facebook">
               <FacebookIcon />
             </a>
-            <a href="https://twitter.com/laplatarugby" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors hover:scale-110" aria-label="X (Twitter)">
+            <a href="https://twitter.com/laplatarugby" target="_blank" rel="noopener noreferrer" class={`transition-colors hover:scale-110 ${solid ? 'hover:text-[#0a1128]/60' : 'hover:text-yellow-400'}`} aria-label="X (Twitter)">
               <XIcon />
             </a>
           </div>
@@ -96,12 +103,12 @@ export const Navbar = component$(() => {
 
         {/* Mobile Menu Toggle (Visible up to LG) */}
         <button
-          class="lg:hidden text-white p-2 focus:outline-none transition-transform hover:scale-110 active:scale-95 z-10"
+          class={`lg:hidden p-2 focus:outline-none transition-transform hover:scale-110 active:scale-95 z-10 ${solid ? 'text-[#0a1128]' : 'text-white'}`}
           onClick$={() => (isMobileMenuOpen.value = !isMobileMenuOpen.value)}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen.value ? (
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class={`h-10 w-10 md:h-12 md:w-12 ${solid ? 'text-[#0a1128]' : 'text-yellow-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (

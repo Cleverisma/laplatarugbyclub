@@ -1,5 +1,5 @@
 import { component$, useSignal } from '@builder.io/qwik';
-import previewImg from '~/media/preview.png?url';
+import previewImg from '~/media/preview.avif?url';
 
 const VIDEO_SRC = 'https://pub-78de515207e34bafba279cf5775269df.r2.dev/video_web_lprc.mp4';
 
@@ -32,9 +32,9 @@ export const PromoVideo = component$(() => {
           >
             Tu navegador no soporta la etiqueta de video.
           </video>
-          
+
           {!isPlaying.value && (
-            <div 
+            <div
               class="hidden md:flex absolute inset-0 items-center justify-center bg-black/30 cursor-pointer group-hover:bg-black/10 transition-all duration-300"
               onClick$={(_, el) => {
                 const videoEl = el.previousElementSibling as HTMLVideoElement;

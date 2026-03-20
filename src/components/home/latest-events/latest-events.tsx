@@ -107,8 +107,7 @@ export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => 
               class="text-5xl md:text-6xl font-black text-white leading-none"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              PRÓXIMOS<br />
-              <span class="text-yellow-400">EVENTOS</span>
+              PRÓXIMOS <span class="text-yellow-400">EVENTOS</span>
             </h2>
           </div>
           <a
@@ -136,8 +135,8 @@ export const LatestEvents = component$<{ events: EventData[] }>(({ events }) => 
           <a href="/eventos">
             <Button
               look="outline"
-              size="md"
-              class="rounded-none border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-[#0a1128] uppercase tracking-widest font-black transition-all duration-200 px-10"
+              size="lg"
+              class="rounded-none bg-[#0a1128] border-2 border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-[#0a1128] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] uppercase tracking-widest font-black transition-all duration-300 px-12 py-4 shadow-xl"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
               Ver calendario completo
