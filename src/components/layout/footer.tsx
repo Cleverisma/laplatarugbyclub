@@ -36,7 +36,7 @@ export const Footer = component$(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="font-medium text-sm">Camino Parque Centenario entre 495 y 496, Gonnet</span>
+              <span class="font-normal text-sm">Camino Parque Centenario entre 495 y 496, Gonnet</span>
             </address>
           </div>
 
@@ -57,7 +57,7 @@ export const Footer = component$(() => {
                     href={link.href}
                     target={link.href.startsWith('http') ? "_blank" : undefined}
                     rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                    class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-base font-medium"
+                    class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-base font-normal"
                   >
                     <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> {link.label}
                   </a>
@@ -114,10 +114,10 @@ export const Footer = component$(() => {
       </div>
 
       {/* Copyright y Firma */}
-      <div class="container mx-auto px-4 max-w-7xl relative z-10 pt-8 mt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 font-medium pb-8 md:pb-8 gap-4">
+      <div class="container mx-auto px-4 max-w-7xl relative z-10 pt-8 mt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 font-normal pb-8 md:pb-8 gap-4">
         <p class="text-center md:text-left">&copy; {new Date().getFullYear()} La Plata Rugby Club. Todos los derechos reservados.</p>
         <p class="text-center md:text-right">
-          Sitio creado por <a href="https://indesign.ar" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white transition-colors underline decoration-blue-500/50 hover:decoration-white underline-offset-4 font-semibold">indesign.ar</a>
+          Sitio creado por <a href="https://indesign.ar" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white transition-colors underline decoration-blue-500/50 hover:decoration-white underline-offset-4 font-bold">indesign.ar</a>
         </p>
       </div>
     </footer>

@@ -73,7 +73,7 @@ export const SocialFeed = component$<SocialFeedProps>(({ posts }) => {
       <div class="mx-auto flex max-w-7xl flex-col gap-10 px-4">
         <header class="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div class="text-center md:text-left">
-            <p class="mb-2 text-xs font-semibold tracking-[0.35em] text-yellow-400">
+            <p class="mb-2 text-xs font-bold tracking-[0.35em] text-yellow-400">
               COMUNIDAD · CLUB · RUGBY
             </p>
             <h2 class="text-3xl font-black uppercase leading-tight tracking-[0.25em] md:text-4xl">
@@ -127,7 +127,7 @@ export const SocialFeed = component$<SocialFeedProps>(({ posts }) => {
                   </svg>
 
                   {post.likes && (
-                    <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em]">
+                    <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"

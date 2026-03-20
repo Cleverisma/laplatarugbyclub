@@ -247,7 +247,7 @@ export default component$(() => {
                                     <h3 class="text-lg font-bold text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>
                                       {member.fullName}
                                     </h3>
-                                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">{member.role}</p>
+                                    <p class="text-xs font-normal text-gray-400 uppercase tracking-wider">{member.role}</p>
                                   </div>
                                 ))}
                                 {division.staffMembers.length === 0 && (

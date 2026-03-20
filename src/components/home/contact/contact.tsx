@@ -26,7 +26,7 @@ export const Contact = component$(() => {
           <div class="flex flex-col justify-center space-y-10 text-blue-100">
             {/* Ubicacion */}
             <div>
-              <p class="text-xl md:text-2xl font-light mb-6 leading-relaxed">
+              <p class="text-xl md:text-2xl font-normal mb-6 leading-relaxed">
                 Camino Parque Centenario entre 495 y 496, B1897 Gonnet, Provincia de Buenos Aires
               </p>
 
@@ -56,7 +56,7 @@ export const Contact = component$(() => {
             {/* Teléfonos y Redes */}
             <div class="space-y-6">
               <div class="flex flex-col sm:flex-row gap-4 sm:items-center text-lg">
-                <a href="tel:02214840412" class="group flex items-center gap-3 font-semibold text-white hover:text-yellow-400 transition-colors">
+                <a href="tel:02214840412" class="group flex items-center gap-3 font-bold text-white hover:text-yellow-400 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400 group-hover:text-yellow-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -65,7 +65,7 @@ export const Contact = component$(() => {
 
                 <span class="hidden sm:inline-block text-blue-700">|</span>
 
-                <a href="https://wa.me/5492216796537" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-blue-200 hover:text-green-400 transition-colors font-medium">
+                <a href="https://wa.me/5492216796537" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-blue-200 hover:text-green-400 transition-colors font-normal">
                   Envianos un WA!
                   <span class="font-bold text-white group-hover:text-green-400 transition-colors">+54 9 221 679-6537</span>
                 </a>

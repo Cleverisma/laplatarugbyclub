@@ -119,7 +119,7 @@ export default component$(() => {
                 })}
                 {(!allMatches || allMatches.length === 0) && (
                   <div class="p-12 text-center bg-white/5 border border-white/10 rounded-xl">
-                    <p class="text-gray-400 italic font-medium">No hay partidos cargados para la temporada.</p>
+                    <p class="text-gray-400 italic font-normal">No hay partidos cargados para la temporada.</p>
                   </div>
                 )}
               </div>

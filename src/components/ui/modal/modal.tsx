@@ -52,7 +52,7 @@ const Title = component$<PropsOf<"h2">>(({ ...props }) => {
   return (
     <HeadlessModal.Title
       {...props}
-      class={cn("text-lg font-semibold tracking-tight", props.class)}
+      class={cn("text-lg font-bold tracking-tight", props.class)}
     >
       <Slot />
     </HeadlessModal.Title>

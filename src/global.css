@@ -1,4 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap');
+/*
+ * Self-hosted fonts – only the 4 preloaded weights.
+ * All public site components use exclusively these weights.
+ *
+ * Expected .woff2 files in /public/fonts/:
+ *   - Oswald-Bold.woff2       (700) — headings (h1–h3, font-black/font-bold)
+ *   - Inter-Regular.woff2     (400) — body text (font-normal)
+ *   - Inter-Bold.woff2        (700) — emphasis (font-bold)
+ *   - Inter-Black.woff2       (900) — heavy accents (font-black)
+ */
+
+/* ── Oswald ── */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/Oswald-Bold.woff2') format('woff2');
+}
+
+/* ── Inter ── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Inter-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/Inter-Black.woff2') format('woff2');
+}
 @layer base, qwik-ui, popover-polyfill, theme, components, utilities;
 @import "tailwindcss";
 @import "tw-animate-css";

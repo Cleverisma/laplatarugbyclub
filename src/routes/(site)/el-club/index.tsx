@@ -30,7 +30,7 @@ export default component$(() => {
       <div class="container mx-auto px-4 max-w-5xl mt-12 space-y-24">
 
         {/* Intro Blocks */}
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 text-gray-800 text-lg md:text-xl leading-relaxed font-light">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 text-gray-800 text-lg md:text-xl leading-relaxed font-normal">
           {/* Left Column — Origins + Community */}
           <div class="space-y-8">
             <h2
@@ -109,7 +109,7 @@ export default component$(() => {
                   'Formamos nuevas generaciones',
                   'Fortalecemos la comunidad',
                 ].map((item) => (
-                  <li key={item} class="flex items-start gap-3 font-medium">
+                  <li key={item} class="flex items-start gap-3 font-normal">
                     <span class="mt-1.5 w-2 h-2 bg-[#0a1128] shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -121,7 +121,7 @@ export default component$(() => {
             </div>
 
             <div class="pt-4 border-t border-gray-200">
-              <p class="text-[#0a1128] text-xl font-medium mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p class="text-[#0a1128] text-xl font-normal mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                 Te invitamos a conocernos
               </p>
               <p class="text-base text-gray-600" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -168,7 +168,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-3xl font-black font-mono tracking-tight text-white group-hover:text-yellow-400 transition-colors">1995</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Campeón<br />de la UAR</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-normal tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Campeón<br />de la UAR</span>
               </div>
 
               <div class="flex flex-col items-center transform -translate-y-4">
@@ -178,7 +178,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-4xl font-black font-mono tracking-tight text-yellow-400 drop-shadow-lg">1998</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Copa Federal<br />de Clubes</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-normal tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Copa Federal<br />de Clubes</span>
               </div>
 
               <div class="flex flex-col items-center">
@@ -188,7 +188,7 @@ export default component$(() => {
                   </svg>
                 </div>
                 <span class="text-3xl font-black font-mono tracking-tight text-white group-hover:text-yellow-400 transition-colors">2007</span>
-                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-medium tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Nacional<br />de Clubes</span>
+                <span class="text-xs text-gray-400 mt-1 leading-tight uppercase font-normal tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Nacional<br />de Clubes</span>
               </div>
             </div>
 

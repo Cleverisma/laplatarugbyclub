@@ -38,7 +38,7 @@ export const EventCard = component$<{ event: EventData }>(({ event }) => {
 
         <div class="p-6 flex flex-col flex-grow">
           <time
-            class="text-yellow-400/80 text-xs mb-3 uppercase tracking-widest flex items-center gap-2 font-semibold"
+            class="text-yellow-400/80 text-xs mb-3 uppercase tracking-widest flex items-center gap-2 font-bold"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

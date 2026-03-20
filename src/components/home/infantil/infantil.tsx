@@ -26,7 +26,7 @@ export const CategoryCard = component$<{ category: InfantilCategory }>(({ catego
             {category.entrenadores.map((name) => (
               <span
                 key={name}
-                class="text-gray-300 text-sm font-medium"
+                class="text-gray-300 text-sm font-normal"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {name}

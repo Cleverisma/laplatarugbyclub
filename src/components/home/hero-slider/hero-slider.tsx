@@ -24,10 +24,18 @@ export const HeroSlider = component$(() => {
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
-    const interval = setInterval(() => {
-      currentSlide.value = (currentSlide.value + 1) % slides.length;
-    }, 6000);
-    cleanup(() => clearInterval(interval));
+    // Defer the interval start by 2s so LCP/FCP paint completes
+    // before the JS thread gets occupied by the slide timer.
+    let interval: ReturnType<typeof setInterval>;
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => {
+        currentSlide.value = (currentSlide.value + 1) % slides.length;
+      }, 6000);
+    }, 2000);
+    cleanup(() => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    });
   });
 
   return (
@@ -70,6 +78,7 @@ export const HeroSlider = component$(() => {
                 class={`absolute inset-0 w-full h-full object-cover object-center ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
                 loading={index === 0 ? 'eager' : 'lazy'}
                 decoding={index === 0 ? 'sync' : 'async'}
+                fetchPriority={index === 0 ? 'high' : 'low'}
               />
               {/* Dark overlay for text legibility */}
               <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/70 via-black/30 to-black/5" />
@@ -86,6 +95,9 @@ export const HeroSlider = component$(() => {
               <LprcLogo
                 alt="La Plata Rugby Club"
                 class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
+                loading="eager"
+                decoding="sync"
+                fetchPriority="high"
               />
             </a>
           </div>
