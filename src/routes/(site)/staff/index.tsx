@@ -82,7 +82,7 @@ export default component$(() => {
           Nuestros equipos
         </span>
         <h1
-          class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter text-center leading-none z-10"
+          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter text-center leading-none z-10"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           STAFF DE ENTRENADORES

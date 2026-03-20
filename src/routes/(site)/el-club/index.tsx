@@ -19,12 +19,12 @@ export default component$(() => {
           El primer club de rugby de la ciudad
         </span>
         <h1
-          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter shadow-sm z-10 text-center flex flex-col items-center"
+          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter z-10 text-center"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           EL CLUB
-          <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto" />
         </h1>
+        <div class="h-1 w-24 md:w-32 bg-yellow-400 mt-8 mb-6 mx-auto z-10" />
       </section>
 
       <div class="container mx-auto px-4 max-w-5xl mt-12 space-y-24">

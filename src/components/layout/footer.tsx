@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import lprcLogo from '~/media/lprc.svg';
+import lprcLogo from '~/media/lprc.avif';
 
 export const Footer = component$(() => {
   return (

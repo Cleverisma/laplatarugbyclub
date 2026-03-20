@@ -2,14 +2,14 @@ import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import UrbaLogo from '~/media/logo-urva-top14.png';
 
-const clubLogosUrlMap = import.meta.glob('../../../media/clubes/*.png', { eager: true, query: '?url', import: 'default' });
+const clubLogosUrlMap = import.meta.glob('../../../media/clubes/*.{png,avif,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' });
 
 export const getClubLogoPath = (teamName: string) => {
   if (!teamName) return '';
-  const searchStr = teamName.toLowerCase().replace(/[^a-z0-9]/g, '') + 'png';
+  const searchName = teamName.toLowerCase().replace(/[^a-z0-9]/g, '');
   for (const [path, url] of Object.entries(clubLogosUrlMap)) {
-    const cleanPath = path.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (cleanPath.endsWith(searchStr)) {
+    const filename = path.split('/').pop()?.toLowerCase().split('.')[0].replace(/[^a-z0-9]/g, '');
+    if (filename === searchName) {
       return url as string;
     }
   }
@@ -24,7 +24,7 @@ import CASILogo from '~/media/clubes/CASI.png?jsx';
 import CUBALogo from '~/media/clubes/CUBA.png?jsx';
 import ChampagnatLogo from '~/media/clubes/Champagnat.png?jsx';
 import HinduLogo from '~/media/clubes/Hindu.png?jsx';
-import LPRCLogo from '~/media/clubes/LPRC.png?jsx';
+import LPRCLogo from '~/media/clubes/LPRC.avif?jsx';
 import LosMatrerosLogo from '~/media/clubes/Los Matreros.png?jsx';
 import LosTilosLogo from '~/media/clubes/Los Tilos.png?jsx';
 import NewmanLogo from '~/media/clubes/Newman.png?jsx';

@@ -1,37 +1,27 @@
 import { component$ } from '@builder.io/qwik';
 import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
-import { matches } from '~/db/schema';
-import { asc } from 'drizzle-orm';
+import { standings, matches } from '~/db/schema';
+import { asc, desc } from 'drizzle-orm';
 import { getClubLogoPath } from '~/components/home/match-center/match-center';
 import bgImage from '~/media/3.jpeg';
 import urbaLogo from '~/media/urba.png';
 
 export const useFixtureLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
-  
+
   const allMatches = await db.query.matches.findMany({
     orderBy: [asc(matches.matchDate)],
   });
 
-  // Datos simulados (mock) para la Tabla de Posiciones, dado que no hay tabla en DB
-  const mockStandings = [
-    { pos: 1, team: 'Newman', pts: 45, pld: 12, w: 10, d: 0, l: 2 },
-    { pos: 2, team: 'SIC', pts: 42, pld: 12, w: 9, d: 1, l: 2 },
-    { pos: 3, team: 'Alumni', pts: 40, pld: 12, w: 8, d: 1, l: 3 },
-    { pos: 4, team: 'Belgrano Athletic', pts: 38, pld: 12, w: 8, d: 0, l: 4 },
-    { pos: 5, team: 'CASI', pts: 35, pld: 12, w: 7, d: 1, l: 4 },
-    { pos: 6, team: 'LPRC', pts: 33, pld: 12, w: 7, d: 0, l: 5 },
-    { pos: 7, team: 'Hindu', pts: 28, pld: 12, w: 6, d: 0, l: 6 },
-    { pos: 8, team: 'CUBA', pts: 25, pld: 12, w: 5, d: 1, l: 6 },
-    { pos: 9, team: 'Regatas Bella Vista', pts: 22, pld: 12, w: 4, d: 1, l: 7 },
-    { pos: 10, team: 'Buenos Aires C&RC', pts: 18, pld: 12, w: 3, d: 0, l: 9 },
-    { pos: 11, team: 'Los Tilos', pts: 15, pld: 12, w: 2, d: 1, l: 9 },
-    { pos: 12, team: 'Champagnat', pts: 10, pld: 12, w: 1, d: 0, l: 11 },
-  ];
+  const standingsData = await db.query.standings.findMany({
+    orderBy: [desc(standings.points)],
+  });
 
-  return { allMatches, standings: mockStandings };
+  return { allMatches, standings: standingsData };
 });
+
+
 
 export const head: DocumentHead = {
   title: 'Fixture y Posiciones | La Plata Rugby Club',
@@ -50,7 +40,7 @@ export default component$(() => {
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950 bg-[#0a1128]">
       {/* Hero Header */}
-      <section 
+      <section
         class="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center z-10 bg-cover bg-center"
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%)',
@@ -58,8 +48,8 @@ export default component$(() => {
           backgroundImage: `linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url(${bgImage})`
         }}
       >
-        <h1 
-          class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter text-center leading-none drop-shadow-lg"
+        <h1
+          class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter text-center leading-none drop-shadow-lg"
           style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           FIXTURE & <span class="text-yellow-400">POSICIONES</span>
@@ -69,9 +59,9 @@ export default component$(() => {
 
       <section class="pb-24 pt-24 md:pt-32 relative border-t border-white/5 flex-1">
         <div class="container mx-auto px-4 max-w-[95vw] lg:max-w-7xl relative z-30">
-          
+
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-16 items-start">
-            
+
             {/* Left Column: FIXTURE */}
             <div class="lg:col-span-7 space-y-8">
               <div class="flex items-center gap-4 md:gap-6 mb-8">
@@ -87,21 +77,19 @@ export default component$(() => {
                   const dateObj = typeof match.matchDate === 'string'
                     ? new Date(match.matchDate.replace(' ', 'T'))
                     : new Date(match.matchDate);
-                  
-                  const formattedDate = dateObj.toLocaleDateString('es-AR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false
-                  });
+
+                  const day = String(dateObj.getDate()).padStart(2, '0');
+                  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                  const hours = String(dateObj.getHours()).padStart(2, '0');
+                  const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+                  const formattedDate = `${day}/${month} · ${hours}:${minutes}`;
 
                   return (
                     <div key={match.id} class="bg-white/5 border border-white/10 rounded-xl p-4 md:p-5 flex flex-col md:flex-row items-center justify-between gap-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-xl overflow-hidden relative group">
-                      
+
                       <div class="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/5 transition-colors duration-300" />
-                      
-                      <div class="text-gray-400 text-sm font-bold tracking-widest whitespace-nowrap text-center md:text-left z-10 w-full md:w-32 bg-black/40 px-3 py-1.5 rounded-lg border border-white/5 uppercase" style={{ fontFamily: "'Inter', sans-serif" }}>
+
+                      <div class="text-gray-400 text-sm font-bold tracking-widest whitespace-nowrap z-10 w-fit bg-black/40 px-4 py-1.5 rounded-lg border border-white/5" style={{ fontFamily: "'Inter', sans-serif" }}>
                         {formattedDate} hs
                       </div>
 
@@ -138,11 +126,11 @@ export default component$(() => {
             {/* Right Column: TABLA DE POSICIONES */}
             <div class="lg:col-span-5 relative mt-12 lg:mt-0">
               <div class="sticky top-24 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-md">
-                
+
                 <h3 class="text-2xl font-black text-white uppercase tracking-widest mb-6 text-center" style={{ fontFamily: "'Oswald', sans-serif" }}>
                   Tabla de Posiciones
                 </h3>
-                
+
                 <div class="overflow-x-auto">
                   <table class="w-full text-left border-collapse min-w-[300px]" style={{ fontFamily: "'Inter', sans-serif" }}>
                     <thead>
@@ -154,31 +142,31 @@ export default component$(() => {
                       </tr>
                     </thead>
                     <tbody class="text-sm">
-                      {standings.map((row) => {
-                        const isLPRC = row.team === 'LPRC';
+                      {standings.map((row, index) => {
+                        const pos = index + 1;
+                        const isLPRC = row.teamName === 'LPRC';
                         return (
-                          <tr 
-                            key={row.team} 
-                            class={`border-b border-white/5 transition-colors duration-200 ${
-                              isLPRC ? 'bg-yellow-400/10' : 'hover:bg-white/5'
-                            }`}
+                          <tr
+                            key={row.id}
+                            class={`border-b border-white/5 transition-colors duration-200 ${isLPRC ? 'bg-yellow-400/10' : 'hover:bg-white/5'
+                              }`}
                           >
                             <td class={`py-3 px-2 text-center font-bold ${isLPRC ? 'text-yellow-400' : 'text-gray-400'}`}>
-                              {row.pos}º
+                              {pos}º
                             </td>
                             <td class="py-3 px-2">
                               <div class="flex items-center gap-3">
-                                <img src={getClubLogoPath(row.team)} alt={row.team} width="24" height="24" class="w-5 h-5 md:w-6 md:h-6 object-contain" />
+                                <img src={getClubLogoPath(row.teamName)} alt={row.teamName} width="24" height="24" class="w-5 h-5 md:w-6 md:h-6 object-contain" />
                                 <span class={`font-bold uppercase tracking-wide text-xs md:text-sm ${isLPRC ? 'text-yellow-400' : 'text-white'}`}>
-                                  {row.team}
+                                  {row.teamName}
                                 </span>
                               </div>
                             </td>
                             <td class={`py-3 px-2 text-center font-black ${isLPRC ? 'text-yellow-400' : 'text-white'}`}>
-                              {row.pts}
+                              {row.points}
                             </td>
                             <td class="py-3 px-2 text-center text-gray-400 font-mono">
-                              {row.pld}
+                              {row.matchesPlayed}
                             </td>
                           </tr>
                         );
@@ -188,7 +176,7 @@ export default component$(() => {
                 </div>
 
                 <div class="mt-6 text-center text-[10px] uppercase tracking-widest text-gray-500 font-bold">
-                  * Datos simulados (Mock) sujetos a actualización oficial.
+                  * Datos actualizados desde la Comisión de Rugby.
                 </div>
 
               </div>

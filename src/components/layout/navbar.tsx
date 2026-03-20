@@ -3,7 +3,7 @@ import { useLocation } from '@builder.io/qwik-city';
 import { Button } from '~/components/ui/button/button';
 import { NavLink } from '~/components/ui/nav-link';
 import { FacebookIcon, InstagramIcon, XIcon } from '~/components/home/stats-counter/stats-counter';
-import lprcLogo from '~/media/lprc.svg';
+import lprcLogo from '~/media/lprc.avif';
 
 export const Navbar = component$(() => {
   const isScrolled = useSignal(false);
@@ -31,10 +31,9 @@ export const Navbar = component$(() => {
       <div class="container mx-auto px-6 xl:px-14 max-w-[1800px] relative flex items-center justify-between lg:justify-center min-h-[56px] md:min-h-[64px]">
 
         {/* LOGO (Left) */}
-        <div 
-          class={`transition-all duration-500 lg:absolute lg:left-14 z-10 ${
-            (!isHome || isScrolled.value) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-          }`}
+        <div
+          class={`transition-all duration-500 lg:absolute lg:left-14 z-10 ${(!isHome || isScrolled.value) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+            }`}
         >
           <a href="/" class="block hover:scale-105 transition-transform">
             <img src={lprcLogo} alt="La Plata Rugby Club" class="h-14 md:h-16 lg:h-20 w-auto" width="80" height="80" />

@@ -46,6 +46,13 @@ export const events = sqliteTable('events', {
   eventDate: integer('event_date'),
 });
 
+export const standings = sqliteTable('standings', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  teamName: text('team_name').notNull(),
+  matchesPlayed: integer('matches_played').notNull().default(0),
+  points: integer('points').notNull().default(0),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));

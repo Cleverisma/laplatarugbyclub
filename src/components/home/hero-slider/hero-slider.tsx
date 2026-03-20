@@ -1,9 +1,9 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 
-import img1 from '~/media/7.jpeg';
-import img2 from '~/media/5.jpeg';
-import img3 from '~/media/4.jpeg';
-import lprcLogo from '~/media/lprc.svg';
+import img1 from '~/media/7.avif';
+import img2 from '~/media/5.avif';
+import img3 from '~/media/4.avif';
+import lprcLogo from '~/media/lprc.avif';
 
 // Each slide has a dedicated CSS animation class so images always fill the frame (object-cover)
 // while still having visible motion (zoom-in / zoom-out / pan).
@@ -80,15 +80,15 @@ export const HeroSlider = component$(() => {
 
         {/* ── Centered hero content ── */}
         <div class="relative z-10 flex flex-col items-center justify-center px-4 w-full h-full min-h-[75svh] md:min-h-full lg:min-h-full pt-28 md:pt-32 lg:pt-40">
-          
+
           {/* Logo Header (Fixed Position) */}
           <div class="flex flex-col items-center mb-10 md:mb-16 lg:mb-20 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
             <a href="/" class="block transition-transform hover:scale-105 active:scale-95">
-              <img 
-                src={lprcLogo} 
-                alt="La Plata Rugby Club" 
-                width="320" 
-                height="320" 
+              <img
+                src={lprcLogo}
+                alt="La Plata Rugby Club"
+                width="320"
+                height="320"
                 class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
               />
             </a>

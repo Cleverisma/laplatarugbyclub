@@ -1,8 +1,8 @@
 import { component$ } from '@builder.io/qwik';
-import post1Img from '~/media/4.jpeg';
-import post2Img from '~/media/5.jpeg';
+import post1Img from '~/media/4.avif';
+import post2Img from '~/media/5.avif';
 import post3Img from '~/media/juego-1.jpeg';
-import post4Img from '~/media/7.jpeg';
+import post4Img from '~/media/7.avif';
 import post5Img from '~/media/8.jpeg';
 import post6Img from '~/media/9.jpeg';
 
