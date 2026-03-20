@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import UrbaTop14Logo from '~/media/logo-urva-top14.png';
+import UrbaTop14Logo from '~/media/logo-urva-top14.webp';
 
 const clubLogosUrlMap = import.meta.glob('../../../media/clubes/*.{png,avif,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' });
 

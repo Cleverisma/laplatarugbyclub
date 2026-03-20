@@ -6,7 +6,7 @@ import { asc, desc } from 'drizzle-orm';
 import { getClubLogoPath } from '~/components/home/match-center/match-center';
 import bgImage from '~/media/3.jpeg';
 import urbaLogo from '~/media/urba.png';
-import urbaTop14Logo from '~/media/logo-urva-top14.png';
+import urbaTop14Logo from '~/media/logo-urva-top14.webp';
 
 export const useFixtureLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
