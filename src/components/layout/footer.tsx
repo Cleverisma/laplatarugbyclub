@@ -3,7 +3,7 @@ import lprcLogo from '~/media/lprc.avif';
 
 export const Footer = component$(() => {
   return (
-    <footer class="text-white pt-16 pb-10 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a1128 0%, #000000 100%)' }}>
+    <footer class="text-white pt-16 pb-20 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a1128 0%, #000000 100%)' }}>
       {/* Decorative Accent */}
       <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-500"></div>
       <div class="absolute -top-64 -right-64 w-[500px] h-[500px] bg-blue-900/50 rounded-full blur-3xl pointer-events-none"></div>
@@ -29,7 +29,7 @@ export const Footer = component$(() => {
               </div>
             </div>
             <p class="text-blue-200 leading-relaxed text-lg max-w-sm">
-              Formar buenas personas que disfruten del rugby. Un club basado en valores, deporte y amistad desde 1934.
+              LA PLATA RUGBY CLUB desde 1934
             </p>
             <address class="not-italic flex items-start gap-4 mt-6 text-blue-300">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,20 +40,28 @@ export const Footer = component$(() => {
             </address>
           </div>
 
-          {/* Enlaces Rápidos */}
           <div class="md:pl-10">
             <h3 class="text-xl font-bold mb-8 text-white uppercase tracking-widest border-b border-gray-800 pb-4 inline-block" style={{ fontFamily: "'Oswald', sans-serif" }}>Enlaces Rápidos</h3>
             <ul class="space-y-4">
-              {['/el-club', '/historia', '/staff', '/autoridades', '/eventos', '/#contacto'].map((href, i) => {
-                const labels = ['El Club', 'Historia', 'Staff de entrenadores', 'Comisión Directiva 2026', 'Agenda', 'Contacto'];
-                return (
-                  <li key={labels[i]}>
-                    <a href={href} class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium">
-                      <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> {labels[i]}
-                    </a>
-                  </li>
-                );
-              })}
+              {[
+                { label: 'Staff de entrenadores', href: '/staff' },
+                { label: 'Comisión Directiva 2026', href: '/autoridades' },
+                { label: 'Agenda', href: '/eventos' },
+                { label: 'Urba', href: 'https://www.urba.org.ar/' },
+                { label: 'Conecta rugby', href: 'https://conecta.rugby/' },
+                { label: 'UAR', href: 'https://uar.com.ar/' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a 
+                    href={link.href} 
+                    target={link.href.startsWith('http') ? "_blank" : undefined}
+                    rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                    class="text-blue-200 hover:text-yellow-400 hover:pl-2 transition-all duration-300 flex items-center gap-2 group text-lg font-medium"
+                  >
+                    <span class="text-blue-700 font-black group-hover:text-yellow-400 transition-colors">&rsaquo;</span> {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

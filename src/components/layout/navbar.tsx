@@ -71,14 +71,14 @@ export const Navbar = component$(() => {
             <Button
               look="primary"
               size="lg"
-              class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap"
+              class="rounded-none bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] scale-105"
               style={{
                 fontFamily: "'Oswald', sans-serif",
-                fontSize: 'clamp(14px, 1vw, 18px)',
-                padding: 'clamp(0.8rem, 1.2vw, 1.6rem) clamp(1.5rem, 2.5vw, 3.5rem)'
+                fontSize: 'clamp(16px, 1.2vw, 22px)',
+                padding: 'clamp(1rem, 1.4vw, 1.8rem) clamp(2rem, 3vw, 4rem)'
               }}
             >
-              SUMATE
+              HACETE SOCIO
             </Button>
           </a>
           <div class="flex items-center gap-3 2xl:gap-4 ml-4 xl:ml-4 2xl:ml-8 border-l border-white/20 pl-4 xl:pl-4 2xl:pl-8 text-white">
@@ -146,7 +146,7 @@ export const Navbar = component$(() => {
               class="rounded-none w-full bg-[#FFD700] text-[#0a1128] border-2 border-[#FFD700] hover:bg-transparent hover:text-[#FFD700] font-black uppercase tracking-widest text-xl transition-all duration-300 py-6"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              SUMATE
+              HACETE SOCIO
             </Button>
           </a>
 

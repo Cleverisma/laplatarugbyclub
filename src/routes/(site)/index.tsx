@@ -134,16 +134,16 @@ export default component$(() => {
             class="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter text-center border-b-2 border-yellow-400 pb-4"
             style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-            MÁS DE 90 AÑOS <span class="text-[#FFD700]">DE HISTORIA</span>
+            CUMPLIMOS 92 ANOS <span class="text-[#FFD700]">EL PRIMER CLUB DE RUGBY DE LA CIUDAD</span>
             </h2>
         </div>
 
         <div class="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24 w-full">
           {/* 1995 */}
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-28 md:w-36 md:h-36 border border-white/20 flex items-center justify-center mb-6 bg-[#0a1128]/50 backdrop-blur-sm transition-colors hover:border-white/40 duration-300">
+          <div class="flex flex-col items-center group cursor-default">
+            <div class="w-28 h-28 md:w-36 md:h-36 border border-white/20 flex items-center justify-center mb-6 bg-[#0a1128]/50 backdrop-blur-sm transition-all group-hover:bg-[#FFD700] group-hover:border-[#FFD700] group-hover:scale-110 group-hover:-translate-y-2 duration-300">
               {/* Trophy cup SVG */}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white group-hover:text-[#0a1128] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-2.27.988v2.534" />
               </svg>
             </div>
@@ -152,22 +152,22 @@ export default component$(() => {
           </div>
 
           {/* 1998 */}
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-28 md:w-36 md:h-36 bg-[#FFD700] flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(255,215,0,0.3)] md:scale-110 transition-transform hover:-translate-y-2 duration-300 relative">
+          <div class="flex flex-col items-center group cursor-default">
+            <div class="w-28 h-28 md:w-36 md:h-36 border border-white/20 flex items-center justify-center mb-6 bg-[#0a1128]/50 backdrop-blur-sm transition-all group-hover:bg-[#FFD700] group-hover:border-[#FFD700] group-hover:scale-110 group-hover:-translate-y-2 duration-300">
               {/* Trophy cup SVG */}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 md:w-20 md:h-20 text-[#0a1128] relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 md:w-20 md:h-20 text-white group-hover:text-[#0a1128] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-2.27.988v2.534" />
               </svg>
             </div>
-            <span class="text-4xl md:text-5xl font-black text-[#FFD700] mb-2 tracking-wide" style={{ fontFamily: "'Oswald', sans-serif" }}>1998</span>
+            <span class="text-4xl md:text-5xl font-black text-white mb-2 tracking-wide group-hover:text-[#FFD700] transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>1998</span>
             <span class="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold text-center" style={{ fontFamily: "'Inter', sans-serif" }}>COPA FEDERAL<br/>DE CLUBES</span>
           </div>
 
           {/* 2007 */}
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-28 md:w-36 md:h-36 border border-white/20 flex items-center justify-center mb-6 bg-[#0a1128]/50 backdrop-blur-sm transition-colors hover:border-white/40 duration-300">
+          <div class="flex flex-col items-center group cursor-default">
+            <div class="w-28 h-28 md:w-36 md:h-36 border border-white/20 flex items-center justify-center mb-6 bg-[#0a1128]/50 backdrop-blur-sm transition-all group-hover:bg-[#FFD700] group-hover:border-[#FFD700] group-hover:scale-110 group-hover:-translate-y-2 duration-300">
               {/* Trophy cup SVG */}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white group-hover:text-[#0a1128] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-2.27.988v2.534" />
               </svg>
             </div>
