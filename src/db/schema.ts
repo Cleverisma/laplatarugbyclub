@@ -53,6 +53,13 @@ export const standings = sqliteTable('standings', {
   points: integer('points').notNull().default(0),
 });
 
+// Auth: tabla de usuarios para el login del panel de administración
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  username: text('username').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));

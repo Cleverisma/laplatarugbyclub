@@ -1,8 +1,7 @@
 import type { RequestHandler } from '@builder.io/qwik-city';
 
-// Clears the session cookie and redirects to the login page
+// Elimina la cookie de sesión y redirige al login
 export const onGet: RequestHandler = (requestEvent) => {
-  requestEvent.cookie.delete('lprc_admin_auth', { path: '/' });
-  requestEvent.cookie.delete('admin_session', { path: '/' });
+  requestEvent.cookie.delete('auth_session', { path: '/' });
   throw requestEvent.redirect(302, '/admin/login/');
 };

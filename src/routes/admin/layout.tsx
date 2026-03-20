@@ -1,5 +1,20 @@
 import { component$, Slot } from '@builder.io/qwik';
 import { Link, useLocation } from '@builder.io/qwik-city';
+import type { RequestHandler } from '@builder.io/qwik-city';
+
+// 1. LA BARRERA DE SEGURIDAD (Se ejecuta en el servidor antes de renderizar nada)
+export const onRequest: RequestHandler = async ({ cookie, url, redirect }) => {
+    const currentPath = url.pathname.replace(/\/$/, '');
+    const isLoginPage = currentPath === '/admin/login';
+    const hasSession = cookie.has('auth_session');
+
+    if (!hasSession && !isLoginPage) {
+        throw redirect(302, '/admin/login/');
+    }
+    if (hasSession && isLoginPage) {
+        throw redirect(302, '/admin/');
+    }
+};
 
 
 const navLinks = [
@@ -61,6 +76,12 @@ const navLinks = [
 
 export default component$(() => {
   const location = useLocation();
+
+  // Login page renders without the admin sidebar/header
+  const isLoginPage = location.url.pathname.startsWith('/admin/login');
+  if (isLoginPage) {
+    return <Slot />;
+  }
 
   return (
     <div class="flex min-h-screen bg-gray-100 font-sans">

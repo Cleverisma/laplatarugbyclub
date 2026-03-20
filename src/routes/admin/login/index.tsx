@@ -1,25 +1,46 @@
 import { component$ } from '@builder.io/qwik';
 import { Form, routeAction$, z, zod$, type DocumentHead } from '@builder.io/qwik-city';
+import { getDb } from '~/db/client';
+import { users } from '~/db/schema';
+import { eq } from 'drizzle-orm';
+import bcrypt from 'bcryptjs';
 
 export const useLoginAction = routeAction$(
   async (data, requestEvent) => {
-    const adminPassword = requestEvent.env.get('ADMIN_PASSWORD');
+    const db = getDb(requestEvent.env);
 
-    if (!adminPassword || data.password !== adminPassword) {
-      return requestEvent.fail(401, { error: 'Contraseña incorrecta. Intentá de nuevo.' });
+    // Buscar usuario por username
+    const [user] = await db
+      .select()
+      .from(users)
+      .where(eq(users.username, data.username.trim().toLowerCase()));
+
+    if (!user) {
+      return requestEvent.fail(401, { error: 'Usuario o contraseña incorrectos.' });
     }
 
-    requestEvent.cookie.set("lprc_admin_auth", "authenticated", {
+    // Verificar hash de contraseña
+    const isValid = bcrypt.compareSync(data.password, user.passwordHash);
+
+    if (!isValid) {
+      return requestEvent.fail(401, { error: 'Usuario o contraseña incorrectos.' });
+    }
+
+    // Setear cookie de sesión
+    requestEvent.cookie.set('auth_session', String(user.id), {
       httpOnly: true,
       secure: true,
-      path: "/",
+      path: '/',
       maxAge: 60 * 60 * 24, // 1 día
-      sameSite: "lax",
+      sameSite: 'lax',
     });
 
     throw requestEvent.redirect(302, '/admin/');
   },
-  zod$({ password: z.string().min(1, 'La contraseña es obligatoria') }),
+  zod$({
+    username: z.string().min(1, 'El usuario es obligatorio'),
+    password: z.string().min(1, 'La contraseña es obligatoria'),
+  }),
 );
 
 export const head: DocumentHead = {
@@ -54,6 +75,27 @@ export default component$(() => {
           <h2 class="text-base font-semibold text-white mb-6">Iniciar sesión</h2>
 
           <Form action={action} class="space-y-5">
+            <div>
+              <label
+                for="username"
+                class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2"
+              >
+                Usuario
+              </label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                required
+                class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+                placeholder="admin"
+              />
+              {action.value?.fieldErrors?.username && (
+                <p class="text-red-400 text-xs mt-1.5">{action.value.fieldErrors.username}</p>
+              )}
+            </div>
+
             <div>
               <label
                 for="password"
