@@ -1,9 +1,9 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 
-import Img1 from '~/media/7.avif?jsx';
-import Img2 from '~/media/5.avif?jsx';
-import Img3 from '~/media/4.avif?jsx&q=60';
-import LprcLogo from '~/media/lprc.avif?jsx';
+import img1Url from '~/media/7.avif?url';
+import img2Url from '~/media/5.avif?url';
+import img3Url from '~/media/4.avif?url';
+import lprcLogoUrl from '~/media/lprc.avif?url';
 
 // Each slide has a dedicated CSS animation class so images always fill the frame (object-cover)
 // while still having visible motion (zoom-in / zoom-out / pan).
@@ -14,9 +14,9 @@ const SLIDE_ANIMATIONS = [
 ];
 
 const slides = [
-  { Image: Img1, text: 'RUGBY, VALORES Y AMISTAD DESDE 1934' },
-  { Image: Img2, text: 'FORMAMOS JUGADORES. CONSTRUIMOS PERSONAS' },
-  { Image: Img3, text: 'DONDE EL RUGBY SE VIVE Y SE APRENDE' },
+  { imageUrl: img1Url, text: 'RUGBY, VALORES Y AMISTAD DESDE 1934' },
+  { imageUrl: img2Url, text: 'FORMAMOS JUGADORES. CONSTRUIMOS PERSONAS' },
+  { imageUrl: img3Url, text: 'DONDE EL RUGBY SE VIVE Y SE APRENDE' },
 ];
 
 export const HeroSlider = component$(() => {
@@ -73,8 +73,11 @@ export const HeroSlider = component$(() => {
                 zIndex: isActive ? 1 : 0,
               }}
             >
-              <slide.Image
+              <img
+                src={slide.imageUrl}
                 alt=""
+                width="1920"
+                height="1080"
                 class={`absolute inset-0 w-full h-full object-cover object-center ${isActive ? SLIDE_ANIMATIONS[index] : ''}`}
                 loading={index === 0 ? 'eager' : 'lazy'}
                 decoding={index === 0 ? 'sync' : 'async'}
@@ -92,8 +95,11 @@ export const HeroSlider = component$(() => {
           {/* Logo Header (Fixed Position) */}
           <div class="flex flex-col items-center mb-10 md:mb-16 lg:mb-20 animate-[fadeIn_1.2s_ease-out] w-full shrink-0">
             <a href="/" class="block transition-transform hover:scale-105 active:scale-95">
-              <LprcLogo
+              <img
+                src={lprcLogoUrl}
                 alt="La Plata Rugby Club"
+                width="320"
+                height="320"
                 class="h-44 md:h-64 lg:h-80 w-auto transition-all duration-700 hover:scale-110"
                 loading="eager"
                 decoding="sync"

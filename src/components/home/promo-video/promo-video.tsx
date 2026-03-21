@@ -1,5 +1,5 @@
 import { component$, useSignal } from '@builder.io/qwik';
-import previewImg from '~/media/preview.avif?url&w=800&q=70';
+import previewImg from '~/media/preview.avif?url';
 
 const VIDEO_SRC = 'https://pub-78de515207e34bafba279cf5775269df.r2.dev/video_web_lprc.mp4';
 
@@ -24,12 +24,15 @@ export const PromoVideo = component$(() => {
             class="w-full aspect-video"
             controls
             playsInline
+            muted
             preload="metadata"
             poster={previewImg}
             src={VIDEO_SRC}
             onPlay$={() => (isPlaying.value = true)}
             onPause$={() => (isPlaying.value = false)}
+            onError$={() => { }}
           >
+            <track kind="captions" srclang="es" label="Español" />
             Tu navegador no soporta la etiqueta de video.
           </video>
 

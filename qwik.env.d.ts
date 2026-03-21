@@ -3,13 +3,19 @@
 // Add global `vite/client` types. For more info, see: https://vitejs.dev/guide/features#client-types
 /// <reference types="vite/client" />
 
-declare module '*?jsx&q=60' {
-  import type { FunctionComponent, HTMLAttributes } from '@builder.io/qwik';
-  const val: FunctionComponent<HTMLAttributes<HTMLImageElement>>;
+declare module '*?jsx&format=webp&w=1200&q=50' {
+  import type { FunctionComponent, Props } from '@builder.io/qwik';
+  const val: FunctionComponent<Props<'img'>>;
   export default val;
 }
 
-declare module '*?url&w=800&q=70' {
+declare module '*?url&format=webp&w=700&q=50' {
   const value: string;
   export default value;
+}
+
+declare module '*?jsx&format=avif' {
+  import type { FunctionComponent, Props } from '@builder.io/qwik';
+  const val: FunctionComponent<Props<'img'>>;
+  export default val;
 }
