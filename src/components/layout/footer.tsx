@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import lprcLogo from '~/media/lprc.avif';
+import LprcLogo from '~/media/lprc.avif?jsx';
 
 export const Footer = component$(() => {
   return (
@@ -13,7 +13,7 @@ export const Footer = component$(() => {
           <div class="flex flex-col space-y-6">
             <div class="flex items-center justify-between mb-2">
               <a href="/" class="shrink-0">
-                <img src={lprcLogo} alt="La Plata Rugby Club Logo" width="80" height="80" class="h-16 md:h-20 w-auto drop-shadow-lg" />
+                <LprcLogo alt="La Plata Rugby Club Logo" class="h-16 md:h-20 w-auto drop-shadow-lg" />
               </a>
               <div class="flex items-center gap-2 md:gap-4 pl-4 md:pl-6 border-l border-white/10">
                 {[1995, 1998, 2007].map((year) => (

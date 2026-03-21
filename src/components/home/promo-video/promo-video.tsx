@@ -1,5 +1,5 @@
 import { component$, useSignal } from '@builder.io/qwik';
-import previewImg from '~/media/preview.avif?url';
+import previewImg from '~/media/preview.avif?url&w=800&q=70';
 
 const VIDEO_SRC = 'https://pub-78de515207e34bafba279cf5775269df.r2.dev/video_web_lprc.mp4';
 

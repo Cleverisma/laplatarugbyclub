@@ -2,7 +2,7 @@ import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 
 import Img1 from '~/media/7.avif?jsx';
 import Img2 from '~/media/5.avif?jsx';
-import Img3 from '~/media/4.avif?jsx';
+import Img3 from '~/media/4.avif?jsx&q=60';
 import LprcLogo from '~/media/lprc.avif?jsx';
 
 // Each slide has a dedicated CSS animation class so images always fill the frame (object-cover)
