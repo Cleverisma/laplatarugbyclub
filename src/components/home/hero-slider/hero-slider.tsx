@@ -132,15 +132,19 @@ export const HeroSlider = component$(() => {
 
 
         {/* ── Slide indicator dots ── */}
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1 z-20">
           {slides.map((_, index) => (
             <button
               key={`dot-${index}`}
               onClick$={() => { currentSlide.value = index; }}
-              class={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide.value === index ? 'bg-yellow-400 w-6' : 'bg-white/50'
-                }`}
-              aria-label={`Slide ${index + 1}`}
-            />
+              class="w-10 h-10 flex items-center justify-center p-2 cursor-pointer group transition-all duration-300"
+              aria-label={`Ir al slide ${index + 1}`}
+            >
+              <span
+                class={`h-2 rounded-full transition-all duration-300 ${currentSlide.value === index ? 'bg-yellow-400 w-6' : 'bg-white/50 w-2'
+                  }`}
+              />
+            </button>
           ))}
         </div>
       </section>

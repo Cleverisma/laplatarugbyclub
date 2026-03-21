@@ -25,7 +25,7 @@ export const FuarBanner = component$(() => {
           class="flex flex-col w-full h-full rounded-lg overflow-hidden group"
         >
           {/* Top Blue section */}
-          <div class="bg-[#5C9CD7] p-4 text-white flex flex-col items-center text-center pb-6">
+          <div class="bg-[#286090] p-4 text-white flex flex-col items-center text-center pb-6">
             <div class="flex items-center justify-center gap-3 w-full my-2">
               <span class="text-4xl md:text-5xl font-black italic tracking-tighter drop-shadow-md">
                 FUAR

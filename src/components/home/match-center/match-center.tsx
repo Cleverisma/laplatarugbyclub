@@ -89,10 +89,10 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
               <div class="flex flex-col items-center justify-center gap-2 flex-1">
                 {ClubLogos[lastMatch.homeTeam] ? (
                   <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
-                    {(() => { const Logo = ClubLogos[lastMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" />; })()}
+                    {(() => { const Logo = ClubLogos[lastMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" alt={`Escudo de ${lastMatch.homeTeam}`} />; })()}
                   </div>
                 ) : (
-                  <img src={`/clubes/${lastMatch.homeTeam}.png`} alt={lastMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
+                  <img src={`/clubes/${lastMatch.homeTeam}.png`} alt={`Escudo de ${lastMatch.homeTeam}`} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
                 )}
                 <span class="text-base md:text-xl text-gray-400 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {lastMatch.homeTeam}
@@ -108,10 +108,10 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
               <div class="flex flex-col items-center justify-center gap-2 flex-1">
                 {ClubLogos[lastMatch.awayTeam] ? (
                   <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
-                    {(() => { const Logo = ClubLogos[lastMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" />; })()}
+                    {(() => { const Logo = ClubLogos[lastMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-lg" loading="lazy" alt={`Escudo de ${lastMatch.awayTeam}`} />; })()}
                   </div>
                 ) : (
-                  <img src={`/clubes/${lastMatch.awayTeam}.png`} alt={lastMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
+                  <img src={`/clubes/${lastMatch.awayTeam}.png`} alt={`Escudo de ${lastMatch.awayTeam}`} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" loading="lazy" />
                 )}
                 <span class="text-base md:text-xl text-gray-400 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {lastMatch.awayTeam}
@@ -135,10 +135,10 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                 <div class="flex flex-col items-center justify-center gap-2 flex-1">
                   {ClubLogos[nextMatch.homeTeam] ? (
                     <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
-                      {(() => { const Logo = ClubLogos[nextMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" />; })()}
+                      {(() => { const Logo = ClubLogos[nextMatch.homeTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" alt={`Escudo de ${nextMatch.homeTeam}`} />; })()}
                     </div>
                   ) : (
-                    <img src={`/clubes/${nextMatch.homeTeam}.png`} alt={nextMatch.homeTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
+                    <img src={`/clubes/${nextMatch.homeTeam}.png`} alt={`Escudo de ${nextMatch.homeTeam}`} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
                   )}
                   <span class="text-base md:text-xl text-[#0a1128]/80 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {nextMatch.homeTeam}
@@ -153,10 +153,10 @@ export const MatchCenter = component$(({ lastMatch, nextMatch }: MatchCenterProp
                 <div class="flex flex-col items-center justify-center gap-2 flex-1">
                   {ClubLogos[nextMatch.awayTeam] ? (
                     <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0">
-                      {(() => { const Logo = ClubLogos[nextMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" />; })()}
+                      {(() => { const Logo = ClubLogos[nextMatch.awayTeam]; return <Logo class="w-full h-full object-contain drop-shadow-xl" loading="lazy" alt={`Escudo de ${nextMatch.awayTeam}`} />; })()}
                     </div>
                   ) : (
-                    <img src={`/clubes/${nextMatch.awayTeam}.png`} alt={nextMatch.awayTeam} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
+                    <img src={`/clubes/${nextMatch.awayTeam}.png`} alt={`Escudo de ${nextMatch.awayTeam}`} width="80" height="80" class="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-xl" loading="lazy" />
                   )}
                   <span class="text-base md:text-xl text-[#0a1128]/80 font-bold uppercase text-center w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
                     {nextMatch.awayTeam}
