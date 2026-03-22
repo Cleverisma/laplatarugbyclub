@@ -99,7 +99,7 @@ export const Footer = component$(() => {
               href="https://donaronline.org/fundacion-union-argentina-de-rugby/fuar-somos-todos"
               target="_blank"
               rel="noopener noreferrer"
-              class="group relative overflow-hidden bg-[#5C9CD7] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:bg-[#4a8bc7] shadow-xl"
+              class="group relative overflow-hidden bg-[#2B628D] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:bg-[#4a8bc7] shadow-xl"
             >
               <span class="text-white text-3xl font-black italic tracking-tighter mb-1">FUAR</span>
               <span class="text-[10px] text-white/90 uppercase font-bold tracking-widest mb-3">Fundación UAR</span>

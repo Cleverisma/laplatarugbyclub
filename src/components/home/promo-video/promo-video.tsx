@@ -25,7 +25,7 @@ export const PromoVideo = component$(() => {
             controls
             playsInline
             muted
-            preload="metadata"
+            preload="none"
             poster={previewImg}
             src={VIDEO_SRC}
             onPlay$={() => (isPlaying.value = true)}
