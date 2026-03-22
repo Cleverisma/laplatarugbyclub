@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
-import { matches, heroSlides, siteSettings } from '~/db/schema';
+import { matches, heroSlides, siteSettings, instagramPosts } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
 import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
@@ -12,7 +12,6 @@ import { LatestEvents } from '~/components/home/latest-events/latest-events';
 import {
   SocialFeed,
   MOCK_INSTAGRAM_POSTS,
-  type InstagramPostProps,
 } from '~/components/home/social-feed/social-feed';
 import juego1Img from '~/media/juego-1.jpeg';
 import { Contact } from '~/components/home/contact/contact';
@@ -58,58 +57,26 @@ export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   return { lastMatch, nextMatch };
 });
 
-export const useInstagramFeed = routeLoader$(async () => {
+export const useInstagramFeed = routeLoader$(async (requestEvent) => {
+  const db = getDb(requestEvent.env);
   try {
-    const res = await fetch('https://feeds.behold.so/DPNOhrNZKVOOvpy5y2OS', {
-      headers: {
-        Accept: 'application/json',
-      },
+    const posts = await db.query.instagramPosts.findMany({
+      orderBy: [desc(instagramPosts.timestamp)],
+      limit: 6, // Traemos solo los 6 últimos
     });
 
-    if (!res.ok) {
-      return MOCK_INSTAGRAM_POSTS;
+    if (posts.length > 0) {
+      return posts.map((p) => ({
+        id: p.id,
+        imageUrl: p.mediaUrl,
+        link: p.permalink,
+        caption: p.caption || undefined,
+      }));
     }
 
-    const data = (await res.json()) as {
-      posts?: Array<{
-        id: string;
-        mediaUrl?: string;
-        permalink?: string;
-        caption?: string;
-        mediaType?: string;
-        thumbnailUrl?: string;
-      }>;
-    };
-
-    const mappedPosts: Array<InstagramPostProps | null> =
-      data.posts?.map((item): InstagramPostProps | null => {
-        if (!item.id || !item.permalink) return null;
-
-        const imageUrl =
-          item.mediaType === 'VIDEO' && item.thumbnailUrl
-            ? item.thumbnailUrl
-            : item.mediaUrl;
-
-        if (!imageUrl) return null;
-
-        return {
-          id: item.id,
-          imageUrl,
-          link: item.permalink,
-          caption: item.caption,
-        };
-      }) ?? [];
-
-    const posts = mappedPosts.filter(
-      (p): p is InstagramPostProps => p !== null,
-    );
-
-    if (!posts.length) {
-      return MOCK_INSTAGRAM_POSTS;
-    }
-
-    return posts;
-  } catch {
+    return MOCK_INSTAGRAM_POSTS;
+  } catch (error) {
+    console.error('Error cargando feed de instagram desde DB', error);
     return MOCK_INSTAGRAM_POSTS;
   }
 });

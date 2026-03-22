@@ -78,6 +78,15 @@ export const siteSettings = sqliteTable('site_settings', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
 });
 
+export const instagramPosts = sqliteTable('instagram_posts', {
+  id: text('id').primaryKey(),
+  permalink: text('permalink').notNull(),
+  mediaUrl: text('media_url').notNull(),
+  mediaType: text('media_type'),
+  caption: text('caption'),
+  timestamp: text('timestamp'),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));
