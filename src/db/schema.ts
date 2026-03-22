@@ -60,6 +60,16 @@ export const users = sqliteTable('users', {
   passwordHash: text('password_hash').notNull(),
 });
 
+export const heroSlides = sqliteTable('hero_slides', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  imageUrl: text('image_url').notNull(),
+  title: text('title'),
+  order: integer('display_order').notNull().default(0),
+  isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
+  createdAt: integer('created_at', { mode: 'timestamp' }),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));

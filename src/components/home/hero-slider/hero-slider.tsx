@@ -13,23 +13,38 @@ const SLIDE_ANIMATIONS = [
   'hero-slide-pan',
 ];
 
-const slides = [
-  { imageUrl: img1Url, text: 'RUGBY, VALORES Y AMISTAD DESDE 1934' },
-  { imageUrl: img2Url, text: 'FORMAMOS JUGADORES. CONSTRUIMOS PERSONAS' },
-  { imageUrl: img3Url, text: 'DONDE EL RUGBY SE VIVE Y SE APRENDE' },
+const DEFAULT_SLIDES = [
+  { imageUrl: img1Url, title: 'RUGBY, VALORES Y AMISTAD DESDE 1934' },
+  { imageUrl: img2Url, title: 'FORMAMOS JUGADORES. CONSTRUIMOS PERSONAS' },
+  { imageUrl: img3Url, title: 'DONDE EL RUGBY SE VIVE Y SE APRENDE' },
 ];
 
-export const HeroSlider = component$(() => {
+export interface HeroSliderProps {
+  slides?: {
+    id: number;
+    imageUrl: string;
+    title: string | null;
+    order: number;
+    isActive: boolean;
+    createdAt?: Date | null;
+    updatedAt?: Date | null;
+  }[];
+}
+
+export const HeroSlider = component$<HeroSliderProps>(({ slides }) => {
   const currentSlide = useSignal(0);
+  const activeSlides = slides && slides.length > 0 ? slides : DEFAULT_SLIDES;
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     // Defer the interval start by 2s so LCP/FCP paint completes
     // before the JS thread gets occupied by the slide timer.
+    if (activeSlides.length <= 1) return; // No auto-slide if only 1
+    
     let interval: ReturnType<typeof setInterval>;
     const timeout = setTimeout(() => {
       interval = setInterval(() => {
-        currentSlide.value = (currentSlide.value + 1) % slides.length;
+        currentSlide.value = (currentSlide.value + 1) % activeSlides.length;
       }, 6000);
     }, 2000);
     cleanup(() => {
@@ -59,9 +74,9 @@ export const HeroSlider = component$(() => {
         .hero-slide-pan      { animation: heroPan     6s ease-in-out forwards; }
       `}</style>
 
-      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center aspect-[3/4] min-h-[75svh] md:min-h-[85vh] lg:min-h-[95vh] md:aspect-auto">
+      <section class="relative w-full overflow-hidden flex flex-col items-center justify-center aspect-3/4 min-h-[75svh] md:min-h-[85vh] lg:min-h-[95vh] md:aspect-auto">
         {/* ── Background Slides ── */}
-        {slides.map((slide, index) => {
+        {activeSlides.map((slide, index) => {
           const isActive = currentSlide.value === index;
           return (
             <div
@@ -84,7 +99,7 @@ export const HeroSlider = component$(() => {
                 fetchPriority={index === 0 ? 'high' : 'low'}
               />
               {/* Dark overlay for text legibility */}
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0a1128]/70 via-black/30 to-black/5" />
+              <div class="absolute inset-0 bg-linear-to-t from-[#0a1128]/70 via-black/30 to-black/5" />
             </div>
           );
         })}
@@ -110,7 +125,7 @@ export const HeroSlider = component$(() => {
 
           {/* Slides Container (Relative wrapper for absolute text items) */}
           <div class="relative w-full h-[50vh] md:h-[30vh] lg:h-[25vh] min-h-[250px] flex items-start justify-center overflow-visible md:-translate-y-4">
-            {slides.map((slide, index) => {
+            {activeSlides.map((slide, index) => {
               const isActive = currentSlide.value === index;
               return (
                 <div
@@ -127,7 +142,7 @@ export const HeroSlider = component$(() => {
                     class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white leading-[0.9] tracking-tighter text-center max-w-6xl mx-auto drop-shadow-[0_15px_15px_rgba(0,0,0,0.9)] px-2"
                     style={{ fontFamily: "'Oswald', sans-serif" }}
                   >
-                    {slide.text}
+                    {slide.title}
                   </h1>
                   <div class="w-20 md:w-32 h-1.5 md:h-3 bg-yellow-400 mx-auto mt-6 md:mt-12 shadow-[0_5px_20px_rgba(255,215,0,0.4)] transition-all duration-500 rounded-full"></div>
                 </div>
@@ -139,7 +154,7 @@ export const HeroSlider = component$(() => {
 
         {/* ── Slide indicator dots ── */}
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1 z-20">
-          {slides.map((_, index) => (
+          {activeSlides.map((_, index) => (
             <button
               key={`dot-${index}`}
               onClick$={() => { currentSlide.value = index; }}

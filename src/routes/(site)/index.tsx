@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
-import { matches } from '~/db/schema';
+import { matches, heroSlides } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
 import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
@@ -19,6 +19,16 @@ import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
 import { VerticalVideo } from '~/components/home/vertical-video/vertical-video';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
+
+export const useHeroSlidesLoader = routeLoader$(async (requestEvent) => {
+  const db = getDb(requestEvent.env);
+  return db
+    .select()
+    .from(heroSlides)
+    .where(eq(heroSlides.isActive, true))
+    .orderBy(asc(heroSlides.order));
+});
+
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
 
@@ -96,13 +106,14 @@ export const useEventsLoader = routeLoader$(async (requestEvent) => {
 });
 
 export default component$(() => {
+  const heroSlidesData = useHeroSlidesLoader();
   const matchesData = useMatchesLoader();
   const instagramFeed = useInstagramFeed();
   const eventsData = useEventsLoader();
 
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950">
-      <HeroSlider />
+      <HeroSlider slides={heroSlidesData.value} />
       <MatchCenter
         lastMatch={matchesData.value.lastMatch}
         nextMatch={matchesData.value.nextMatch}
