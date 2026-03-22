@@ -18,15 +18,23 @@ export const XIcon = () => (
   </svg>
 );
 
-export const StatsCounter = component$(() => {
+export interface StatsCounterProps {
+  settings: {
+    playersCount: number;
+    membersCount: number;
+    followersCount: number;
+  };
+}
+
+export const StatsCounter = component$((props: StatsCounterProps) => {
   const playersCount = useSignal(0);
   const membersCount = useSignal(0);
   const followersCount = useSignal(0);
 
   // Animation target values
-  const targetPlayers = 1199;
-  const targetMembers = 2899;
-  const targetFollowers = 61000;
+  const targetPlayers = props.settings.playersCount;
+  const targetMembers = props.settings.membersCount;
+  const targetFollowers = props.settings.followersCount;
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {

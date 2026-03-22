@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
-import { matches, heroSlides } from '~/db/schema';
+import { matches, heroSlides, siteSettings } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
 import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
@@ -19,6 +19,19 @@ import { Contact } from '~/components/home/contact/contact';
 import { getEvents } from '~/data/events-data';
 import { VerticalVideo } from '~/components/home/vertical-video/vertical-video';
 import { PromoVideo } from '~/components/home/promo-video/promo-video';
+
+export const useSiteSettingsLoader = routeLoader$(async (requestEvent) => {
+  const db = getDb(requestEvent.env);
+  const [settings] = await db.select().from(siteSettings).where(eq(siteSettings.id, 1));
+  if (!settings) {
+    return {
+      playersCount: 1199,
+      membersCount: 2899,
+      followersCount: 61000,
+    };
+  }
+  return settings;
+});
 
 export const useHeroSlidesLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
@@ -106,6 +119,7 @@ export const useEventsLoader = routeLoader$(async (requestEvent) => {
 });
 
 export default component$(() => {
+  const settingsData = useSiteSettingsLoader();
   const heroSlidesData = useHeroSlidesLoader();
   const matchesData = useMatchesLoader();
   const instagramFeed = useInstagramFeed();
@@ -121,7 +135,7 @@ export default component$(() => {
 
       <PromoVideo />
 
-      <StatsCounter />
+      <StatsCounter settings={settingsData.value} />
 
       <LatestEvents events={eventsData.value} />
 

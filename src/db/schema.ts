@@ -70,6 +70,14 @@ export const heroSlides = sqliteTable('hero_slides', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
 });
 
+export const siteSettings = sqliteTable('site_settings', {
+  id: integer('id').primaryKey().default(1),
+  playersCount: integer('players_count').notNull().default(1199),
+  membersCount: integer('members_count').notNull().default(2899),
+  followersCount: integer('followers_count').notNull().default(61000),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));
