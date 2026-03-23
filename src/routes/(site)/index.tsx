@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
-import { matches, heroSlides, siteSettings, instagramPosts } from '~/db/schema';
+import { matches, heroSlides, siteSettings, instagramPosts, verticalVideos } from '~/db/schema';
 import { eq, desc, asc } from 'drizzle-orm';
 import { HeroSlider } from '~/components/home/hero-slider/hero-slider';
 import { MatchCenter } from '~/components/home/match-center/match-center';
@@ -37,8 +37,16 @@ export const useHeroSlidesLoader = routeLoader$(async (requestEvent) => {
   return db
     .select()
     .from(heroSlides)
-    .where(eq(heroSlides.isActive, true))
     .orderBy(asc(heroSlides.order));
+});
+
+export const useVerticalVideosLoader = routeLoader$(async (requestEvent) => {
+  const db = getDb(requestEvent.env);
+  return db
+    .select()
+    .from(verticalVideos)
+    .where(eq(verticalVideos.isActive, 1))
+    .orderBy(asc(verticalVideos.displayOrder));
 });
 
 export const useMatchesLoader = routeLoader$(async (requestEvent) => {
@@ -91,6 +99,7 @@ export default component$(() => {
   const matchesData = useMatchesLoader();
   const instagramFeed = useInstagramFeed();
   const eventsData = useEventsLoader();
+  const verticalVideosData = useVerticalVideosLoader();
 
   return (
     <main class="flex flex-col min-h-screen selection:bg-yellow-400 selection:text-blue-950">
@@ -197,7 +206,9 @@ export default component$(() => {
         </a>
       </section>
 
-      <VerticalVideo />
+      {verticalVideosData.value.length > 0 && (
+        <VerticalVideo videos={verticalVideosData.value} />
+      )}
 
       <Contact />
     </main>

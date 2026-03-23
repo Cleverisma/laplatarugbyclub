@@ -26,6 +26,9 @@ export const useLoginAction = routeAction$(
       return requestEvent.fail(401, { error: 'Usuario o contraseña incorrectos.' });
     }
 
+    // Actualizar fecha de último login
+    await db.update(users).set({ lastLogin: new Date() }).where(eq(users.id, user.id));
+
     // Setear cookie de sesión
     requestEvent.cookie.set('auth_session', 'authenticated_admin', {
       httpOnly: true,

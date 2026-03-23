@@ -1,6 +1,5 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { relations } from 'drizzle-orm';
-
+import { relations, sql } from 'drizzle-orm';
 export const matches = sqliteTable('matches', {
   id: integer('id').primaryKey(),
   status: text('status', { enum: ['played', 'upcoming'] }).notNull(),
@@ -58,6 +57,7 @@ export const users = sqliteTable('users', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   username: text('username').notNull().unique(),
   passwordHash: text('password_hash').notNull(),
+  lastLogin: integer('last_login', { mode: 'timestamp' }),
 });
 
 export const heroSlides = sqliteTable('hero_slides', {
@@ -85,6 +85,16 @@ export const instagramPosts = sqliteTable('instagram_posts', {
   mediaType: text('media_type'),
   caption: text('caption'),
   timestamp: text('timestamp'),
+});
+
+export const verticalVideos = sqliteTable('vertical_videos', {
+  id: text('id').primaryKey(),
+  title: text('title').notNull(),
+  videoUrl: text('video_url').notNull(),
+  thumbnailUrl: text('thumbnail_url'),
+  isActive: integer('is_active').notNull().default(1),
+  displayOrder: integer('display_order').notNull().default(0),
+  createdAt: text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
 export const divisionsRelations = relations(divisions, ({ many }) => ({
