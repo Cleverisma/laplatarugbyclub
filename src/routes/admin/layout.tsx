@@ -1,6 +1,9 @@
 import { component$, Slot } from '@builder.io/qwik';
-import { Link, useLocation } from '@builder.io/qwik-city';
+import { Link, useLocation, routeLoader$ } from '@builder.io/qwik-city';
 import type { RequestHandler } from '@builder.io/qwik-city';
+import { getDb } from '~/db/client';
+import { users } from '~/db/schema';
+import { eq } from 'drizzle-orm';
 
 // 1. LA BARRERA DE SEGURIDAD (Se ejecuta en el servidor antes de renderizar nada)
 export const onRequest: RequestHandler = async ({ cookie, url, redirect }) => {
@@ -16,6 +19,15 @@ export const onRequest: RequestHandler = async ({ cookie, url, redirect }) => {
     }
 };
 
+export const useAdminUserLoader = routeLoader$(async (requestEvent) => {
+  const userIdStr = requestEvent.cookie.get('auth_session')?.value;
+  // If no session or old string-based session format
+  if (!userIdStr || isNaN(Number(userIdStr))) return null;
+  
+  const db = getDb(requestEvent.env);
+  const [user] = await db.select({ username: users.username }).from(users).where(eq(users.id, Number(userIdStr)));
+  return user ? user.username : null;
+});
 
 const navLinks = [
   {
@@ -113,6 +125,7 @@ const navLinks = [
 
 export default component$(() => {
   const location = useLocation();
+  const adminUser = useAdminUserLoader();
 
   // Login page renders without the admin sidebar/header
   const isLoginPage = location.url.pathname.startsWith('/admin/login');
@@ -189,9 +202,13 @@ export default component$(() => {
           </nav>
           <div class="flex items-center gap-2">
             <div class="w-8 h-8 rounded-full bg-[#0a1128] flex items-center justify-center">
-              <span class="text-yellow-400 font-bold text-xs">A</span>
+              <span class="text-yellow-400 font-bold text-xs uppercase">
+                {adminUser.value ? adminUser.value.charAt(0) : 'A'}
+              </span>
             </div>
-            <span class="text-sm font-medium text-gray-700">Administrador</span>
+            <span class="text-sm font-medium text-gray-700 capitalize">
+              {adminUser.value || 'Administrador'}
+            </span>
           </div>
         </header>
 

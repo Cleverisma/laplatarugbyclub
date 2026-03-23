@@ -29,8 +29,8 @@ export const useLoginAction = routeAction$(
     // Actualizar fecha de último login
     await db.update(users).set({ lastLogin: new Date() }).where(eq(users.id, user.id));
 
-    // Setear cookie de sesión
-    requestEvent.cookie.set('auth_session', 'authenticated_admin', {
+    // Setear cookie de sesión con el ID del usuario
+    requestEvent.cookie.set('auth_session', String(user.id), {
       httpOnly: true,
       secure: true,
       maxAge: [15, 'days'],

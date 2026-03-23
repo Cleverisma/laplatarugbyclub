@@ -7,15 +7,24 @@ import bcrypt from 'bcryptjs';
 
 export const useProfileLoader = routeLoader$(async (requestEvent) => {
   const db = getDb(requestEvent.env);
-  const [user] = await db.select().from(users).limit(1);
+  const userIdStr = requestEvent.cookie.get('auth_session')?.value;
+  const userId = Number(userIdStr);
+  
+  if (!userIdStr || isNaN(userId)) return null;
+
+  const [user] = await db.select().from(users).where(eq(users.id, userId));
   return user ? { id: user.id, username: user.username, lastLogin: user.lastLogin } : null;
 });
 
 export const useUpdateProfileAction = routeAction$(
   async (data, requestEvent) => {
     const db = getDb(requestEvent.env);
+    const userIdStr = requestEvent.cookie.get('auth_session')?.value;
+    const userId = Number(userIdStr);
     
-    const [user] = await db.select().from(users).limit(1);
+    if (!userIdStr || isNaN(userId)) return { success: false, error: 'No autorizado' };
+
+    const [user] = await db.select().from(users).where(eq(users.id, userId));
     
     if (!user) {
       return { success: false, error: 'No se encontró el usuario administrador' };

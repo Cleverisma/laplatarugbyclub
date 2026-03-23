@@ -45,6 +45,9 @@ importers:
       '@qwik-ui/utils':
         specifier: ^0.3.3
         version: 0.3.3
+      '@qwik.dev/partytown':
+        specifier: ^0.11.1
+        version: 0.11.2
       '@qwikest/icons':
         specifier: ^0.0.13
         version: 0.0.13(@builder.io/qwik@1.19.2(vite@7.3.1(@types/node@20.19.0)(jiti@2.6.1)(less@4.6.4)(lightningcss@1.31.1)(sass@1.98.0)(stylus@0.62.0)(tsx@4.21.0)(yaml@2.8.2)))
@@ -1678,6 +1681,11 @@ packages:
 
   '@qwik-ui/utils@0.3.3':
     resolution: {integrity: sha512-oSZiLoZSIQeFzQXtylPL6W0wgXdFAywG5gvzLCMbaSQ3rARfcmVTYnuwJ2POEbBbQ0GZuHivpwA6IyKQSbwggw==}
+
+  '@qwik.dev/partytown@0.11.2':
+    resolution: {integrity: sha512-795y49CqBiKiwKAD+QBZlzlqEK275hVcazZ7wBPSfgC23L+vWuA7PJmMpgxojOucZHzYi5rAAQ+IP1I3BKVZxw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   '@qwikest/icons@0.0.13':
     resolution: {integrity: sha512-e0wY8vmx0nDSUiuCATlk+ojTvdBV4txIGHHWjZW5SRkv4XB8H9+3WSDcLPz0ItUdRyzcrohE9k2jtQI/98aRPA==}
@@ -6640,6 +6648,10 @@ snapshots:
       qwik-themes: 0.2.0
       specificity: 1.0.0
       tailwind-merge: 1.14.0
+
+  '@qwik.dev/partytown@0.11.2':
+    dependencies:
+      dotenv: 16.6.1
 
   '@qwikest/icons@0.0.13(@builder.io/qwik@1.19.2(vite@7.3.1(@types/node@20.19.0)(jiti@2.6.1)(less@4.6.4)(lightningcss@1.31.1)(sass@1.98.0)(stylus@0.62.0)(tsx@4.21.0)(yaml@2.8.2)))':
     dependencies:

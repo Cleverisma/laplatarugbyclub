@@ -1,6 +1,7 @@
 import { component$, isDev, useStyles$ } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
+import { QwikPartytown } from './components/partytown/partytown';
 
 import globalCss from "./global.css?inline";
 
@@ -17,6 +18,23 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
+        <QwikPartytown forward={['gtag', 'dataLayer.push']} />
+        <script
+          async
+          type="text/partytown"
+          src="https://www.googletagmanager.com/gtag/js?id=G-P8K4QMJMPV"
+        />
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={`
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-P8K4QMJMPV');
+          `}
+        />
         {!isDev && (
           <link
             rel="manifest"
