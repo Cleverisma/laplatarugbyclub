@@ -16,12 +16,12 @@ export const onRequest: RequestHandler = async (event) => {
   if (!isLogin && !isAsset) {
     const adminSession = cookie.get('auth_session');
 
-    if (!adminSession || adminSession.value !== 'authenticated_admin') {
-      throw event.redirect(302, '/admin/login');
+    if (!adminSession || !adminSession.value || isNaN(Number(adminSession.value))) {
+      throw event.redirect(302, '/admin/login/');
     }
   } else if (isLogin) {
     const adminSession = cookie.get('auth_session');
-    if (adminSession && adminSession.value === 'authenticated_admin') {
+    if (adminSession && adminSession.value && !isNaN(Number(adminSession.value))) {
       // Si ya está logueado y trata de entrar al login, lo mandamos al dashboard
       throw event.redirect(302, '/admin/');
     }

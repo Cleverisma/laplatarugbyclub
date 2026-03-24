@@ -9,12 +9,13 @@ import { eq } from 'drizzle-orm';
 export const onRequest: RequestHandler = async ({ cookie, url, redirect }) => {
     const currentPath = url.pathname.replace(/\/$/, '');
     const isLoginPage = currentPath === '/admin/login';
-    const hasSession = cookie.has('auth_session');
+    const sessionCookie = cookie.get('auth_session');
+    const hasValidSession = sessionCookie && sessionCookie.value && !isNaN(Number(sessionCookie.value));
 
-    if (!hasSession && !isLoginPage) {
+    if (!hasValidSession && !isLoginPage) {
         throw redirect(302, '/admin/login/');
     }
-    if (hasSession && isLoginPage) {
+    if (hasValidSession && isLoginPage) {
         throw redirect(302, '/admin/');
     }
 };
