@@ -23,12 +23,12 @@ export const VerticalVideo = component$<VerticalVideoProps>(({ videos }) => {
         }}
       />
 
-      <div class="container mx-auto px-4 max-w-5xl relative z-10">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 flex-wrap">
+      <div class="container mx-auto px-4 max-w-7xl relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 justify-items-center items-center w-full">
           
           {videos.map((video) => (
-            <div key={video.id} class="relative max-w-sm mx-auto">
-              <div class="relative bg-black rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10" style={{ aspectRatio: '9/16', width: '300px', maxWidth: '100%' }}>
+            <div key={video.id} class="relative w-full max-w-[300px]">
+              <div class="relative bg-black rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10 w-full" style={{ aspectRatio: '9/16' }}>
                 <video
                   src={video.videoUrl}
                   poster={video.thumbnailUrl || undefined}
