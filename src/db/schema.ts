@@ -97,6 +97,14 @@ export const verticalVideos = sqliteTable('vertical_videos', {
   createdAt: text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
+export const sponsors = sqliteTable('sponsors', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  name: text('name').notNull(),
+  logoUrl: text('logo_url').notNull(),
+  url: text('url'),
+  displayOrder: integer('display_order').notNull().default(0),
+});
+
 export const divisionsRelations = relations(divisions, ({ many }) => ({
   staffMembers: many(staffMembers),
 }));
