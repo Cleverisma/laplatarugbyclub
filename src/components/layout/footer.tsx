@@ -115,7 +115,7 @@ export const Footer = component$(() => {
 
       {/* Copyright y Firma */}
       <div class="container mx-auto px-4 max-w-7xl relative z-10 pt-8 mt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 font-normal pb-8 md:pb-8 gap-4">
-        <p class="text-center md:text-left">&copy; {new Date().getFullYear()} La Plata Rugby Club. Todos los derechos reservados.</p>
+        <p class="text-center md:text-left">&copy; {new Date().getFullYear()} La Plata Rugby Club. Todos los derechos reservados.!</p>
         <p class="text-center md:text-right">
           Sitio creado por <a href="https://indesign.ar" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white transition-colors underline decoration-blue-500/50 hover:decoration-white underline-offset-4 font-bold">indesign.ar</a>
         </p>
