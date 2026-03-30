@@ -1,37 +1,20 @@
-import { component$, useSignal } from '@builder.io/qwik';
-import { Form, Link, routeAction$, z, zod$, type DocumentHead } from '@builder.io/qwik-city';
+import { $, component$, useSignal } from '@builder.io/qwik';
+import { Link, routeAction$, z, zod$, type DocumentHead } from '@builder.io/qwik-city';
 import { getDb } from '~/db/client';
 import { verticalVideos } from '~/db/schema';
-import { put } from '@vercel/blob';
+import { upload } from '@vercel/blob/client';
 
 export const useCreateVerticalVideoAction = routeAction$(
   async (data, requestEvent) => {
     
-    let finalVideoUrl = typeof data.videoUrl === 'string' && data.videoUrl.length > 0 ? data.videoUrl : undefined;
-    if (data.videoFile && typeof data.videoFile === 'object' && (data.videoFile as Blob).size > 0) {
-      const file = data.videoFile as File;
-      const { url } = await put(file.name || `video-${Date.now()}.mp4`, file, {
-        access: 'public',
-        token: requestEvent.env.get('BLOB_READ_WRITE_TOKEN'),
-      });
-      finalVideoUrl = url;
-    }
-
-    let finalThumbnailUrl = typeof data.thumbnailUrl === 'string' && data.thumbnailUrl.length > 0 ? data.thumbnailUrl : undefined;
-    if (data.thumbnailFile && typeof data.thumbnailFile === 'object' && (data.thumbnailFile as Blob).size > 0) {
-      const file = data.thumbnailFile as File;
-      const { url } = await put(file.name || `thumb-${Date.now()}`, file, {
-        access: 'public',
-        token: requestEvent.env.get('BLOB_READ_WRITE_TOKEN'),
-      });
-      finalThumbnailUrl = url;
-    }
-
+    const finalVideoUrl = typeof data.videoUrl === 'string' && data.videoUrl.length > 0 ? data.videoUrl : undefined;
     if (!finalVideoUrl) {
       return requestEvent.fail(400, {
-        error: 'Debe subir un archivo de video o proporcionar una URL válida.',
+        error: 'Debe proporcionar una URL de video válida.',
       });
     }
+
+    const finalThumbnailUrl = typeof data.thumbnailUrl === 'string' && data.thumbnailUrl.length > 0 ? data.thumbnailUrl : undefined;
 
     const db = getDb(requestEvent.env);
     await db.insert(verticalVideos).values({
@@ -48,9 +31,7 @@ export const useCreateVerticalVideoAction = routeAction$(
   zod$({
     title: z.string().min(1, 'El título es requerido'),
     videoUrl: z.string().optional(),
-    videoFile: z.any().optional(),
     thumbnailUrl: z.string().optional(),
-    thumbnailFile: z.any().optional(),
     displayOrder: z.string().default('0'),
     isActive: z.string().optional(),
   }),
@@ -63,6 +44,52 @@ export const head: DocumentHead = {
 export default component$(() => {
   const createAction = useCreateVerticalVideoAction();
   const isUploading = useSignal(false);
+
+  const handleSubmit = $(async (event: Event, element: HTMLFormElement) => {
+    isUploading.value = true;
+    try {
+      const formData = new FormData(element);
+      const title = formData.get('title') as string;
+      let videoUrl = formData.get('videoUrl') as string;
+      let thumbnailUrl = formData.get('thumbnailUrl') as string;
+      const displayOrder = formData.get('displayOrder') as string;
+      const isActive = formData.get('isActive') === 'on' ? 'true' : 'false';
+
+      const videoInput = element.querySelector('#videoFile') as HTMLInputElement;
+      const thumbnailInput = element.querySelector('#thumbnailFile') as HTMLInputElement;
+
+      if (videoInput?.files && videoInput.files.length > 0) {
+        const file = videoInput.files[0];
+        const newBlob = await upload(file.name, file, {
+          access: 'public',
+          handleUploadUrl: '/api/upload',
+        });
+        videoUrl = newBlob.url;
+      }
+
+      if (thumbnailInput?.files && thumbnailInput.files.length > 0) {
+        const file = thumbnailInput.files[0];
+        const newBlob = await upload(file.name, file, {
+          access: 'public',
+          handleUploadUrl: '/api/upload',
+        });
+        thumbnailUrl = newBlob.url;
+      }
+
+      await createAction.submit({
+        title,
+        videoUrl,
+        thumbnailUrl,
+        displayOrder,
+        isActive,
+      });
+    } catch (e) {
+      console.error("Error en la subida:", e);
+      alert("Hubo un error al subir los archivos. Por favor intentá de nuevo.");
+    } finally {
+      isUploading.value = false;
+    }
+  });
 
   return (
     <div>
@@ -104,10 +131,10 @@ export default component$(() => {
           </div>
         )}
 
-        <Form 
-          action={createAction} 
+        <form 
+          preventdefault:submit
+          onSubmit$={handleSubmit}
           class="space-y-6"
-          onSubmit$={() => { isUploading.value = true; }}
         >
           <div>
             <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Título del Video</label>
@@ -129,7 +156,7 @@ export default component$(() => {
                 type="file"
                 id="videoFile"
                 name="videoFile"
-                accept="video/mp4,video/quicktime"
+                accept="video/mp4,video/quicktime,video/webm"
                 class="w-full border border-gray-300 bg-white rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#0a1128] file:text-white file:cursor-pointer hover:file:bg-[#0f1d45]"
               />
             </div>
@@ -209,7 +236,7 @@ export default component$(() => {
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Guardando / Subiendo...
+                  Subiendo video/Guardando...
                 </>
               ) : (
                 'Crear Video'
@@ -222,7 +249,7 @@ export default component$(() => {
               Cancelar
             </Link>
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   );
